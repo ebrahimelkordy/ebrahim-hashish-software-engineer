@@ -6,8 +6,8 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-body" });
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-headline" });
 
 export const metadata: Metadata = {
-  title: "ARCHITECT_OF_DARKNESS",
-  description: "Forging high-performance digital monoliths from the void.",
+  title: "EBRAHIM HASHISH | Software Engineer",
+  description: "Crafting high-performance MERN stack applications and scalable backend architectures.",
 };
 
 export default function RootLayout({
