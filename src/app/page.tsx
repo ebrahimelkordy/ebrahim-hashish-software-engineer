@@ -11,7 +11,7 @@ export default async function Home() {
   return (
     <>
       <Navbar />
-      <main className="flex-grow w-full max-w-7xl mx-auto px-6 lg:px-12 py-12 space-y-[var(--section-gap)] pt-[100px] pb-32">
+      <main className="flex-grow w-full max-w-7xl mx-auto px-6 lg:px-12 py-12 space-y-[var(--section-gap)] pt-[60px] pb-12">
         <HeroSection data={data.hero} isEditable={false} />
         <ProjectsPreview projects={data.projects.slice(0, 4)} isEditable={false} />
         <PostsPreview posts={data.posts.slice(0, 2)} />

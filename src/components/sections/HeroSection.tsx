@@ -19,12 +19,12 @@ export const HeroSection = ({ data, isEditable = false, onUpdate }: { data: any,
   };
 
   return (
-    <section className="relative w-full flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16 py-12 lg:py-24 overflow-hidden">
+    <section className="relative w-full flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 py-6 lg:py-10 overflow-hidden">
       {/* BACKGROUND DECO FOR MOBILE */}
       <div className="absolute inset-0 scanline-overlay pointer-events-none opacity-10 lg:opacity-20 -z-10"></div>
       
       {/* CONTENT BLOCK - CENTERED ON MOBILE, LEFT ON DESKTOP */}
-      <div className={`w-full ${ (heroData.imageUrl || isEditable) ? 'lg:flex-1' : 'w-full' } flex flex-col items-center lg:items-start text-center lg:text-left z-10 space-y-6 lg:space-y-10 relative`}>
+      <div className={`w-full ${ (heroData.imageUrl || isEditable) ? 'lg:flex-1' : 'w-full' } flex flex-col items-center lg:items-start text-center lg:text-left z-10 space-y-4 lg:space-y-6 relative`}>
         
         <div className="space-y-4 w-full">
           <p className="font-body text-[#00f4fe] text-[10px] md:text-sm uppercase tracking-[0.2em] font-medium opacity-80 before:content-['//'] before:mr-2">

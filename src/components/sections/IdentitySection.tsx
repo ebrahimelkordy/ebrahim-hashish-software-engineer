@@ -18,7 +18,7 @@ export const IdentitySection = ({ data, isEditable = false, onUpdate }: { data: 
   };
 
   return (
-    <section className="relative w-full flex flex-col lg:flex-row items-center gap-10 lg:gap-20 py-12 lg:py-24">
+    <section className="relative w-full flex flex-col lg:flex-row items-center gap-8 lg:gap-12 py-6 lg:py-10">
       
       {/* PORTRAIT BLOCK - FULL WIDTH MOBILE, FIXED WIDTH DESKTOP */}
       {(aboutData.imageUrl || isEditable) && (
