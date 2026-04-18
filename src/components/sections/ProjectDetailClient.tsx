@@ -37,7 +37,7 @@ export function ProjectDetailClient({ project: initialProject, isEditable }: { p
        if (res.success && res.project) {
           setProject((prev: any) => ({ ...prev, id: (res as any).project.id }));
           setIsDirty(false);
-          alert("PROJECT_ENTITY_SYNC_COMPLETE");
+          alert("PROJECT_SYNC_COMPLETE");
        }
      } catch (err) {
        console.error("Save failed", err);
@@ -48,7 +48,7 @@ export function ProjectDetailClient({ project: initialProject, isEditable }: { p
   };
 
   const handleDelete = async () => {
-    if (confirm("DANGER: Permanently delete this project entity?")) {
+    if (confirm("DANGER: Permanently delete this project?")) {
       await deleteProject(project.id);
       router.push("/dashboard");
     }
@@ -126,7 +126,7 @@ export function ProjectDetailClient({ project: initialProject, isEditable }: { p
         <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-[100] flex items-center gap-4 bg-[#0e0e0e] border border-[#00f4fe] p-4 shadow-[0_0_30px_rgba(0,245,255,0.2)] animate-in fade-in slide-in-from-bottom-4">
            <div className="flex flex-col">
               <span className="text-[#00f4fe] font-mono text-[10px] uppercase font-bold tracking-widest">UNSAVED_CHANGES_DETECTED</span>
-              <span className="text-[#e7bcba] font-body text-[10px]">Buffer contains modified project entity data.</span>
+              <span className="text-[#e7bcba] font-body text-[10px]">Buffer contains modified project data.</span>
            </div>
            <div className="h-8 w-px bg-[#5d3f3d]/30 mx-2"></div>
            <button 
@@ -170,7 +170,7 @@ export function ProjectDetailClient({ project: initialProject, isEditable }: { p
               className="flex items-center gap-2 px-3 py-1 text-[#d90429] border border-[#d90429]/30 font-label text-[10px] uppercase tracking-widest hover:bg-[#d90429]/5 transition-all"
             >
               <span className="material-symbols-outlined text-sm">delete_forever</span>
-              PURGE_ENTITY
+              DELETE_PROJECT
             </button>
           )}
         </div>

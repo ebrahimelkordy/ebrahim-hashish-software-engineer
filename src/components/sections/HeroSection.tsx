@@ -116,8 +116,8 @@ export const HeroSection = ({ data, isEditable = false, onUpdate }: { data: any,
               src={heroData.imageUrl}
               alt="Subject_01"
               onChange={(val) => handleChange('imageUrl', val)}
-              className="object-cover w-full h-full transition-all duration-700 group-hover/img:scale-105 z-10"
-              containerClassName="w-full h-full"
+              className="object-cover w-full h-full transition-all duration-700 group-hover/img:scale-105"
+              containerClassName="w-full h-full relative z-50"
               isEditable={isEditable}
               priority={true}
             />

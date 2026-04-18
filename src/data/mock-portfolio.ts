@@ -3,7 +3,7 @@ import { ProjectData } from "./projects";
 export const mockPortfolioData = {
   hero: {
     title: "IBRAHIM\nCODE\nHASHISH",
-    subtitle: "Full-Stack Identity Initiated",
+    subtitle: "Full-Stack Software Engineering",
     description: "Full-Stack Software Engineer building mission-critical web applications. Specializing in high-performance Node.js backends and pixel-perfect Next.js architectures.",
     imageUrl: "/profile.jpg"
   },
@@ -41,7 +41,7 @@ export const mockPortfolioData = {
     {
       id: "post_1",
       date: "2026.04.18",
-      title: "ARCHITECTING IN THE DARK: THE POWER OF CYBERPUNK UI",
+      title: "MODERN UI ARCHITECTURE: THE POWER OF CINEMATIC DESIGN",
       excerpt: "Exploring the psychological impact of aggressive, high-contrast dark modes in modern web applications. Why developers are moving away from sterile corporate design towards monolithic, cinematic interfaces.",
       readTime: "5 MIN READ",
       tags: ["UI/UX", "FRONTEND", "DESIGN"],

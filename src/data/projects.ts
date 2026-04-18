@@ -147,7 +147,7 @@ export const projects: ProjectData[] = [
     screenshots: [
       { src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop", caption: "Landing Page" },
     ],
-    status: "ACTIVE_NODE",
+    status: "ACTIVE",
     year: "2024",
   },
 ];

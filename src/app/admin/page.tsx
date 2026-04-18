@@ -1,15 +1,7 @@
 import { Navbar } from "@/components/Navbar";
 import { getPortfolioData } from "@/lib/data-fetching";
-import { HeroSection } from "@/components/sections/HeroSection";
-import { IdentitySection } from "@/components/sections/IdentitySection";
-import { SkillsSection } from "@/components/sections/SkillsSection";
-import { ExperienceSection } from "@/components/sections/ExperienceSection";
-import { StudiesSection } from "@/components/sections/StudiesSection";
-import { ProjectsGridSection } from "@/components/sections/ProjectsGridSection";
-import { PostsSection } from "@/components/sections/PostsSection";
-import { ContactSection } from "@/components/sections/ContactSection";
-
 import { DashboardClient } from "@/components/sections/DashboardClient";
+import { logout } from "@/lib/auth-actions";
 
 export default async function AdminDashboard() {
   const data = await getPortfolioData();
@@ -17,8 +9,14 @@ export default async function AdminDashboard() {
   return (
     <>
       <Navbar />
-      <div className="fixed top-0 left-0 w-full bg-[#d90429] text-white text-center py-1 font-label text-xs uppercase tracking-[0.2em] z-50 animate-pulse safe-area-top shadow-[0_0_10px_rgba(217,4,41,0.8)]">
-        ADMIN_MODE: ACTIVE // CLICK TEXT TO EDIT // AUTO-SAVING TO DB
+      <div className="fixed top-0 left-0 w-full bg-[#d90429] text-white py-1 px-4 font-label text-[10px] uppercase tracking-[0.2em] z-50 flex justify-between items-center shadow-[0_0_10px_rgba(217,4,41,0.8)]">
+        <div className="animate-pulse">ADMIN_MODE: ACTIVE // AUTO-SAVING</div>
+        <form action={logout}>
+          <button type="submit" className="flex items-center gap-2 hover:bg-white hover:text-[#d90429] px-2 py-0.5 transition-all">
+            <span>TERMINATE_SESSION</span>
+            <span className="material-symbols-outlined text-[14px]">logout</span>
+          </button>
+        </form>
       </div>
 
       <DashboardClient initialData={data} />

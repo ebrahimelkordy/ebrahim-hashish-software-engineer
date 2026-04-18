@@ -2,6 +2,7 @@ import prisma from "@/lib/prisma";
 import { updateSiteConfig, addProject, deleteProject } from "@/app/actions";
 import { Settings, Plus, Trash2, Save, LogOut, ChevronLeft } from "lucide-react";
 import Link from "next/link";
+import { logout } from "@/lib/auth-actions";
 
 export default async function DashboardPage() {
   const hero = await prisma.hero.findUnique({ where: { id: 1 } });
@@ -21,7 +22,14 @@ export default async function DashboardPage() {
         <Link href="/" className="flex items-center gap-2 text-[10px] font-bold uppercase text-zinc-500 hover:text-white transition-all">
           <ChevronLeft className="w-3 h-3" /> Exit_System
         </Link>
-        <span className="text-[10px] font-bold text-indigo-400 uppercase tracking-widest">Control_Center_v1</span>
+        <div className="flex items-center gap-6">
+          <span className="text-[10px] font-bold text-indigo-400 uppercase tracking-widest">Control_Center_v1</span>
+          <form action={logout}>
+            <button type="submit" className="text-[10px] font-bold text-zinc-600 hover:text-red-500 uppercase transition-all flex items-center gap-1">
+              <LogOut className="w-3 h-3" /> Logout
+            </button>
+          </form>
+        </div>
       </nav>
 
       <main className="p-6 flex flex-col gap-12">
@@ -103,9 +111,11 @@ export default async function DashboardPage() {
       </main>
 
       <footer className="p-8 mt-auto border-t border-[#111111] flex justify-center">
-        <button className="flex items-center gap-2 text-zinc-800 text-[10px] font-bold uppercase hover:text-red-900 transition-all">
-          <LogOut className="w-3 h-3" /> Terminate_Session
-        </button>
+        <form action={logout}>
+          <button type="submit" className="flex items-center gap-2 text-zinc-800 text-[10px] font-bold uppercase hover:text-red-900 transition-all">
+            <LogOut className="w-3 h-3" /> Terminate_Session
+          </button>
+        </form>
       </footer>
     </div>
   );

@@ -30,10 +30,10 @@ export const IdentitySection = ({ data, isEditable = false, onUpdate }: { data: 
 
             <EditableImage 
                src={aboutData.imageUrl}
-               alt="Entity_Portrait"
+               alt="Profile_Portrait"
                onChange={(src) => handleChange('imageUrl', src)}
                isEditable={isEditable}
-               containerClassName="absolute inset-0 w-full h-full z-10"
+               containerClassName="absolute inset-0 w-full h-full z-50"
                className="object-cover transition-transform duration-1000 group-hover/img:scale-110"
             />
             

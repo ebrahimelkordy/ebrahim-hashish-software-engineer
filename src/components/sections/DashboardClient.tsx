@@ -204,7 +204,7 @@ export function DashboardClient({ initialData }: { initialData: any }) {
               onClick={handleAddProject}
               className="px-4 py-2 bg-[#d90429] text-white font-label text-[10px] uppercase tracking-widest hover:bg-[#b00320] transition-colors flex items-center gap-2"
             >
-              <span className="material-symbols-outlined text-sm">add_box</span> NEW_PROJECT_ENTITY
+              <span className="material-symbols-outlined text-sm">add_box</span> CREATE_NEW_PROJECT
             </button>
          </div>
          <ProjectsGridSection 
