@@ -37,7 +37,6 @@ export default async function DashboardPage() {
             await updateSiteConfig({
               heroTitle: formData.get("heroTitle") as string,
               aboutText: formData.get("aboutText") as string,
-              footerText: formData.get("footerText") as string,
             });
           }} className="flex flex-col gap-4">
             <div className="flex flex-col gap-2">
