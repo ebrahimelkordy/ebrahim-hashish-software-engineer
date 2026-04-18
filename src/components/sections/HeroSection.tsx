@@ -19,7 +19,7 @@ export const HeroSection = ({ data, isEditable = false, onUpdate }: { data: any,
   };
 
   return (
-    <section className="relative w-full flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 py-6 lg:py-10 overflow-hidden">
+    <section className="relative w-full flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 py-2 lg:py-10 overflow-hidden">
       {/* BACKGROUND DECO FOR MOBILE */}
       <div className="absolute inset-0 scanline-overlay pointer-events-none opacity-10 lg:opacity-20 -z-10"></div>
       
