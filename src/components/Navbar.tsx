@@ -45,22 +45,22 @@ export const Navbar = () => {
         </div>
       </header>
 
-      {/* MOBILE NAV: PREMIUM FLOATING PILL */}
-      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 w-[92%] max-w-[400px] z-[100] md:hidden">
-        <nav className="flex justify-around items-center px-3 py-3 bg-[#131313]/80 backdrop-blur-2xl border border-white/10 rounded-[32px] shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+      {/* MOBILE NAV: PREMIUM FLOATING PILL - COMPACT VERSION */}
+      <div className="fixed bottom-4 left-1/2 -translate-x-1/2 w-[88%] max-w-[380px] z-[100] md:hidden">
+        <nav className="flex justify-around items-center px-2 py-2.5 bg-[#131313]/85 backdrop-blur-3xl border border-white/10 rounded-[28px] shadow-[0_15px_40px_rgba(0,0,0,0.6)]">
           {navItems.map((item) => {
             const isActive = pathname === item.path;
             return (
               <Link 
                 key={item.path} 
                 href={item.path} 
-                className={`flex flex-col items-center justify-center gap-1.5 px-4 py-2 rounded-[24px] transition-all duration-500 ${
+                className={`flex flex-col items-center justify-center gap-1 px-3 py-1.5 rounded-[20px] transition-all duration-500 ${
                   isActive 
-                  ? "bg-[#D90429] text-white shadow-[0_0_15px_rgba(217,4,41,0.5)] scale-110" 
+                  ? "bg-[#D90429] text-white shadow-[0_0_12px_rgba(217,4,41,0.4)] scale-105" 
                   : "text-white/40 active:scale-95"
                 }`}
               >
-                <span className={`material-symbols-outlined text-[20px] ${isActive ? "fill-current" : ""}`}>
+                <span className={`material-symbols-outlined text-[18px] ${isActive ? "fill-current" : ""}`}>
                   {item.icon}
                 </span>
                 <span className={`font-headline uppercase tracking-[0.1em] text-[7px] font-bold ${isActive ? "opacity-100" : "opacity-0 invisible h-0"}`}>
