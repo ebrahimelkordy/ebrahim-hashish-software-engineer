@@ -12,10 +12,26 @@ export const mockPortfolioData = {
     role: "FULL_STACK"
   },
   skills: [
-    { category: "Backend", items: ['Node.js', 'Express.js', 'Nest.js', 'REST APIs', 'GraphQL', 'WebSockets', 'Next.js App Router'] },
-    { category: "Frontend", items: ['React.js', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Redux', 'Zustand', 'Framer Motion', 'HTML/CSS'] },
-    { category: "Storage / DB", items: ['PostgreSQL', 'MongoDB', 'MySQL', 'Prisma ORM', 'Mongoose', 'Redis', 'Supabase'] },
-    { category: "DevOps / Tools", items: ['Git & GitHub', 'Docker', 'Vercel', 'AWS S3', 'Postman', 'Linux CLI', 'CI/CD Pipelines'] }
+    { category: "Backend", items: [
+      { id: 'b1', name: 'Node.js' }, { id: 'b2', name: 'Express.js' }, { id: 'b3', name: 'Nest.js' }, 
+      { id: 'b4', name: 'REST APIs' }, { id: 'b5', name: 'GraphQL' }, { id: 'b6', name: 'WebSockets' }, 
+      { id: 'b7', name: 'Next.js App Router' }
+    ]},
+    { category: "Frontend", items: [
+      { id: 'f1', name: 'React.js' }, { id: 'f2', name: 'Next.js' }, { id: 'f3', name: 'TypeScript' }, 
+      { id: 'f4', name: 'Tailwind CSS' }, { id: 'f5', name: 'Redux' }, { id: 'f6', name: 'Zustand' }, 
+      { id: 'f7', name: 'Framer Motion' }, { id: 'f8', name: 'HTML/CSS' }
+    ]},
+    { category: "Storage / DB", items: [
+      { id: 's1', name: 'PostgreSQL' }, { id: 's2', name: 'MongoDB' }, { id: 's3', name: 'MySQL' }, 
+      { id: 's4', name: 'Prisma ORM' }, { id: 's5', name: 'Mongoose' }, { id: 's6', name: 'Redis' }, 
+      { id: 's7', name: 'Supabase' }
+    ]},
+    { category: "DevOps / Tools", items: [
+      { id: 'd1', name: 'Git & GitHub' }, { id: 'd2', name: 'Docker' }, { id: 'd3', name: 'Vercel' }, 
+      { id: 'd4', name: 'AWS S3' }, { id: 'd5', name: 'Postman' }, { id: 'd6', name: 'Linux CLI' }, 
+      { id: 'd7', name: 'CI/CD Pipelines' }
+    ]}
   ],
   experiences: [
     {

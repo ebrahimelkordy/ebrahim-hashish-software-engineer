@@ -6,14 +6,21 @@ import { redirect } from "next/navigation";
 const SESSION_COOKIE_NAME = "session_auth";
 
 export async function login(formData: FormData) {
-  const username = formData.get("username") as string;
-  const password = formData.get("password") as string;
+  const username = (formData.get("username") as string || "").trim();
+  const password = (formData.get("password") as string || "").trim();
 
-  const validUser = process.env.ADMIN_USERNAME;
-  const validPwd = process.env.ADMIN_PASSWORD;
+  const validUser = (process.env.ADMIN_USERNAME || "").trim();
+  const validPwd = (process.env.ADMIN_PASSWORD || "").trim();
+
+  // Security Check: Ensure server is configured
+  if (!validUser || !validPwd) {
+    return { 
+      success: false, 
+      error: "SERVER_CONFIG_ERROR: Admin credentials are not set on the server. Please check Vercel environment variables." 
+    };
+  }
 
   if (username === validUser && password === validPwd) {
-    // Set a secure, HTTP-only cookie
     const cookieStore = await cookies();
     cookieStore.set(SESSION_COOKIE_NAME, "active", {
       httpOnly: true,

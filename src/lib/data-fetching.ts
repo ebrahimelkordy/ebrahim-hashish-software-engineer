@@ -11,7 +11,7 @@ export interface Skill {
 
 export type GroupedSkills = {
   category: string;
-  items: string[];
+  items: { id: string; name: string }[];
 }[];
 
 export async function getPortfolioData() {
@@ -34,7 +34,7 @@ export async function getPortfolioData() {
       const categories = Array.from(new Set(dbSkills.map((s: any) => s.category))) as string[];
       groupedSkills = categories.map(cat => ({
         category: cat,
-        items: dbSkills.filter((s: any) => s.category === cat).map((s: any) => s.name)
+        items: dbSkills.filter((s: any) => s.category === cat).map((s: any) => ({ id: s.id, name: s.name }))
       }));
     }
 

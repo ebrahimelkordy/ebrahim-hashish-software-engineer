@@ -49,13 +49,13 @@ export const SkillsSection = ({ skills, isEditable = false, onAdd, onDelete }: {
 
             <div className="space-y-6 lg:space-y-8">
               {category.items.map((skill, sIdx) => (
-                <div key={skill} className="relative group/skill">
+                <div key={skill.id} className="relative group/skill">
                   <div className="flex justify-between mb-2">
-                    <span className="font-body text-[9px] text-zinc-500 uppercase tracking-widest">{skill}</span>
+                    <span className="font-body text-[9px] text-zinc-500 uppercase tracking-widest">{skill.name}</span>
                     <span className={`font-body text-[9px] ${catIdx % 2 === 0 ? 'text-[#d90429]' : 'text-[#00f4fe]'} font-bold opacity-80`}>{getLevel(sIdx + catIdx)}</span>
                   </div>
                   
-                  {/* BAR: Responsive Height */}
+                  {/* BAR: Original Design Restored */}
                   <div className="w-full h-[1px] bg-white/5 overflow-hidden">
                     <div 
                       className={`h-full ${catIdx % 2 === 0 ? 'bg-[#d90429] shadow-[0_0_8px_rgba(217,4,41,0.4)]' : 'bg-[#00f4fe] shadow-[0_0_8px_rgba(0,244,254,0.4)]'}`} 
@@ -65,7 +65,7 @@ export const SkillsSection = ({ skills, isEditable = false, onAdd, onDelete }: {
 
                   {isEditable && (
                     <button 
-                      onClick={() => onDelete?.(skill)}
+                      onClick={() => onDelete?.(skill.id)}
                       className="absolute -top-1 -right-1 opacity-0 group-hover/skill:opacity-100 text-[#d90429] p-1"
                     >
                       <span className="material-symbols-outlined text-[10px]">close</span>
