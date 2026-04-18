@@ -12,7 +12,7 @@ export default async function DashboardPage() {
     aboutText: about?.bio
   };
 
-  const projects = await prisma.project.findMany({ orderBy: { createdAt: "desc" } });
+  const projects = await prisma.project.findMany({ orderBy: { order: "asc" } });
 
   return (
     <div className="flex flex-col min-h-screen bg-black">
