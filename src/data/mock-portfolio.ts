@@ -1,90 +1,96 @@
-import { ProjectData } from "./projects";
+import { GroupedSkills } from "@/lib/data-fetching";
 
 export const mockPortfolioData = {
   hero: {
-    title: "IBRAHIM\nCODE\nHASHISH",
-    subtitle: "Full-Stack Software Engineering",
-    description: "Full-Stack Software Engineer building mission-critical web applications. Specializing in high-performance Node.js backends and pixel-perfect Next.js architectures.",
+    firstName: "EBRAHIM",
+    lastName: "HASHISH",
+    title: "EBRAHIM\nCODE\nHASHISH",
+    subtitle: "Full-Stack Identity Initiated",
+    description: "Software Engineer specializing in building high-performance MERN stack applications, architecting scalable systems, and transforming legacy codebases into modern modular structures.",
     imageUrl: "/profile.jpg"
   },
   about: {
-    bio: "Building end-to-end web architectures. Specializing in high-performance Node.js REST APIs, database design, and aggressive, state-of-the-art Next.js React frontends. Delivering production-ready products that perform perfectly under load.",
-    role: "FULL_STACK"
+    firstName: "EBRAHIM",
+    lastName: "HASHISH",
+    bio: "A dedicated Full-Stack Developer with a deep focus on Backend Architecture and User Experience. I specialize in the MERN stack, crafting enterprise-grade solutions like multi-tenant LMS platforms and production-ready e-commerce engines. My philosophy revolves around clean code, robust security (RBAC), and high-efficiency system design.",
+    role: "FULL_STACK Software Engineer",
+    imageUrl: "/about-portrait.jpg" 
   },
   skills: [
     { category: "Backend", items: [
-      { id: 'b1', name: 'Node.js' }, { id: 'b2', name: 'Express.js' }, { id: 'b3', name: 'Nest.js' }, 
-      { id: 'b4', name: 'REST APIs' }, { id: 'b5', name: 'GraphQL' }, { id: 'b6', name: 'WebSockets' }, 
-      { id: 'b7', name: 'Next.js App Router' }
+      { id: 'b1', name: 'Node.js' }, 
+      { id: 'b2', name: 'Express.js' }, 
+      { id: 'b3', name: 'Nest.js' },
+      { id: 'b4', name: 'Socket.IO' },
+      { id: 'b5', name: 'Stripe / Payment Integration' }
     ]},
     { category: "Frontend", items: [
-      { id: 'f1', name: 'React.js' }, { id: 'f2', name: 'Next.js' }, { id: 'f3', name: 'TypeScript' }, 
-      { id: 'f4', name: 'Tailwind CSS' }, { id: 'f5', name: 'Redux' }, { id: 'f6', name: 'Zustand' }, 
-      { id: 'f7', name: 'Framer Motion' }, { id: 'f8', name: 'HTML/CSS' }
+      { id: 'f1', name: 'Next.js 14' }, 
+      { id: 'f2', name: 'React.js' }, 
+      { id: 'f3', name: 'TypeScript' }, 
+      { id: 'f4', name: 'Tailwind CSS' }
     ]},
     { category: "Storage / DB", items: [
-      { id: 's1', name: 'PostgreSQL' }, { id: 's2', name: 'MongoDB' }, { id: 's3', name: 'MySQL' }, 
-      { id: 's4', name: 'Prisma ORM' }, { id: 's5', name: 'Mongoose' }, { id: 's6', name: 'Redis' }, 
-      { id: 's7', name: 'Supabase' }
+      { id: 's1', name: 'MongoDB / Mongoose' }, 
+      { id: 's2', name: 'Redis / Bull Queues' }, 
+      { id: 's3', name: 'PostgreSQL / Prisma' }
     ]},
     { category: "DevOps / Tools", items: [
-      { id: 'd1', name: 'Git & GitHub' }, { id: 'd2', name: 'Docker' }, { id: 'd3', name: 'Vercel' }, 
-      { id: 'd4', name: 'AWS S3' }, { id: 'd5', name: 'Postman' }, { id: 'd6', name: 'Linux CLI' }, 
-      { id: 'd7', name: 'CI/CD Pipelines' }
+      { id: 'd1', name: 'Docker' }, 
+      { id: 'd2', name: 'Git / GitHub' }
     ]}
-  ],
+  ] as unknown as GroupedSkills,
   experiences: [
     {
-      id: "exp_1",
-      title: "Full Stack Developer",
-      company: "Freelance / Remote",
-      period: "2023 - PRESENT",
-      description: "Architecting and delivering complete web solutions including LMS platforms (Nibras, Zaad) and E-commerce applications (Soccer Street). Focus on scalable Node.js microservices and highly responsive Next.js interfaces.",
+      title: "Full-Stack Freelance Developer",
+      company: "Self-Employed",
+      period: "2024 - PRESENT",
+      description: "Leading the development of complex web applications for international clients, focusing on MERN stack efficiency, database optimization, and secure API design.",
       order: 0
     }
   ],
   studies: [
     {
-      id: "edu_1",
-      degree: "Bachelor of Computer Science",
-      institution: "Your University Name Here",
-      year: "GRADUATION: 2024",
-      description: "Extensive study of core algorithms, data structures, and software engineering principles. Completed graduation project \"System X\" with excellence.",
+      degree: "Bachelor of Usul Al-Din (Student)",
+      institution: "Al-Azhar University",
+      year: "In Progress",
+      description: "Developing deep analytical and philosophical skills while simultaneously mastering modern software engineering through intensive self-study and professional projects.",
+      imageUrl: "/edu-azhar.png",
       order: 0
     }
   ],
-  posts: [
+  certificates: [
     {
-      id: "post_1",
-      date: "2026.04.18",
-      title: "MODERN UI ARCHITECTURE: THE POWER OF CINEMATIC DESIGN",
-      excerpt: "Exploring the psychological impact of aggressive, high-contrast dark modes in modern web applications. Why developers are moving away from sterile corporate design towards monolithic, cinematic interfaces.",
-      readTime: "5 MIN READ",
-      tags: ["UI/UX", "FRONTEND", "DESIGN"],
+      title: "Frontend React Developer",
+      issuer: "IT Sharks",
+      date: "2026.04",
+      imageUrl: "/certs/it-sharks-react.jpg",
       order: 0
     },
     {
-      id: "post_2",
-      date: "2026.03.12",
-      title: "STATE MANAGEMENT IN NEXT.JS 15: BEYOND REDUX",
-      excerpt: "An analysis of the modern state. How Zustand, Jotai, and native React Server Components are eliminating the need for bulky global state containers in enterprise applications.",
-      readTime: "8 MIN READ",
-      tags: ["REACT", "NEXT.JS", "ARCHITECTURE"],
+      title: "Node.js Professional Developer",
+      issuer: "Self-Paced / Advanced Engineering",
+      date: "In Progress",
+      imageUrl: "/certs/node-cert.jpg",
       order: 1
-    },
+    }
+  ],
+  blogPosts: [
     {
-      id: "post_3",
-      date: "2026.01.05",
-      title: "BUILDING RESILIENT APIs WITH NODE & PRISMA",
-      excerpt: "A deep dive into database connection pooling, query optimization, and error handling for high-throughput Node.js microservices. Techniques for scaling beyond 10k requests per second.",
-      readTime: "12 MIN READ",
-      tags: ["BACKEND", "NODE.JS", "DATABASES"],
-      order: 2
+      id: "p1",
+      title: "Why Layered Architecture is a Must for Node.js Applications",
+      excerpt: "Diving into the benefits of separating Controllers, Services, and Models for cleaner code.",
+      date: "2026.04.18",
+      readTime: "6 MIN READ",
+      tags: ["BACKEND", "ARCHITECTURE"],
+      isPinned: true,
+      order: 0
     }
   ],
   contact: {
-    email: "hello@ibrahimhashish.com",
-    github: "https://github.com/ibrahimhashish",
-    linkedin: "https://linkedin.com/in/ibrahimhashish"
+    email: "ebrahimkordy0@gmail.com",
+    github: "https://github.com/ebrahimelkordy",
+    linkedin: "https://linkedin.com/in/ebrahim-hashish",
+    whatsapp: "+201060899732"
   }
 };

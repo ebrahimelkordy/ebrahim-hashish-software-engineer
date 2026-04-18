@@ -13,141 +13,91 @@ export interface ProjectData {
   repoUrl?: string;
   status: string;
   year: string;
+  isPinned?: boolean;
+  order?: number;
 }
 
 export const projects: ProjectData[] = [
   {
     id: "mock-nibras",
-    slug: "nibras",
-    codeName: "PRJ_NIBRAS",
-    title: "NIBRAS_LMS_ENTERPRISE",
-    tagline: "Enterprise Learning Management System",
-    summary:
-      "A premium, scalable Learning Management System featuring real-time Zoom integration, automated certificate generation, and an advanced Parent & Student dashboard. Monolithic Node/Next architecture.",
+    slug: "nibras-lms-enterprise",
+    codeName: "PROJ_NIBRAS",
+    title: "Nibras LMS",
+    tagline: "Enterprise-Grade Multi-Tenant Learning Management System",
+    summary: "A high-performance educational platform designed for large-scale institutions with real-time capabilities.",
     description: [
-      "Nibras is a full-featured enterprise LMS built from the ground up to serve educational institutions at scale. The platform supports multi-role access (Admin, Teacher, Parent, Student) with granular permission controls.",
-      "The system features real-time virtual classrooms via Zoom SDK integration, automated cloud recording, and a robust notification pipeline. Students receive automatic certificates upon course completion, generated server-side as PDFs.",
-      "The admin dashboard provides deep analytics into student engagement, course completion rates, and revenue tracking. The entire backend is powered by a Node.js/Express monolith with Prisma ORM connected to a PostgreSQL database.",
+      "Architected a scalable multi-tenant system using Next.js 14 and Node.js.",
+      "Integrated Bull and Redis for asynchronous job processing and system stability.",
+      "Implemented real-time classroom interactions using Socket.IO."
     ],
     techStack: [
-      { category: "Frontend", items: ["Next.js 15", "React 19", "Tailwind CSS", "Framer Motion"] },
-      { category: "Backend", items: ["Node.js", "Express.js", "Prisma ORM", "REST API"] },
-      { category: "Database", items: ["PostgreSQL", "Redis (Caching)"] },
-      { category: "Services", items: ["Zoom SDK", "Cloudinary", "Resend Email", "Vercel"] },
+      { "category": "Backend", "items": ["Node.js", "Express", "MongoDB", "Socket.IO", "Bull/Redis"] },
+      { "category": "Frontend", "items": ["Next.js 14", "TypeScript", "Tailwind CSS"] }
     ],
-    features: [
-      "Multi-role authentication (Admin, Teacher, Parent, Student)",
-      "Real-time Zoom virtual classrooms with cloud recording",
-      "Automated PDF certificate generation on course completion",
-      "Parent dashboard for monitoring children's progress",
-      "Admin analytics: engagement, revenue, and completion metrics",
-      "Course content management with video/document uploads",
-    ],
+    features: ["Multi-tenancy Support", "Real-time Notifications", "Heavy File Upload Handling", "Detailed Analytics Dashboard"],
     screenshots: [
-      { src: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2670&auto=format&fit=crop", caption: "Dashboard Overview" },
-      { src: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?q=80&w=2574&auto=format&fit=crop", caption: "Course Management" },
+      { "src": "/projects/nibras-main.jpg", "caption": "LMS Student Portal" },
+      { "src": "/projects/nibras-admin.jpg", "caption": "Institutional Dashboard" }
     ],
-    liveUrl: "https://nibras.vercel.app",
-    repoUrl: "https://github.com/ibrahimhashish/nibras",
+    liveUrl: "https://nibras-lms.com",
+    repoUrl: "",
     status: "DEPLOYED",
-    year: "2025-2026",
-  },
-  {
-    id: "mock-soccer",
-    slug: "soccer-street",
-    codeName: "PRJ_SOCCER",
-    title: "SOCCER_STREET",
-    tagline: "Premium Multi-Vendor Sports E-Commerce",
-    summary:
-      "Premium multi-vendor sports e-commerce platform. Features dynamic inventory synchronization and aggressive high-conversion UI.",
-    description: [
-      "Soccer Street is a multi-vendor e-commerce platform specialized in sports apparel and equipment. The system supports multiple sellers with independent inventory, unified cart experience, and real-time stock synchronization.",
-      "The frontend is built with React and Vite for maximum performance, featuring a custom product filtering engine, wishlist system, and a multi-step checkout flow with Stripe integration.",
-      "The Node.js/Express backend handles vendor management, order processing, and a notification system for stock alerts. Deployed on Vercel with serverless functions for API routes.",
-    ],
-    techStack: [
-      { category: "Frontend", items: ["React.js", "Vite", "Tailwind CSS", "Redux Toolkit"] },
-      { category: "Backend", items: ["Node.js", "Express.js", "Mongoose ODM"] },
-      { category: "Database", items: ["MongoDB Atlas"] },
-      { category: "Services", items: ["Stripe Payments", "Cloudinary", "Vercel"] },
-    ],
-    features: [
-      "Multi-vendor marketplace with independent inventories",
-      "Real-time stock synchronization across vendors",
-      "Advanced product filtering and search engine",
-      "Wishlist and cart persistence",
-      "Multi-step checkout with Stripe integration",
-      "Admin panel for vendor & order management",
-    ],
-    screenshots: [
-      { src: "https://images.unsplash.com/photo-1556906781-9a412961c28c?q=80&w=2574&auto=format&fit=crop", caption: "Product Catalog" },
-      { src: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?q=80&w=2651&auto=format&fit=crop", caption: "Checkout Flow" },
-    ],
-    liveUrl: "https://soccer-street.vercel.app",
-    repoUrl: "https://github.com/ibrahimhashish/soccer-street",
-    status: "DEPLOYED",
-    year: "2025",
+    year: "2026",
+    isPinned: true,
+    order: 0
   },
   {
     id: "mock-zaad",
-    slug: "zaad",
-    codeName: "PRJ_ZAAD",
-    title: "ZAAD_LMS",
-    tagline: "Specialized Educational Platform",
-    summary:
-      "Specialized scalable educational system designed to maximize course delivery efficiency. 10x better UX focused on student retention.",
+    slug: "zaad-ecommerce-platform",
+    codeName: "PROJ_ZAAD",
+    title: "Zaad E-Commerce",
+    tagline: "Production-Ready Full-Stack Commerce Engine",
+    summary: "A complete e-commerce solution featuring secure payments, inventory management, and high-speed performance.",
     description: [
-      "Zaad is a streamlined LMS designed with a laser focus on student retention and learning outcomes. The interface prioritizes content consumption with minimal distractions.",
-      "Features include adaptive learning paths, progress tracking with milestone notifications, and integrated assessment tools with automatic grading.",
-      "Built with a modern full-stack architecture using Next.js for server-rendered pages and a Node.js API layer backed by PostgreSQL through Prisma.",
+      "Built a seamless shopping experience with end-to-end payment integration via Stripe.",
+      "Optimized database queries and session management using Redis caching.",
+      "Engineered a robust vendor-side management system for full product control."
     ],
     techStack: [
-      { category: "Frontend", items: ["Next.js", "React", "Tailwind CSS"] },
-      { category: "Backend", items: ["Node.js", "Express.js", "Prisma ORM"] },
-      { category: "Database", items: ["PostgreSQL"] },
-      { category: "Services", items: ["Vercel", "Resend"] },
+      { "category": "Backend", "items": ["Node.js", "Mongoose", "Stripe API", "Redis"] },
+      { "category": "Frontend", "items": ["React.js", "Zustand", "Tailwind"] }
     ],
-    features: [
-      "Adaptive learning paths based on student performance",
-      "Progress tracking with milestone notifications",
-      "Integrated assessments with auto-grading",
-      "Instructor dashboard with engagement analytics",
-      "Mobile-first responsive design",
-    ],
+    features: ["Secure Stripe Payments", "Real-time Inventory Tracking", "Advanced Search & Filtering", "Automated Email Invoicing"],
     screenshots: [
-      { src: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=2670&auto=format&fit=crop", caption: "Student Dashboard" },
+      { "src": "/projects/zaad-store.jpg", "caption": "Storefront Interface" }
     ],
+    liveUrl: "https://zaad-store.com",
+    repoUrl: "",
     status: "DEPLOYED",
-    year: "2025",
+    year: "2026",
+    isPinned: true,
+    order: 1
   },
   {
-    id: "mock-moatasem",
-    slug: "al-moatasem",
-    codeName: "PRJ_MOATASEM",
-    title: "AL_MOATASEM",
-    tagline: "Corporate Digital Presence",
-    summary:
-      "Corporate digital presence interface. Optimized for extreme performance metrics and SEO visibility.",
+    id: "mock-soccer",
+    slug: "soccer-street-backend-refactor",
+    codeName: "PROJ_SOCCER",
+    title: "Soccer Street Backend",
+    tagline: "Architectural Refactoring & Tournament Management",
+    summary: "Full overhaul of a legacy backend into a modern layered architecture with strict security standards.",
     description: [
-      "Al Moatasem is a corporate website built for maximum SEO impact and blazing-fast load times. The project prioritizes Core Web Vitals with a perfect Lighthouse score.",
-      "The site features a modern, responsive design with smooth scroll animations, an interactive services section, and a contact system with email notifications.",
-      "Built as a static Next.js export for CDN deployment, ensuring sub-second load times globally.",
+      "Transformed a monolithic server into a clean Controller-Service-Model architecture.",
+      "Engineered a sophisticated RBAC system with SuperAdmin, Admin, and Client roles.",
+      "Developed a custom automated auditing suite covering 20+ critical edge cases."
     ],
     techStack: [
-      { category: "Frontend", items: ["Next.js (SSG)", "React", "Tailwind CSS", "Framer Motion"] },
-      { category: "Services", items: ["Vercel Edge", "Google Analytics", "Resend"] },
+      { "category": "Backend", "items": ["Node.js", "Express", "JWT", "Bcrypt"] },
+      { "category": "Audit & DevOps", "items": ["Custom Audit Scripts", "Morgan", "Helmet", "Docker"] }
     ],
-    features: [
-      "Perfect Lighthouse performance score (100/100)",
-      "SEO-optimized with structured data and meta tags",
-      "Smooth scroll animations and micro-interactions",
-      "Contact form with email notification pipeline",
-      "Fully static export for CDN edge deployment",
-    ],
+    features: ["Granular Role-Based Access Control", "Automated Security Auditing", "Tournament & Team Lifecycle Management", "Cloud Data Migration"],
     screenshots: [
-      { src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop", caption: "Landing Page" },
+      { "src": "/projects/soccer-api.jpg", "caption": "API Documentation & Architecture" }
     ],
-    status: "ACTIVE",
-    year: "2024",
-  },
+    liveUrl: "",
+    repoUrl: "",
+    status: "COMPLETED",
+    year: "2026",
+    isPinned: true,
+    order: 2
+  }
 ];
