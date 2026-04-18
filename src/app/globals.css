@@ -1,0 +1,380 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-primary-container: #d90429;
+  --color-secondary-container: #00f4fe;
+  --color-surface-container-lowest: #0e0e0e;
+  --color-surface-container-low: #1c1b1b;
+  --color-surface-container: #201f1f;
+  --color-surface-container-high: #2a2a2a;
+  --color-surface-container-highest: #353534;
+  --color-surface-bright: #3a3939;
+  --color-surface-dim: #131313;
+  --color-on-surface: #e5e2e1;
+  --color-on-surface-variant: #e7bcba;
+  --color-outline-variant: #5d3f3d;
+  --color-background: #131313;
+  --color-on-background: #e5e2e1;
+
+  --font-headline: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-label: "Space Grotesk", sans-serif;
+}
+
+:root {
+  --background: #0e0e0e;
+  --foreground: #e5e2e1;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  width: 100%;
+  /* Ensure comfortable scrolling on mobile */
+  min-height: 100dvh;
+  position: relative;
+}
+
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* Clean Layout Constraints */
+main {
+  width: 100% !important;
+  max-width: 100vw !important;
+  overflow-x: hidden !important;
+}
+
+/* Global Fluid Typography Scale - Refined for Safety */
+:root {
+  --text-fluid-h1: clamp(1.8rem, 9vw, 7.5rem);
+  --text-fluid-h2: clamp(1.5rem, 8vw, 4rem);
+  --text-fluid-h3: clamp(1.2rem, 6vw, 2.5rem);
+  --section-gap: clamp(3rem, 12vw, 10rem);
+}
+
+.font-fluid-h1 { font-size: var(--text-fluid-h1); line-height: 0.9; }
+.font-fluid-h2 { font-size: var(--text-fluid-h2); line-height: 1.1; }
+.font-fluid-h3 { font-size: var(--text-fluid-h3); line-height: 1.2; }
+
+/* Custom Scrollbar for True Dark Theme */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0e0e0e;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2a2a;
+}
+
+/* Cinematic Effects from Stitch */
+.scanline-overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(255,255,255,0),
+    rgba(255,255,255,0) 50%,
+    rgba(0,0,0,0.1) 50%,
+    rgba(0,0,0,0.1)
+  );
+  background-size: 100% 4px;
+}
+
+.glass-panel {
+  background: rgba(42, 42, 42, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.neon-border-tl {
+  border-top: 1px solid #00f4fe; /* secondary-container */
+  border-left: 1px solid #00f4fe;
+}
+
+.neon-border-br {
+  border-bottom: 1px solid #d90429; /* primary-container */
+  border-right: 1px solid #d90429;
+}
+
+.holographic-shadow {
+  box-shadow: 0 20px 40px rgba(0, 245, 255, 0.05);
+}
+
+.crimson-glow-hover:hover {
+  box-shadow: 0 0 20px rgba(217, 4, 41, 0.3);
+}
+
+.tech-border-left-top {
+  border-left: 1px solid #d90429;
+  border-top: 1px solid #d90429;
+}
+
+.tech-border-right-bottom {
+  border-right: 1px solid #00f4fe;
+  border-bottom: 1px solid #00f4fe;
+}
+
+/* Material Symbols Adjustments */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+}
+
+.cursor-blink {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* User Custom Effects: Lag Frames & Image Refresh */
+
+@keyframes frame-lag {
+  0% { opacity: 1; transform: translateX(0); filter: none; }
+  2% { opacity: 0.8; transform: translateX(-4px) skewX(10deg); filter: drop-shadow(6px 0px 0px rgba(217,4,41,0.8)) drop-shadow(-6px 0px 0px rgba(0,245,255,0.8)); }
+  4% { opacity: 1; transform: translateX(2px) skewX(-10deg); filter: drop-shadow(-3px 0px 0px rgba(217,4,41,0.8)) drop-shadow(3px 0px 0px rgba(0,245,255,0.8)); }
+  6% { opacity: 1; transform: translateX(0) skewX(0); filter: none; }
+  30% { opacity: 1; transform: translateX(0); filter: none; }
+  32% { opacity: 0.9; transform: translateY(-3px); filter: drop-shadow(0px 3px 0px rgba(0,245,255,0.8)); }
+  34% { opacity: 1; transform: translateY(0); filter: none; }
+  100% { opacity: 1; transform: translateX(0); filter: none; }
+}
+
+/* PREMIUM PIXEL LAG EFFECT */
+.pixel-glitch {
+  position: relative;
+  display: inline-block;
+  color: #d90429 !important;
+}
+
+.pixel-glitch::before,
+.pixel-glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.pixel-glitch::before {
+  left: 3px;
+  text-shadow: -2px 0 #00f4fe;
+  animation: pixel-shift 3.5s infinite linear alternate-reverse;
+  opacity: 0.7;
+}
+
+.pixel-glitch::after {
+  left: -3px;
+  text-shadow: 2px 0 #ffffff;
+  animation: pixel-shift 2.5s infinite linear alternate;
+  opacity: 0.7;
+}
+
+@keyframes pixel-shift {
+  0% { clip-path: inset(80% 0 0 0); transform: translate(-5px, 2px); }
+  5% { clip-path: inset(10% 0 85% 0); transform: translate(5px, -2px); }
+  10% { clip-path: inset(80% 0 0 0); transform: translate(-5px, 2px); }
+  15% { clip-path: inset(10% 0 85% 0); transform: translate(5px, -2px); }
+  20% { clip-path: inset(50% 0 30% 0); transform: translate(-5px, -2px); }
+  25% { clip-path: inset(0 0 0 0); transform: translate(0, 0); }
+  45% { clip-path: inset(0 0 0 0); transform: translate(0, 0); }
+  50% { clip-path: inset(20% 0 70% 0); transform: translate(10px, 0); }
+  55% { clip-path: inset(0 0 0 0); transform: translate(0, 0); }
+  90% { clip-path: inset(0 0 0 0); transform: translate(0, 0); }
+  95% { clip-path: inset(60% 0 10% 0); transform: translate(-10px, 0); }
+  100% { clip-path: inset(0 0 0 0); transform: translate(0, 0); }
+}
+
+/* HOME SPECIFIC GLITCH (Million Dollar Version) */
+.home-premium-glitch {
+  position: relative;
+  display: inline-block;
+  color: #d90429 !important;
+}
+
+.home-premium-glitch::before,
+.home-premium-glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: transparent;
+  pointer-events: none;
+  z-index: -2;
+}
+
+.home-premium-glitch::before {
+  animation: pixel-shift 2s infinite linear alternate-reverse;
+  text-shadow: 4px 0 #00f4fe;
+  opacity: 0.6;
+}
+
+.home-premium-glitch::after {
+  animation: pixel-shift 4.2s infinite linear alternate;
+  text-shadow: -4px 0 #ffffff;
+  opacity: 0.6;
+}
+
+.lag-frames-text {
+  display: inline-block;
+  animation: frame-lag 4s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+}
+
+@keyframes refresh-scan {
+  0% { transform: translateY(-100%); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(400%); opacity: 0; }
+}
+
+@keyframes img-stutter {
+  0% { transform: translate(0); filter: none; }
+  90% { transform: translate(0); filter: none; }
+  92% { transform: translate(-5px, 0) scale(1.02); filter: hue-rotate(90deg) saturate(200%); }
+  94% { transform: translate(5px, 0) scale(0.98); filter: invert(15%); }
+  96% { transform: translate(0) scale(1); filter: none; }
+  100% { transform: translate(0); filter: none; }
+}
+
+.refresh-frames-img {
+  position: relative;
+  overflow: hidden;
+}
+
+.refresh-frames-img > img {
+  animation: img-stutter 5s infinite;
+}
+
+.refresh-frames-img::after {
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: 0;
+  width: 100%;
+  height: 25px;
+  background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.4), transparent);
+  box-shadow: 0 0 20px rgba(217,4,41,0.5), 0 0 40px rgba(0,245,255,0.3);
+  animation: refresh-scan 3s linear infinite;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  z-index: 20;
+}
+
+/* KINETIC SHOWCASE & MINIMALIST REGISTRY */
+.kinetic-showcase {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: 40px 0;
+  gap: 24px;
+}
+
+.kinetic-showcase::-webkit-scrollbar {
+  height: 2px;
+}
+
+.kinetic-showcase::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.kinetic-showcase::-webkit-scrollbar-thumb {
+  background: #d90429;
+}
+
+.showcase-card {
+  flex: 0 0 auto;
+  width: 400px;
+  max-width: 85vw;
+  scroll-snap-align: center;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  filter: grayscale(100%) brightness(0.7);
+}
+
+.showcase-card:hover {
+  filter: grayscale(0%) brightness(1);
+  transform: scale(1.02);
+}
+
+.registry-module {
+  border-top: 1px solid rgba(217, 4, 41, 0.2);
+  padding: 30px 0;
+  transition: all 0.4s ease;
+}
+
+.registry-module:hover {
+  background: linear-gradient(90deg, rgba(217, 4, 41, 0.02) 0%, transparent 100%);
+  border-top-color: #d90429;
+}
+
+.registry-label {
+  font-family: var(--font-label);
+  font-size: 10px;
+  color: #00f4fe;
+  opacity: 0.5;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.spec-dot {
+  width: 3px;
+  height: 3px;
+  background: #d90429;
+  border-radius: 50%;
+  box-shadow: 0 0 5px #d90429;
+}
+
+/* MCB TELEMETRY GAUGE STYLES */
+.mcb-gauge-container {
+  display: flex;
+  gap: 2px;
+  height: 4px;
+  width: 60px;
+}
+
+.mcb-segment {
+  height: 100%;
+  flex: 1;
+  background: rgba(217, 4, 41, 0.1);
+  transition: all 0.4s ease;
+}
+
+.mcb-segment.active {
+  background: #d90429;
+  box-shadow: 0 0 5px rgba(217, 4, 41, 0.5);
+}
+
+.mcb-status-tag {
+  font-family: var(--font-label);
+  font-size: 7px;
+  color: #d90429;
+  letter-spacing: 0.1em;
+  opacity: 0.6;
+}
+
+/* ADAPTIVE CERTIFICATES */
+.centered-cert-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 32px;
+  padding: 40px 0;
+}
+
+.centered-cert-card {
+  width: 450px !important;
+  max-width: 100% !important;
+  flex: 0 0 auto !important;
+}

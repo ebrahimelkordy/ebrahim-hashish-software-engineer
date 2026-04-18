@@ -1,0 +1,107 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Hero {
+  id          Int      @id @default(1)
+  firstName   String   @default("IBRAHIM")
+  lastName    String   @default("HASHISH")
+  title       String   @default("IBRAHIM\nCODE\nHASHISH")
+  subtitle    String   @default("Full-Stack Identity Initiated")
+  description String   @default("Full-Stack Software Engineer building mission-critical web applications. Specializing in high-performance Node.js backends and pixel-perfect Next.js architectures.")
+  imageUrl    String   @default("/profile.jpg")
+  updatedAt   DateTime @updatedAt
+}
+
+model About {
+  id          Int      @id @default(1)
+  firstName   String   @default("IBRAHIM")
+  lastName    String   @default("HASHISH")
+  bio         String   @default("Building end-to-end web architectures. Specializing in high-performance Node.js REST APIs, database design, and aggressive, state-of-the-art Next.js React frontends. Delivering production-ready products that perform perfectly under load.")
+  role        String   @default("FULL_STACK")
+  imageUrl    String?
+  updatedAt   DateTime @updatedAt
+}
+
+model Skill {
+  id       String @id @default(cuid())
+  name     String
+  category String  // "Backend", "Frontend", "Storage / DB", "DevOps / Tools"
+  order    Int    @default(0)
+}
+
+model Project {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  codeName    String
+  title       String
+  tagline     String
+  summary     String
+  description String   // JSON array of strings
+  techStack   String   // JSON array of { category, items[] }
+  features    String   // JSON array of strings
+  screenshots String   // JSON array of { src, caption }
+  liveUrl     String?  @default("")
+  repoUrl     String?  @default("")
+  status      String   @default("DEPLOYED")
+  year        String   @default("2024")
+  isPinned    Boolean  @default(false)
+  order       Int      @default(0)
+}
+
+model Experience {
+  id          String @id @default(cuid())
+  title       String
+  company     String
+  period      String
+  description String
+  order       Int    @default(0)
+}
+
+model Study {
+  id          String @id @default(cuid())
+  degree      String
+  institution String
+  year        String
+  description String
+  imageUrl    String?
+  order       Int    @default(0)
+}
+
+model Certificate {
+  id        String   @id @default(cuid())
+  title     String
+  issuer    String
+  date      String
+  imageUrl  String?
+  order     Int      @default(0)
+  updatedAt DateTime @updatedAt
+}
+
+model BlogPost {
+  id       String @id @default(cuid())
+  title    String
+  excerpt  String
+  date     String
+  readTime String
+  tags     String  // JSON array
+  isPinned Boolean @default(false)
+  order    Int     @default(0)
+}
+
+model Contact {
+  id       Int    @id @default(1)
+  email    String @default("hello@example.com")
+  github   String @default("https://github.com")
+  linkedin String @default("https://linkedin.com")
+  whatsapp String @default("")
+}
