@@ -7,14 +7,21 @@ import { revalidatePath } from "next/cache";
 export async function updateSiteConfig(data: {
   heroTitle?: string;
   aboutText?: string;
-  footerText?: string;
 }) {
-  const updated = await prisma.siteConfig.update({
-    where: { id: 1 },
-    data,
-  });
+  if (data.heroTitle) {
+    await prisma.hero.update({
+      where: { id: 1 },
+      data: { title: data.heroTitle },
+    });
+  }
+  if (data.aboutText) {
+    await prisma.about.update({
+      where: { id: 1 },
+      data: { bio: data.aboutText },
+    });
+  }
   revalidatePath("/");
-  return updated;
+  return { success: true };
 }
 
 // Project Actions

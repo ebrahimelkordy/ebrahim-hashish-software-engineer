@@ -4,7 +4,14 @@ import { Settings, Plus, Trash2, Save, LogOut, ChevronLeft } from "lucide-react"
 import Link from "next/link";
 
 export default async function DashboardPage() {
-  const config = await prisma.siteConfig.findUnique({ where: { id: 1 } });
+  const hero = await prisma.hero.findUnique({ where: { id: 1 } });
+  const about = await prisma.about.findUnique({ where: { id: 1 } });
+  
+  const config = {
+    heroTitle: hero?.title,
+    aboutText: about?.bio
+  };
+
   const projects = await prisma.project.findMany({ orderBy: { createdAt: "desc" } });
 
   return (
