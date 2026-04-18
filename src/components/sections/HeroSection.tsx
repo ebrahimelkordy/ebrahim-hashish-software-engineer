@@ -101,14 +101,14 @@ export const HeroSection = ({ data, isEditable = false, onUpdate }: { data: any,
           <div className="absolute inset-0 bg-[#D90429]/10 neon-border-tl transform translate-x-2 translate-y-2 lg:translate-x-4 lg:translate-y-4 group-hover:translate-x-1 group-hover:translate-y-1 transition-transform duration-700 -z-10"></div>
           
           <div className="relative aspect-[3/4] z-10 glass-panel border border-white/10 overflow-hidden shadow-2xl animate-in fade-in zoom-in duration-1000 group/img">
-            {/* TERMINAL OVERLAYS - HIGH Z-INDEX */}
-            <div className="absolute inset-0 scanline-overlay pointer-events-none z-30 opacity-40"></div>
+            {/* TERMINAL OVERLAYS - HIGHER Z-INDEX TO STAY ON TOP */}
+            <div className="absolute inset-0 scanline-overlay pointer-events-none z-[61] opacity-40"></div>
             
-            <div className="absolute top-4 left-4 z-40 font-label text-[10px] text-[#00f4fe] tracking-widest bg-black/60 px-2 py-1 backdrop-blur-md border border-[#00f4fe]/20">
+            <div className="absolute top-4 left-4 z-[62] font-label text-[10px] text-[#00f4fe] tracking-widest bg-black/60 px-2 py-1 backdrop-blur-md border border-[#00f4fe]/20">
               [DATA_STREAM: RENDER_01]
             </div>
 
-            <div className="absolute bottom-4 right-4 z-40 animate-pulse">
+            <div className="absolute bottom-4 right-4 z-[62] animate-pulse">
               <span className="material-symbols-outlined text-[#d90429] text-xl">sensors</span>
             </div>
 
