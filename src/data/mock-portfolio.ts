@@ -75,7 +75,7 @@ export const mockPortfolioData = {
       order: 1
     }
   ],
-  blogPosts: [
+  posts: [
     {
       id: "p1",
       title: "Why Layered Architecture is a Must for Node.js Applications",
