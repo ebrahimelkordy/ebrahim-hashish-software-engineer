@@ -54,7 +54,11 @@ export async function getPortfolioData() {
       experiences: experiences.length > 0 ? experiences : mockPortfolioData.experiences,
       studies: studies.length > 0 ? studies : mockPortfolioData.studies,
       certificates: certificates.length > 0 ? certificates : [],
-      posts: posts.length > 0 ? posts.map((p: any) => ({ ...p, tags: JSON.parse(p.tags || '[]') })) : mockPortfolioData.posts,
+      posts: posts.length > 0 ? posts.map((p: any) => ({ 
+        ...p, 
+        tags: JSON.parse(p.tags || '[]'),
+        slug: p.slug || p.id,
+      })) : mockPortfolioData.posts,
       projects: projects.length > 0 ? projects : mockProjects,
       contact: mockPortfolioData.contact,
       isUsingMock: !hero && dbSkills.length === 0,
@@ -73,6 +77,21 @@ export async function getPortfolioData() {
       contact: mockPortfolioData.contact,
       isUsingMock: true,
     };
+  }
+}
+
+export async function getPostData(slug: string) {
+  try {
+    const post = await prisma.blogPost.findFirst({ where: { slug } });
+    if (!post) return null;
+
+    return {
+      ...post,
+      tags: JSON.parse(post.tags || '[]'),
+    };
+  } catch (error) {
+    console.error(`Error fetching post ${slug}:`, error);
+    return null;
   }
 }
 export async function getProjectData(slug: string) {

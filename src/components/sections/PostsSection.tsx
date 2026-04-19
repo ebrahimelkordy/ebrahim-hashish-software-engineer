@@ -1,7 +1,7 @@
 "use client";
 
 import { EditableText } from "../EditableText";
-import { updateBlogPost } from "@/lib/actions";
+import Link from "next/link";
 
 export const PostsSection = ({ 
   posts, 
@@ -74,16 +74,37 @@ export const PostsSection = ({
           </div>
 
           <h2 className="font-headline text-2xl md:text-3xl font-bold text-[#e5e2e1] mb-4 uppercase group-hover:text-[#00f4fe] transition-colors">
-            <EditableText value={post.title} onChange={(v) => handleLocalUpdate(post, 'title', v)} isEditable={isEditable} />
+            {isEditable ? (
+              <EditableText value={post.title} onChange={(v) => handleLocalUpdate(post, 'title', v)} isEditable={isEditable} />
+            ) : (
+              <Link href={`/posts/${post.slug}`}>{post.title}</Link>
+            )}
           </h2>
           <p className="font-body text-[#e7bcba] text-sm leading-relaxed mb-6">
             <EditableText value={post.excerpt} onChange={(v) => handleLocalUpdate(post, 'excerpt', v)} isEditable={isEditable} multiline />
           </p>
 
+          {isEditable && (
+            <div className="mt-4 p-4 bg-black/40 border border-[#5d3f3d]/20 space-y-4">
+               <div className="flex flex-col gap-1">
+                  <span className="text-[8px] text-[#00f4fe] uppercase font-mono tracking-widest">SLUG_LOCK:</span>
+                  <EditableText value={post.slug || ""} onChange={(v) => handleLocalUpdate(post, 'slug', v)} isEditable={isEditable} />
+               </div>
+               <div className="flex flex-col gap-1">
+                  <span className="text-[8px] text-[#00f4fe] uppercase font-mono tracking-widest">POST_IMAGE_URL:</span>
+                  <EditableText value={post.imageUrl || ""} onChange={(v) => handleLocalUpdate(post, 'imageUrl', v)} isEditable={isEditable} />
+               </div>
+               <div className="flex flex-col gap-1">
+                  <span className="text-[8px] text-[#00f4fe] uppercase font-mono tracking-widest">FULL_FILE_CONTENT:</span>
+                  <EditableText value={post.content || ""} onChange={(v) => handleLocalUpdate(post, 'content', v)} isEditable={isEditable} multiline />
+               </div>
+            </div>
+          )}
+
           {!isEditable && (
-             <button className="flex items-center gap-2 text-[#d90429] font-label text-xs uppercase tracking-[0.2em] hover:text-[#00f4fe] transition-colors">
+             <Link href={`/posts/${post.slug}`} className="flex items-center gap-2 text-[#d90429] font-label text-xs uppercase tracking-[0.2em] hover:text-[#00f4fe] transition-colors">
                READ_FILE <span className="material-symbols-outlined text-sm group-hover:translate-x-2 transition-transform">arrow_forward</span>
-             </button>
+             </Link>
           )}
         </article>
       ))}

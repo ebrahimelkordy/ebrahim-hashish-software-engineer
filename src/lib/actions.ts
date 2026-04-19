@@ -208,10 +208,15 @@ export async function toggleProjectPin(id: string, isPinned: boolean) {
 
 // --- POSTS ---
 export async function addBlogPost() {
+  const title = "NEW_TECHNICAL_LOG";
+  const slug = title.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '') + '-' + Date.now().toString().slice(-4);
+  
   await prisma.blogPost.create({
     data: {
-      title: "NEW_TECHNICAL_LOG",
+      title: title,
+      slug: slug,
       excerpt: "Technical overview of the subject matter discussed in this entry.",
+      content: "",
       date: new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }),
       readTime: "5 MIN READ",
       tags: JSON.stringify(["TECH", "UNTAGGED"]),
@@ -224,6 +229,20 @@ export async function addBlogPost() {
   return { success: true };
 }
 
+export async function updateBlogPost(id: string, data: any) {
+  const updateData = { ...data };
+  if (updateData.tags) updateData.tags = JSON.stringify(updateData.tags);
+  
+  await prisma.blogPost.update({
+    where: { id },
+    data: updateData
+  });
+  revalidatePath('/');
+  revalidatePath('/dashboard');
+  revalidatePath(`/posts/${data.slug}`);
+  return { success: true };
+}
+
 export async function deleteBlogPost(id: string) {
   await prisma.blogPost.delete({ where: { id } });
   revalidatePath('/');
@@ -231,16 +250,6 @@ export async function deleteBlogPost(id: string) {
   return { success: true };
 }
 
-export async function updateBlogPost(id: string, data: any) {
-  const formatted = { ...data };
-  if (data.tags && Array.isArray(data.tags)) {
-    formatted.tags = JSON.stringify(data.tags);
-  }
-  
-  await prisma.blogPost.update({ where: { id }, data: formatted });
-  revalidatePath('/');
-  revalidatePath('/dashboard');
-  return { success: true };
 }
 
 export async function togglePostPin(id: string, isPinned: boolean) {

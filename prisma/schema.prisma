@@ -89,8 +89,11 @@ model Certificate {
 
 model BlogPost {
   id       String @id @default(cuid())
+  slug     String?  @unique
   title    String
   excerpt  String
+  content  String   @default("")
+  imageUrl String?
   date     String
   readTime String
   tags     String  // JSON array
