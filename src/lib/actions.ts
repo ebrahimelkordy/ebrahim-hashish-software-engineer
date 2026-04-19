@@ -246,10 +246,7 @@ export async function updateBlogPost(id: string, data: any) {
 export async function deleteBlogPost(id: string) {
   await prisma.blogPost.delete({ where: { id } });
   revalidatePath('/');
-  revalidatePath('/dashboard');
   return { success: true };
-}
-
 }
 
 export async function togglePostPin(id: string, isPinned: boolean) {

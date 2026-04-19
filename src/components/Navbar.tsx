@@ -3,8 +3,9 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-export const Navbar = () => {
+export const Navbar = ({ cvUrl = "" }: { cvUrl?: string }) => {
   const pathname = usePathname();
+
 
   const getLinkClasses = (path: string) => {
     const isActive = pathname === path;
@@ -39,9 +40,24 @@ export const Navbar = () => {
             ))}
           </nav>
 
-          <Link href="/admin" className="text-white/30 hover:text-[#00F5FF] transition-all hover:rotate-90">
-            <span className="material-symbols-outlined text-xl">settings_input_component</span>
-          </Link>
+          <div className="flex items-center gap-6">
+            {cvUrl && (
+              <a 
+                href={cvUrl} 
+                download 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-label text-[10px] tracking-[0.2em] text-[#00F5FF] hover:bg-[#00F5FF]/10 px-3 py-1.5 border border-[#00F5FF]/20 transition-all flex items-center gap-2"
+              >
+                 <span className="material-symbols-outlined text-xs">download</span>
+                 [EXPORT_CV]
+              </a>
+            )}
+
+            <Link href="/admin" className="text-white/30 hover:text-[#00F5FF] transition-all hover:rotate-90">
+              <span className="material-symbols-outlined text-xl">settings_input_component</span>
+            </Link>
+          </div>
         </div>
       </header>
 

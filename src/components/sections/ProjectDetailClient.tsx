@@ -10,7 +10,7 @@ import Link from "next/link";
 import { updateProject, deleteProject } from "@/lib/actions";
 import { useRouter } from "next/navigation";
 
-export function ProjectDetailClient({ project: initialProject, isEditable }: { project: any, isEditable: boolean }) {
+export function ProjectDetailClient({ project: initialProject, isEditable, cvUrl }: { project: any, isEditable: boolean, cvUrl?: string }) {
   const [project, setProject] = useState(initialProject);
   const [isSaving, setIsSaving] = useState(false);
   const [isDirty, setIsDirty] = useState(false);
@@ -115,7 +115,7 @@ export function ProjectDetailClient({ project: initialProject, isEditable }: { p
 
   return (
     <>
-      <Navbar />
+      <Navbar cvUrl={cvUrl} />
       
       {/* Background Glows */}
       <div className="fixed top-1/4 left-1/4 w-96 h-96 bg-[#d90429] opacity-5 blur-[150px] rounded-full pointer-events-none z-0"></div>

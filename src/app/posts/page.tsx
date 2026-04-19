@@ -7,7 +7,7 @@ export default async function PostsPage() {
 
   return (
     <>
-      <Navbar />
+      <Navbar cvUrl={data.about.cvUrl} />
       <div className="fixed top-1/4 left-1/4 w-96 h-96 bg-[#d90429] opacity-5 blur-[150px] rounded-full pointer-events-none z-0"></div>
       <div className="fixed bottom-1/4 right-1/4 w-96 h-96 bg-[#00f4fe] opacity-5 blur-[150px] rounded-full pointer-events-none z-0"></div>
 

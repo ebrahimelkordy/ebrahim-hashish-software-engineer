@@ -37,7 +37,10 @@ export const TerminalImage = ({ src, alt, className = "", containerClassName = "
     setIsTimedOut(false);
   }, [src]);
 
-  if (!src || hasError) {
+  // Robust validation to prevent Next.js Image from crashing on invalid inputs like ";"
+  const isValidUrl = src && (src.startsWith('/') || src.startsWith('http') || src.startsWith('blob:'));
+
+  if (!isValidUrl || hasError) {
     return (
       <div className={`relative ${containerClassName} bg-[#1c1b1b] border border-dashed border-[#5d3f3d] flex items-center justify-center min-h-[150px] overflow-hidden`}>
         <div className="absolute inset-0 scanline-overlay pointer-events-none opacity-20"></div>
@@ -47,10 +50,10 @@ export const TerminalImage = ({ src, alt, className = "", containerClassName = "
           </span>
           <div className="space-y-1">
              <span className="text-[10px] uppercase tracking-[0.2em] font-mono text-[#d90429] block font-bold">
-               {isTimedOut ? 'CONNECTION_TIMEOUT' : 'ASSET_CORRUPT'}
+               {!isValidUrl ? 'INVALID_PATH_STREAM' : isTimedOut ? 'CONNECTION_TIMEOUT' : 'ASSET_CORRUPT'}
              </span>
              <span className="text-[8px] uppercase tracking-widest font-mono text-[#e7bcba] block opacity-60">
-               {isTimedOut ? 'LATENCY_EXCEEDED_THRESHOLD' : 'SOURCE_UNREACHABLE'}
+               {!isValidUrl ? 'SOURCE_PATH_MALFORMED' : isTimedOut ? 'LATENCY_EXCEEDED_THRESHOLD' : 'SOURCE_UNREACHABLE'}
              </span>
           </div>
         </div>

@@ -1,7 +1,7 @@
 import { getPostData, getPortfolioData } from "@/lib/data-fetching";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import Image from "next/image";
+import { TerminalImage } from "@/components/TerminalImage";
 
 export async function generateStaticParams() {
   const data = await getPortfolioData();
@@ -12,11 +12,15 @@ export async function generateStaticParams() {
 
 export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
+  const portfolioData = await getPortfolioData();
   const post = await getPostData(slug);
 
   if (!post) {
     notFound();
   }
+
+  const cvUrl = portfolioData.about.cvUrl;
+
 
   return (
     <main className="min-h-screen bg-[#0e0e0e] text-[#e5e2e1] font-body selection:bg-[#d90429] selection:text-white">
@@ -25,9 +29,23 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         <Link href="/" className="font-headline font-bold text-lg tracking-tighter hover:text-[#d90429] transition-colors">
           EBRAHIM<span className="text-[#d90429]">.</span>HASHISH
         </Link>
-        <Link href="/#posts" className="font-label text-xs uppercase tracking-[0.2em] text-[#e7bcba] hover:text-[#00f4fe] transition-colors flex items-center gap-2">
-          <span className="material-symbols-outlined text-sm">arrow_back</span> BACK_TO_LOGS
-        </Link>
+        <div className="flex items-center gap-6">
+          {cvUrl && (
+            <a 
+              href={cvUrl} 
+              download
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-label text-[10px] tracking-[0.2em] text-[#00F5FF] hover:bg-[#00F5FF]/10 px-3 py-1.5 border border-[#00F5FF]/20 transition-all flex items-center gap-2"
+            >
+               <span className="material-symbols-outlined text-xs">download</span>
+               [EXPORT_CV]
+            </a>
+          )}
+          <Link href="/#posts" className="font-label text-xs uppercase tracking-[0.2em] text-[#e7bcba] hover:text-[#00f4fe] transition-colors flex items-center gap-2">
+            <span className="material-symbols-outlined text-sm">arrow_back</span> BACK_TO_LOGS
+          </Link>
+        </div>
       </nav>
 
       <article className="pt-32 pb-24 px-6 md:px-0 max-w-4xl mx-auto">
@@ -45,39 +63,41 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
             {post.title}
           </h1>
 
-          <div className="flex items-center gap-6 text-[10px] font-label uppercase tracking-[0.2em] text-[#e7bcba] opacity-60">
+          <div className="flex items-center gap-6 text-[9px] font-label uppercase tracking-[0.2em] text-[#e7bcba] opacity-50 bg-white/5 w-max px-4 py-2 border border-white/10">
             <span className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-sm">calendar_today</span> {post.date}
+              <span className="material-symbols-outlined text-xs text-[#d90429]">event</span> {post.date}
             </span>
+            <span className="h-3 w-[1px] bg-white/20 mx-1"></span>
             <span className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-sm">schedule</span> {post.readTime}
+              <span className="material-symbols-outlined text-xs text-[#00f4fe]">speed</span> {post.readTime}
             </span>
           </div>
         </header>
 
-        {/* FEATURED IMAGE */}
-        {post.imageUrl && (
-          <div className="relative aspect-video w-full mb-16 glass-panel border border-white/10 overflow-hidden animate-in fade-in zoom-in duration-1000 delay-200">
-            <div className="absolute inset-0 scanline-overlay pointer-events-none z-10 opacity-20"></div>
-            <Image 
+        {/* FEATURED IMAGE - RENDERS ONLY IF EXISTS */}
+        {post.imageUrl && (post.imageUrl.startsWith('/') || post.imageUrl.startsWith('http')) ? (
+          <div className="relative aspect-video w-full mb-16 glass-panel border border-white/10 overflow-hidden animate-in fade-in zoom-in duration-1000 delay-200 shadow-[0_0_50px_rgba(0,0,0,0.5)]">
+            <TerminalImage 
               src={post.imageUrl} 
               alt={post.title} 
-              fill 
               className="object-cover transition-transform duration-1000 hover:scale-105"
               priority
             />
           </div>
+        ) : (
+          <div className="mb-0"></div> // No margin if no image
         )}
 
         {/* POST CONTENT */}
-        <div className="prose prose-invert prose-red max-w-none animate-in fade-in duration-1000 delay-500">
+        <div className={`prose prose-invert prose-red max-w-none animate-in fade-in duration-1000 ${post.imageUrl ? 'delay-500' : 'delay-300'}`}>
           {/* Excerpt as intro */}
-          <p className="text-xl md:text-2xl font-body text-[#e7bcba] leading-relaxed mb-12 border-l-4 border-[#d90429] pl-6 italic opacity-90">
+          <div className="text-xl md:text-2xl font-body text-[#e7bcba] leading-relaxed mb-16 border-l-2 border-[#d90429] pl-8 italic opacity-90 relative">
+            <div className="absolute top-0 left-[-2px] w-[2px] h-full bg-[#d90429] shadow-[0_0_15px_#d90429]"></div>
             {post.excerpt}
-          </p>
+          </div>
 
           {/* Main Body */}
-          <div className="text-lg text-[#e5e2e1]/80 leading-relaxed font-body space-y-8 whitespace-pre-wrap">
+          <div className="text-lg md:text-xl text-[#e5e2e1]/90 leading-relaxed font-body space-y-10 whitespace-pre-wrap tracking-wide">
             {post.content || "CONT_STREAM_EMPTY: This post has no detailed content yet."}
           </div>
         </div>

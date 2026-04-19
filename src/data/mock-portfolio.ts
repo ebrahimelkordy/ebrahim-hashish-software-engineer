@@ -14,7 +14,8 @@ export const mockPortfolioData = {
     lastName: "HASHISH",
     bio: "A dedicated Full-Stack Developer with a deep focus on Backend Architecture and User Experience. I specialize in the MERN stack, crafting enterprise-grade solutions like multi-tenant LMS platforms and production-ready e-commerce engines. My philosophy revolves around clean code, robust security (RBAC), and high-efficiency system design.",
     role: "FULL_STACK Software Engineer",
-    imageUrl: "/about-portrait.jpg" 
+    imageUrl: "/about-portrait.jpg",
+    cvUrl: "/cv.pdf"
   },
   skills: [
     { category: "Backend", items: [

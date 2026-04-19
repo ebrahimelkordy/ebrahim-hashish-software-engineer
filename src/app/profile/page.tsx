@@ -12,7 +12,7 @@ export default async function ProfilePage() {
 
   return (
     <>
-      <Navbar />
+      <Navbar cvUrl={data.about.cvUrl} />
       <div className="fixed inset-0 scanline-overlay z-0 mix-blend-screen pointer-events-none"></div>
 
       <main className="pt-24 pb-40 px-6 lg:px-12 max-w-7xl mx-auto relative min-h-screen flex flex-col gap-[var(--section-gap)]">

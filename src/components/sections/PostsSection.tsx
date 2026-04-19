@@ -1,6 +1,7 @@
 "use client";
 
 import { EditableText } from "../EditableText";
+import { EditableImage } from "../EditableImage";
 import Link from "next/link";
 
 export const PostsSection = ({ 
@@ -65,11 +66,25 @@ export const PostsSection = ({
             </div>
             
             <div className="flex flex-wrap gap-2">
-              {post.tags.map((tag: string) => (
-                <span key={tag} className="px-2 py-1 bg-[#0e0e0e] text-[#e7bcba] font-body text-[10px] border border-[#5d3f3d]/30 tracking-widest">
-                  {tag}
-                </span>
-              ))}
+              {isEditable ? (
+                <div className="flex flex-col gap-1 w-full">
+                  <span className="text-[8px] text-[#00f4fe] uppercase font-mono tracking-widest">TAG_STREAM:</span>
+                  <EditableText 
+                    value={post.tags.join(', ')} 
+                    onChange={(v) => {
+                      const tagArray = v.split(',').map(t => t.trim()).filter(t => t !== "");
+                      handleLocalUpdate(post, 'tags', tagArray as any);
+                    }} 
+                    isEditable={isEditable} 
+                  />
+                </div>
+              ) : (
+                post.tags.map((tag: string) => (
+                  <span key={tag} className="px-2 py-1 bg-[#0e0e0e] text-[#e7bcba] font-body text-[10px] border border-[#5d3f3d]/30 tracking-widest">
+                    {tag}
+                  </span>
+                ))
+              )}
             </div>
           </div>
 
@@ -90,9 +105,16 @@ export const PostsSection = ({
                   <span className="text-[8px] text-[#00f4fe] uppercase font-mono tracking-widest">SLUG_LOCK:</span>
                   <EditableText value={post.slug || ""} onChange={(v) => handleLocalUpdate(post, 'slug', v)} isEditable={isEditable} />
                </div>
-               <div className="flex flex-col gap-1">
-                  <span className="text-[8px] text-[#00f4fe] uppercase font-mono tracking-widest">POST_IMAGE_URL:</span>
-                  <EditableText value={post.imageUrl || ""} onChange={(v) => handleLocalUpdate(post, 'imageUrl', v)} isEditable={isEditable} />
+               <div className="flex flex-col gap-2">
+                  <span className="text-[8px] text-[#00f4fe] uppercase font-mono tracking-widest">POST_ASSET_MANAGER:</span>
+                  <div className="w-40 aspect-video relative">
+                    <EditableImage 
+                      src={post.imageUrl || ""} 
+                      alt={post.title} 
+                      onChange={(v) => handleLocalUpdate(post, 'imageUrl', v)} 
+                      isEditable={isEditable} 
+                    />
+                  </div>
                </div>
                <div className="flex flex-col gap-1">
                   <span className="text-[8px] text-[#00f4fe] uppercase font-mono tracking-widest">FULL_FILE_CONTENT:</span>

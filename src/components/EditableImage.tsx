@@ -102,7 +102,7 @@ export const EditableImage = ({
          className="hidden"
       />
 
-      <div className={`absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-300 ${(!src || isHovered || isUploading) ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+      <div className={`absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-300 pointer-events-auto ${(!src || isHovered || isUploading) ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
          {isUploading ? (
             <div className="flex flex-col items-center justify-center bg-black/60 backdrop-blur-md border border-[#00f4fe] p-4 font-mono text-[#00f4fe] text-xs">
                <span className="material-symbols-outlined animate-spin mb-2 text-[#00f4fe]">sync</span>

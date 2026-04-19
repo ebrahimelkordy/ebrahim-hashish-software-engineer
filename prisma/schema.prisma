@@ -29,6 +29,7 @@ model About {
   bio         String   @default("Building end-to-end web architectures. Specializing in high-performance Node.js REST APIs, database design, and aggressive, state-of-the-art Next.js React frontends. Delivering production-ready products that perform perfectly under load.")
   role        String   @default("FULL_STACK")
   imageUrl    String?
+  cvUrl       String   @default("/cv.pdf")
   updatedAt   DateTime @updatedAt
 }
 

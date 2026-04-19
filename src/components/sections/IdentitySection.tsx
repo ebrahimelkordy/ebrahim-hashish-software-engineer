@@ -1,11 +1,13 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { EditableText } from "../EditableText";
 import { EditableImage } from "../EditableImage";
 
 export const IdentitySection = ({ data, isEditable = false, onUpdate }: { data: any, isEditable?: boolean, onUpdate?: (data: any) => void }) => {
   const [aboutData, setAboutData] = useState(data);
+  const [isUploading, setIsUploading] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     setAboutData(data);
@@ -16,6 +18,38 @@ export const IdentitySection = ({ data, isEditable = false, onUpdate }: { data: 
     setAboutData(newData);
     if (onUpdate) onUpdate(newData);
   };
+
+  const handleCvUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setIsUploading(true);
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+
+      const res = await fetch("/api/upload-cv", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await res.json();
+
+      if (res.ok && data.url) {
+        handleChange("cvUrl", data.url);
+        alert("CV_SYNC_COMPLETE: File saved to server.");
+      } else {
+        alert(`UPLOAD_FAILURE: ${data.error || "Unknown error"}`);
+      }
+    } catch (err) {
+      console.error("CV upload error:", err);
+      alert("SIGNAL_LOST: Network error during upload.");
+    } finally {
+      setIsUploading(false);
+      if (fileInputRef.current) fileInputRef.current.value = "";
+    }
+  };
+
 
   return (
     <section className="relative w-full flex flex-col lg:flex-row items-center gap-8 lg:gap-12 py-2 lg:py-10">
@@ -73,14 +107,86 @@ export const IdentitySection = ({ data, isEditable = false, onUpdate }: { data: 
           <EditableText value={aboutData.bio} onChange={(v) => handleChange('bio', v)} isEditable={isEditable} multiline />
         </div>
         
-        {!isEditable && (
+        {!isEditable ? (
           <div className="flex flex-wrap justify-center lg:justify-start gap-4 mt-6">
+            {aboutData.cvUrl && (
+              <a 
+                href={aboutData.cvUrl} 
+                download 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-8 py-4 border border-[#00f4fe]/30 text-[#00f4fe] font-label text-[10px] uppercase tracking-[0.2em] font-bold hover:bg-[#00f4fe]/10 hover:shadow-[0_0_20px_rgba(0,244,254,0.3)] transition-all flex items-center gap-2"
+              >
+                <span className="material-symbols-outlined text-sm">download</span>
+                DOWNLOAD_CV_REPORT
+              </a>
+            )}
             <a href="/projects" className="px-8 py-4 bg-[#d90429] text-white font-label text-[10px] uppercase tracking-[0.2em] font-bold hover:shadow-[0_0_20px_rgba(217,4,41,0.4)] transition-all">
               EXECUTE_WORK_MODULE
             </a>
             <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="px-8 py-4 border border-white/10 text-white font-label text-[10px] uppercase tracking-[0.2em] font-bold hover:bg-white/5 transition-all">
               SOURCE_STREAMS
             </a>
+          </div>
+        ) : (
+          <div className="w-full mt-6 space-y-3">
+            {/* Hidden file input */}
+            <input
+              type="file"
+              ref={fileInputRef}
+              className="hidden"
+              accept="application/pdf"
+              onChange={handleCvUpload}
+            />
+
+            {/* Upload Button */}
+            <button
+              type="button"
+              onClick={() => fileInputRef.current?.click()}
+              disabled={isUploading}
+              className="w-full px-6 py-4 border border-[#00f4fe] bg-[#00f4fe]/5 text-[#00f4fe] font-label text-[10px] uppercase tracking-[0.2em] font-bold hover:bg-[#00f4fe]/15 transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+            >
+              {isUploading ? (
+                <>
+                  <span className="material-symbols-outlined text-sm animate-spin">sync</span>
+                  UPLOADING_CV...
+                </>
+              ) : (
+                <>
+                  <span className="material-symbols-outlined text-sm">upload_file</span>
+                  [CLICK TO UPLOAD CV.PDF]
+                </>
+              )}
+            </button>
+
+            {/* Manual URL fallback */}
+            <div className="p-3 bg-[#1c1b1b] border border-white/5 rounded-md">
+              <label className="block font-label text-[8px] text-white/30 uppercase tracking-widest mb-1">
+                OR PASTE URL MANUALLY
+              </label>
+              <div className="flex items-center gap-2 text-sm text-[#e7bcba]">
+                <span className="material-symbols-outlined text-[12px] text-white/30">link</span>
+                <EditableText
+                  value={aboutData.cvUrl}
+                  onChange={(v) => handleChange('cvUrl', v)}
+                  isEditable={true}
+                  placeholder="/cv.pdf or https://..."
+                />
+              </div>
+            </div>
+
+            {/* Test current link */}
+            {aboutData.cvUrl && (
+              <a
+                href={aboutData.cvUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[9px] font-label text-[#00f4fe]/50 hover:text-[#00f4fe] flex items-center gap-1 transition-all"
+              >
+                <span className="material-symbols-outlined text-[10px]">open_in_new</span>
+                TEST_CURRENT_LINK
+              </a>
+            )}
           </div>
         )}
       </div>
