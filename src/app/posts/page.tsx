@@ -2,6 +2,8 @@ import { Navbar } from "@/components/Navbar";
 import { getPortfolioData } from "@/lib/data-fetching";
 import { PostsSection } from "@/components/sections/PostsSection";
 
+export const dynamic = "force-dynamic";
+
 export default async function PostsPage() {
   const data = await getPortfolioData();
 

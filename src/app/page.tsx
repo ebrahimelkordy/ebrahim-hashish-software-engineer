@@ -5,6 +5,8 @@ import { ProjectsPreview } from "@/components/sections/ProjectsPreview";
 import { PostsPreview } from "@/components/sections/PostsPreview";
 import { ContactSection } from "@/components/sections/ContactSection";
 
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   const data = await getPortfolioData();
 

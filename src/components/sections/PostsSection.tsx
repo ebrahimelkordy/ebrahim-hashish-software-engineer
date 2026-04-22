@@ -3,6 +3,7 @@
 import { EditableText } from "../EditableText";
 import { EditableImage } from "../EditableImage";
 import Link from "next/link";
+import { SpotlightCard } from "../animations/SpotlightCard";
 
 export const PostsSection = ({ 
   posts, 
@@ -25,7 +26,7 @@ export const PostsSection = ({
   return (
     <div className="flex flex-col gap-8 relative z-10">
       {posts.map((post) => (
-        <article key={post.id} className="glass-panel border border-[#5d3f3d]/20 p-6 md:p-8 relative group hover:bg-[#201f1f] transition-all duration-300">
+        <SpotlightCard spotlightColor="rgba(217, 4, 41, 0.15)" key={post.id} className="glass-panel border border-[#5d3f3d]/20 p-6 md:p-8 relative group hover:bg-[#201f1f] transition-all duration-300">
           {/* Admin Controls */}
           {isEditable && (
             <div className="absolute top-0 right-0 left-0 bg-[#0e0e0e]/95 p-3 flex justify-between items-center z-50 border-b border-[#d90429]/30">
@@ -128,7 +129,7 @@ export const PostsSection = ({
                READ_FILE <span className="material-symbols-outlined text-sm group-hover:translate-x-2 transition-transform">arrow_forward</span>
              </Link>
           )}
-        </article>
+        </SpotlightCard>
       ))}
     </div>
   );

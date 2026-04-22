@@ -7,6 +7,8 @@ import { StudiesSection } from "@/components/sections/StudiesSection";
 import { CertificatesSection } from "@/components/sections/CertificatesSection";
 import { TerminalImage } from "@/components/TerminalImage";
 
+export const dynamic = "force-dynamic";
+
 export default async function ProfilePage() {
   const data = await getPortfolioData();
 

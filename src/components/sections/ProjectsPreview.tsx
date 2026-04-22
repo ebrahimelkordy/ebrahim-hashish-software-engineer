@@ -4,6 +4,8 @@ import Link from "next/link";
 import { EditableText } from "../EditableText";
 import { EditableImage } from "../EditableImage";
 import { updateProject } from "@/lib/actions";
+import { SpotlightCard } from "../animations/SpotlightCard";
+import { ScrambleText } from "../animations/ScrambleText";
 
 export const ProjectsPreview = ({ projects, isEditable = false }: { projects: any[], isEditable?: boolean }) => {
   // Take up to 3 projects for the preview
@@ -32,7 +34,9 @@ export const ProjectsPreview = ({ projects, isEditable = false }: { projects: an
       <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-[#353534] pb-6 gap-4">
         <div>
           <p className="font-body text-[#00f4fe] text-xs uppercase tracking-[0.2em] mb-2 before:content-['//'] before:mr-2">Featured Work</p>
-          <h2 className="font-headline text-3xl md:text-4xl font-bold tracking-tight text-[#e5e2e1]">DEPLOYED_APPLICATIONS</h2>
+          <h2 className="font-headline text-3xl md:text-4xl font-bold tracking-tight text-[#e5e2e1]">
+            <ScrambleText text="DEPLOYED_APPLICATIONS" />
+          </h2>
         </div>
         <Link href="/projects" className="font-label text-sm uppercase tracking-widest text-[#e7bcba] hover:text-[#00f4fe] transition-colors flex items-center gap-2 group">
           VIEW ALL <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
@@ -42,7 +46,7 @@ export const ProjectsPreview = ({ projects, isEditable = false }: { projects: an
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
         {/* Project 1 - THE MAIN CARD (RANK 1) - 8 COLS */}
         {featuredProjects[0] && (
-          <div className="md:col-span-8 h-[450px] glass-panel border border-[#00f4fe]/20 p-8 flex flex-col justify-end relative overflow-hidden group hover:border-[#00f4fe]/50 transition-colors duration-500 neon-border-tl">
+        <SpotlightCard spotlightColor="rgba(0, 244, 254, 0.15)" className="md:col-span-8 h-[450px] glass-panel border border-[#00f4fe]/20 p-8 flex flex-col justify-end relative group hover:border-[#00f4fe]/50 transition-colors duration-500 neon-border-tl">
             <EditableImage 
               src={featuredProjects[0].screenshots?.[0]?.src || ""}
               alt={featuredProjects[0].title}
@@ -62,12 +66,12 @@ export const ProjectsPreview = ({ projects, isEditable = false }: { projects: an
               <p className="text-[#e7bcba] text-sm line-clamp-2">{featuredProjects[0].summary}</p>
               <Link href={`/projects/${featuredProjects[0].slug}`} className="inline-block mt-4 font-label text-[10px] text-[#00f4fe] border-b border-[#00f4fe] hover:text-white hover:border-white transition-all uppercase tracking-[0.2em]">View Details</Link>
             </div>
-          </div>
+          </SpotlightCard>
         )}
 
         {/* Remaining 2 Projects - 4 COLS EACH */}
         {featuredProjects.slice(1).map((project, idx) => (
-          <div key={project.id} className="md:col-span-4 glass-panel border border-[#5d3f3d]/20 p-8 flex flex-col justify-between relative overflow-hidden group hover:border-[#d90429]/50 transition-colors duration-500 h-[450px]">
+          <SpotlightCard spotlightColor="rgba(217, 4, 41, 0.15)" key={project.id} className="md:col-span-4 glass-panel border border-[#5d3f3d]/20 p-8 flex flex-col justify-between relative group hover:border-[#d90429]/50 transition-colors duration-500 h-[450px]">
             <EditableImage 
               src={project.screenshots?.[0]?.src || ""}
               alt={project.title}
@@ -89,7 +93,7 @@ export const ProjectsPreview = ({ projects, isEditable = false }: { projects: an
                 EXPLORE <span className="material-symbols-outlined text-xs group-hover/btn:translate-x-1 transition-all">arrow_forward</span>
               </Link>
             </div>
-          </div>
+          </SpotlightCard>
         ))}
       </div>
     </section>

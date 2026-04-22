@@ -4,6 +4,7 @@ import Link from "next/link";
 import { EditableText } from "../EditableText";
 import { EditableImage } from "../EditableImage";
 import { useState, useEffect } from "react";
+import { ScrambleText } from "../animations/ScrambleText";
 
 export const HeroSection = ({ data, isEditable = false, onUpdate }: { data: any, isEditable?: boolean, onUpdate?: (data: any) => void }) => {
   const [heroData, setHeroData] = useState(data);
@@ -74,11 +75,11 @@ export const HeroSection = ({ data, isEditable = false, onUpdate }: { data: any,
         {/* Action Buttons: Stack on Mobile, Row on Desktop */}
         <div className="flex flex-col sm:flex-row items-center gap-4 w-full lg:w-max pt-4">
           <Link href="/profile" className="group relative w-full sm:w-max px-10 py-5 bg-[#d90429] text-white font-headline uppercase tracking-[0.1em] text-sm font-bold overflow-hidden transition-all hover:shadow-[0_0_25px_rgba(217,4,41,0.5)] active:scale-95 flex items-center justify-center gap-2">
-            <span className="relative z-10">VIEW_SYSTEM_ID</span>
+            <span className="relative z-10"><ScrambleText text="VIEW_SYSTEM_ID" delay={500} /></span>
             <div className="absolute inset-0 bg-gradient-to-r from-red-400 to-[#d90429] translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
           </Link>
           <Link href="/#contact" className="w-full sm:w-max px-10 py-5 border border-white/10 text-white font-headline uppercase tracking-[0.1em] text-sm font-bold hover:bg-white/5 transition-all text-center">
-            ENGAGE_NOW
+            <ScrambleText text="ENGAGE_NOW" delay={700} />
           </Link>
         </div>
 
@@ -100,12 +101,12 @@ export const HeroSection = ({ data, isEditable = false, onUpdate }: { data: any,
         <div className="w-full lg:w-[480px] max-w-2xl relative group order-first lg:order-last px-4 lg:px-0 flex-shrink-0">
           <div className="absolute inset-0 bg-[#D90429]/10 neon-border-tl transform translate-x-2 translate-y-2 lg:translate-x-4 lg:translate-y-4 group-hover:translate-x-1 group-hover:translate-y-1 transition-transform duration-700 -z-10"></div>
           
-          <div className="relative aspect-[3/4] z-10 glass-panel border border-white/10 overflow-hidden shadow-2xl animate-in fade-in zoom-in duration-1000 group/img">
+          <div id="core-heart" className="relative aspect-[3/4] z-10 glass-panel border border-white/10 overflow-hidden shadow-2xl animate-in fade-in zoom-in duration-1000 group/img">
             {/* TERMINAL OVERLAYS - HIGHER Z-INDEX TO STAY ON TOP */}
             <div className="absolute inset-0 scanline-overlay pointer-events-none z-[61] opacity-40"></div>
             
             <div className="absolute top-4 left-4 z-[62] font-label text-[10px] text-[#00f4fe] tracking-widest bg-black/60 px-2 py-1 backdrop-blur-md border border-[#00f4fe]/20">
-              [DATA_STREAM: RENDER_01]
+              <ScrambleText text="[DATA_STREAM: RENDER_01]" delay={300} />
             </div>
 
             <div className="absolute bottom-4 right-4 z-[62] animate-pulse">

@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import { ProjectDetailClient } from "@/components/sections/ProjectDetailClient";
 import { projects as mockProjects } from "@/data/projects";
 
+export const dynamic = "force-dynamic";
+
 export function generateStaticParams() {
   return mockProjects.map((p) => ({ slug: p.slug }));
 }

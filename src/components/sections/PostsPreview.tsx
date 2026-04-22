@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import { SpotlightCard } from "../animations/SpotlightCard";
+import { ScrambleText } from "../animations/ScrambleText";
 
 export const PostsPreview = ({ posts }: { posts: any[] }) => {
   // Take up to 2 posts for the home page preview
@@ -11,7 +13,9 @@ export const PostsPreview = ({ posts }: { posts: any[] }) => {
       <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-[#353534] pb-6 gap-4">
         <div>
           <p className="font-body text-[#d90429] text-xs uppercase tracking-[0.2em] mb-2 before:content-['//'] before:mr-2">Intellectual Assets</p>
-          <h2 className="font-headline text-3xl md:text-4xl font-bold tracking-tight text-[#e5e2e1]">TECHNICAL_LOGS</h2>
+          <h2 className="font-headline text-3xl md:text-4xl font-bold tracking-tight text-[#e5e2e1]">
+            <ScrambleText text="TECHNICAL_LOGS" />
+          </h2>
         </div>
         <Link href="/posts" className="font-label text-sm uppercase tracking-widest text-[#e7bcba] hover:text-[#d90429] transition-colors flex items-center gap-2 group">
           READ ALL <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
@@ -20,7 +24,7 @@ export const PostsPreview = ({ posts }: { posts: any[] }) => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {featuredPosts.map((post, idx) => (
-          <article key={post.id} className="relative group border border-[#5d3f3d]/20 p-6 hover:border-[#d90429]/50 transition-all duration-500 overflow-hidden bg-[#0e0e0e]">
+          <SpotlightCard spotlightColor="rgba(217, 4, 41, 0.15)" key={post.id} className="relative group border border-[#5d3f3d]/20 p-6 hover:border-[#d90429]/50 transition-all duration-500 overflow-hidden bg-[#0e0e0e]">
             <div className="absolute top-0 right-0 w-24 h-24 bg-[#d90429] opacity-[0.03] blur-2xl group-hover:opacity-10 transition-opacity"></div>
             
             <div className="flex justify-between items-start mb-6">
@@ -52,7 +56,7 @@ export const PostsPreview = ({ posts }: { posts: any[] }) => {
             <Link href="/posts" className="inline-flex items-center gap-2 font-label text-[10px] text-[#d90429] uppercase tracking-[0.3em] font-bold group/link">
               ACCESS_FILE <span className="material-symbols-outlined text-xs group-hover/link:translate-x-2 transition-transform">chevron_right</span>
             </Link>
-          </article>
+          </SpotlightCard>
         ))}
       </div>
     </section>

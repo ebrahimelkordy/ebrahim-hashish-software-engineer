@@ -4,6 +4,7 @@ import Link from "next/link";
 import { EditableText } from "../EditableText";
 import { EditableImage } from "../EditableImage";
 import { updateProject } from "@/lib/actions";
+import { SpotlightCard } from "../animations/SpotlightCard";
 
 export const ProjectsGridSection = ({ 
   projects, 
@@ -44,7 +45,7 @@ export const ProjectsGridSection = ({
         const minHeight = idx === 0 ? "min-h-[320px] md:min-h-[450px]" : "min-h-[260px] md:min-h-[350px]";
 
         return (
-          <div key={project.id} className={`${spanClass} ${minHeight} glass-panel border border-white/5 relative group overflow-hidden transition-all duration-300 p-0 flex flex-col justify-end w-full group/card`}>
+          <SpotlightCard spotlightColor={idx % 2 === 0 ? "rgba(0, 244, 254, 0.1)" : "rgba(217, 4, 41, 0.1)"} key={project.id} className={`${spanClass} ${minHeight} glass-panel border border-white/5 relative group overflow-hidden transition-all duration-300 p-0 flex flex-col justify-end w-full group/card`}>
             
             <div className="absolute inset-0 z-0 overflow-hidden">
               {/* TERMINAL LAYERS FOR PROJECTS */}
@@ -112,7 +113,7 @@ export const ProjectsGridSection = ({
                   </button>
               </div>
             )}
-          </div>
+          </SpotlightCard>
         );
       })}
     </div>

@@ -2,6 +2,8 @@ import { Navbar } from "@/components/Navbar";
 import { getPortfolioData } from "@/lib/data-fetching";
 import { ProjectsGridSection } from "@/components/sections/ProjectsGridSection";
 
+export const dynamic = "force-dynamic";
+
 export default async function ProjectsPage() {
   const data = await getPortfolioData();
 

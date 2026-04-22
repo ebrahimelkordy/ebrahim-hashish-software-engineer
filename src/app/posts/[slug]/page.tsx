@@ -3,6 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { TerminalImage } from "@/components/TerminalImage";
 
+export const dynamic = "force-dynamic";
+
 export async function generateStaticParams() {
   const data = await getPortfolioData();
   return data.posts.map((post: any) => ({
