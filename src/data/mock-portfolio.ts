@@ -91,7 +91,7 @@ export const mockPortfolioData = {
   contact: {
     email: "ebrahimkordy0@gmail.com",
     github: "https://github.com/ebrahimelkordy",
-    linkedin: "https://linkedin.com/in/ebrahim-hashish",
+    linkedin: "https://www.linkedin.com/in/ebrahim-hashish-b2b256406/",
     whatsapp: "+201060899732"
   }
 };
