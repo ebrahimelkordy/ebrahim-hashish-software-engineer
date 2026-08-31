@@ -56,29 +56,48 @@ export const IdentitySection = ({ data, isEditable = false, onUpdate }: { data: 
       
       {/* PORTRAIT BLOCK - FULL WIDTH MOBILE, FIXED WIDTH DESKTOP */}
       {(aboutData.imageUrl || isEditable) && (
-        <div className="w-full lg:w-[480px] max-w-2xl relative group flex-shrink-0 px-4 lg:px-0">
-          <div className="aspect-[3/4] relative overflow-hidden tech-border-left-top bg-[#1c1b1b] group-hover:neon-glow-secondary transition-all duration-700 refresh-frames-img shadow-2xl group/img">
-            {/* TERMINAL OVERLAYS - TOP LAYERS */}
-            <div className="absolute inset-0 scanline-overlay pointer-events-none z-30 opacity-40"></div>
+        <div className="w-full lg:w-[460px] max-w-2xl relative group flex-shrink-0 px-4 lg:px-0">
+          {/* Cyberpunk Ambient Glow Behind */}
+          <div className="absolute -inset-2 bg-gradient-to-tr from-[#00f4fe]/25 via-transparent to-[#d90429]/25 blur-2xl opacity-60 group-hover:opacity-100 transition-opacity duration-700 -z-10"></div>
+          
+          <div className="aspect-[3/4] relative overflow-hidden tech-border-left-top bg-[#1c1b1b] border border-[#00f4fe]/30 shadow-[0_0_30px_rgba(0,244,254,0.15)] group-hover:border-[#00f4fe]/60 group-hover:shadow-[0_0_45px_rgba(0,244,254,0.3)] transition-all duration-700 group/img">
+            {/* TERMINAL SCANLINE & DOT GRID OVERLAYS */}
+            <div className="absolute inset-0 scanline-overlay pointer-events-none z-30 opacity-25"></div>
             <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMCwgMjQ0LCAyNTQsIDAuMSkiLz48L3N2Zz4=')] mix-blend-overlay pointer-events-none z-20"></div>
+
+            {/* Atmospheric Cinematic Gradient (dissolves bottom seamlessly into dark background) */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0e0e0e] via-[#0e0e0e]/25 to-transparent pointer-events-none z-30 opacity-85"></div>
+            
+            {/* Subtle Dual Cyan & Crimson Rim Glow Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#00f4fe]/15 via-transparent to-[#d90429]/20 mix-blend-color-dodge pointer-events-none z-30 opacity-75 group-hover/img:opacity-100 transition-opacity duration-700"></div>
+
+            {/* Corner Tech Brackets */}
+            <div className="absolute top-0 left-0 w-3.5 h-3.5 border-t-2 border-l-2 border-[#00f4fe] z-40"></div>
+            <div className="absolute top-0 right-0 w-3.5 h-3.5 border-t-2 border-r-2 border-[#00f4fe]/60 z-40"></div>
+            <div className="absolute bottom-0 left-0 w-3.5 h-3.5 border-b-2 border-l-2 border-[#d90429]/60 z-40"></div>
+            <div className="absolute bottom-0 right-0 w-3.5 h-3.5 border-b-2 border-r-2 border-[#d90429] z-40"></div>
 
             <EditableImage 
                src={aboutData.imageUrl}
                alt="Profile_Portrait"
                onChange={(src) => handleChange('imageUrl', src)}
                isEditable={isEditable}
-               containerClassName="absolute inset-0 w-full h-full z-50"
-               className="object-cover transition-transform duration-1000 group-hover/img:scale-110"
+               containerClassName="absolute inset-0 w-full h-full z-10"
+               className="object-cover filter contrast-[1.08] brightness-[0.97] saturate-[0.95] transition-transform duration-700 group-hover/img:scale-105 group-hover/img:contrast-[1.12]"
+               priority={true}
             />
             
-            <div className="absolute bottom-4 left-4 right-4 p-4 glass-panel border border-white/10 flex justify-between items-end z-40 backdrop-blur-md">
+            <div className="absolute bottom-4 left-4 right-4 p-4 glass-panel border border-white/10 flex justify-between items-end z-40 backdrop-blur-md shadow-lg">
               <div className="space-y-1">
-                <p className="font-label text-[8px] uppercase tracking-[0.2em] text-[#00f4fe]">ID_VERIFIED</p>
-                <p className="font-headline text-sm font-bold text-white animate-pulse">AUTH__GRANTED</p>
+                <div className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#00f4fe] animate-ping"></span>
+                  <p className="font-label text-[8px] uppercase tracking-[0.2em] text-[#00f4fe]">ID_VERIFIED</p>
+                </div>
+                <p className="font-headline text-sm font-bold text-white tracking-wide">AUTH__GRANTED</p>
               </div>
               <div className="text-right space-y-1 font-mono">
                 <p className="font-label text-[8px] uppercase tracking-[0.2em] text-[#d90429]">SEC_LEVEL</p>
-                <p className="font-headline text-sm font-bold text-white uppercase">S_CLASS</p>
+                <p className="font-headline text-sm font-bold text-white uppercase tracking-wider">S_CLASS</p>
               </div>
             </div>
           </div>
