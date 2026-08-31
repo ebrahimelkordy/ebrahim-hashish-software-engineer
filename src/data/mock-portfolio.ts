@@ -7,14 +7,14 @@ export const mockPortfolioData = {
     title: "EBRAHIM\nCODE\nHASHISH",
     subtitle: "Full-Stack Identity Initiated",
     description: "Software Engineer specializing in building high-performance MERN stack applications, architecting scalable systems, and transforming legacy codebases into modern modular structures.",
-    imageUrl: "/profile.jpg"
+    imageUrl: "https://res.cloudinary.com/drcfpswre/image/upload/v1788211139/zz6ychzibw7jrihuuwdw.jpg"
   },
   about: {
     firstName: "EBRAHIM",
     lastName: "HASHISH",
     bio: "A dedicated Full-Stack Developer with a deep focus on Backend Architecture and User Experience. I specialize in the MERN stack, crafting enterprise-grade solutions like multi-tenant LMS platforms and production-ready e-commerce engines. My philosophy revolves around clean code, robust security (RBAC), and high-efficiency system design.",
     role: "FULL_STACK Software Engineer",
-    imageUrl: "/about-portrait.jpg",
+    imageUrl: "https://res.cloudinary.com/drcfpswre/image/upload/v1788211139/zz6ychzibw7jrihuuwdw.jpg",
     cvUrl: "/cv.pdf"
   },
   skills: [
