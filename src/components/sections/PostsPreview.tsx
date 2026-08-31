@@ -53,7 +53,7 @@ export const PostsPreview = ({ posts }: { posts: any[] }) => {
               ))}
             </div>
 
-            <Link href="/posts" className="inline-flex items-center gap-2 font-label text-[10px] text-[#d90429] uppercase tracking-[0.3em] font-bold group/link">
+            <Link href={`/posts/${post.slug || post.id}`} className="inline-flex items-center gap-2 font-label text-[10px] text-[#d90429] hover:text-[#00f4fe] uppercase tracking-[0.3em] font-bold group/link transition-colors">
               ACCESS_FILE <span className="material-symbols-outlined text-xs group-hover/link:translate-x-2 transition-transform">chevron_right</span>
             </Link>
           </SpotlightCard>
