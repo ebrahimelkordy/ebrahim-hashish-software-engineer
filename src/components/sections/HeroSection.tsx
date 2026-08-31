@@ -20,8 +20,8 @@ export const HeroSection = ({ data, isEditable = false, onUpdate }: { data: any,
   };
 
   const skillsList = [
-    'Node.js', 'NestJS', 'Next.js 16', 'React 19', 
-    'TypeScript', 'PostgreSQL', 'Prisma ORM', 'Redis / BullMQ', 
+    'Google Gemini AI', 'WhatsApp AI Agents', 'NestJS 11', 'Next.js 16', 
+    'React 19', 'PostgreSQL', 'BullMQ & Redis', 'TypeScript', 
     'Docker', 'TailwindCSS'
   ];
 
@@ -103,11 +103,11 @@ export const HeroSection = ({ data, isEditable = false, onUpdate }: { data: any,
         <div className="flex flex-wrap justify-center lg:justify-start gap-6 sm:gap-8 pt-4 font-label text-[10px] sm:text-[11px] text-[#e7bcba] uppercase tracking-[0.2em] opacity-60">
           <div className="flex flex-col gap-0.5">
             <span className="text-[#00f4fe]">SPECIALTY</span>
-            <span className="font-mono">FULL-STACK // DISTRIBUTED</span>
+            <span className="font-mono">FULL-STACK // AI_SYSTEMS</span>
           </div>
           <div className="flex flex-col gap-0.5">
-            <span className="text-[#00f4fe]">AVAILABILITY</span>
-            <span className="font-mono text-emerald-400">OPEN_FOR_CONTRACTS</span>
+            <span className="text-[#00f4fe]">AI_ENGINE</span>
+            <span className="font-mono text-emerald-400">GEMINI_2.0 // MULTI_AGENT</span>
           </div>
           <div className="flex flex-col gap-0.5">
             <span className="text-[#00f4fe]">LOCATION</span>

@@ -5,19 +5,32 @@ export const mockPortfolioData = {
     firstName: "EBRAHIM",
     lastName: "HASHISH",
     title: "EBRAHIM\nCODE\nHASHISH",
-    subtitle: "Full-Stack Identity Initiated",
-    description: "Full-Stack Software Engineer building mission-critical web applications. Specializing in high-performance Node.js/NestJS backends, distributed queues, and pixel-perfect Next.js 16 / React 19 architectures.",
+    subtitle: "Full-Stack & Autonomous AI Systems Engineer",
+    description: "Full-Stack & AI Systems Software Engineer building mission-critical web applications. Specializing in autonomous multi-provider AI agents (Gemini/OpenAI), high-performance NestJS/Node.js backends, distributed queues, and pixel-perfect Next.js architectures.",
     imageUrl: "https://res.cloudinary.com/drcfpswre/image/upload/v1788211139/zz6ychzibw7jrihuuwdw.jpg"
   },
   about: {
     firstName: "EBRAHIM",
     lastName: "HASHISH",
-    bio: "Senior Full-Stack Engineer with deep expertise in Distributed Backend Systems, Database Optimization, and High-Performance Frontend Architectures. I specialize in Node.js, NestJS (4-tier clean architecture), PostgreSQL with atomic append-only ledgers, BullMQ job queues, and cutting-edge Next.js / Remix frontends. My engineering philosophy revolves around zero-data-loss resilience, rigorous auditability, and sub-second performance under enterprise load.",
-    role: "FULL_STACK Software Engineer",
+    bio: "Senior Software Engineer specializing in Distributed Backend Systems, Database Optimization, and Autonomous AI Agent Pipelines. Expert in building multi-provider AI orchestration layers (Google Gemini 2.0, OpenAI, Groq), WhatsApp automated accounting gateways, immutable atomic ledgers in NestJS/PostgreSQL, and high-conversion Next.js / Remix frontends. Engineered for zero-data-loss resilience, rigorous auditability, and sub-second execution under enterprise load.",
+    role: "Senior Full-Stack & AI Systems Architect",
     imageUrl: "https://res.cloudinary.com/drcfpswre/image/upload/v1788211139/zz6ychzibw7jrihuuwdw.jpg",
     cvUrl: "/cv.pdf"
   },
   skills: [
+    { 
+      category: "AI & Agentic Systems", 
+      items: [
+        { id: 'ai1', name: 'Google Gemini API (@google/genai & 2.0 Flash)' }, 
+        { id: 'ai2', name: 'Multi-Provider AI Orchestration (Gemini, OpenAI, Groq)' }, 
+        { id: 'ai3', name: 'Autonomous Financial Audit Agents (Anomaly & VAT Detection)' }, 
+        { id: 'ai4', name: 'WhatsApp AI Automation Gateway (Baileys Engine)' },
+        { id: 'ai5', name: 'Deterministic JSON Schema Output & Zod Guardrails' },
+        { id: 'ai6', name: 'Conversational Arabic & Dialect NLP Preprocessing' },
+        { id: 'ai7', name: 'Vector Embeddings & Semantic Search Pipelines' },
+        { id: 'ai8', name: 'LLM Tool Execution & Function Calling Orchestrator' }
+      ]
+    },
     { 
       category: "Backend", 
       items: [
@@ -60,22 +73,20 @@ export const mockPortfolioData = {
     { 
       category: "DevOps / Tools", 
       items: [
-        { id: 'd1', name: 'Multi-Provider AI (Gemini, OpenAI, Groq)' }, 
-        { id: 'd2', name: 'WhatsApp Gateway (@whiskeysockets/baileys)' },
-        { id: 'd3', name: 'Docker & Docker Compose' }, 
-        { id: 'd4', name: 'Fly.io, Koyeb & Vercel Edge Serverless' },
-        { id: 'd5', name: 'Jest & Supertest (Idempotency Test Suites)' },
-        { id: 'd6', name: 'Stripe API & Payment Webhooks' },
-        { id: 'd7', name: 'Git & GitHub Actions CI/CD' }
+        { id: 'd1', name: 'Docker & Docker Compose' }, 
+        { id: 'd2', name: 'Fly.io, Koyeb & Vercel Edge Serverless' }, 
+        { id: 'd3', name: 'Jest & Supertest (Idempotency Test Suites)' }, 
+        { id: 'd4', name: 'Stripe API & Payment Webhooks' },
+        { id: 'd5', name: 'Git & GitHub Actions CI/CD' }
       ]
     }
   ] as unknown as GroupedSkills,
   experiences: [
     {
-      title: "Senior Full-Stack Engineer & System Architect",
+      title: "Senior Full-Stack Engineer & AI Systems Architect",
       company: "Enterprise Projects & High-Ticket Ventures",
       period: "2024 - PRESENT",
-      description: "Architecting and delivering mission-critical web platforms, atomic financial ERPs, high-traffic e-commerce flagships, and autonomous AI automation pipelines with zero-loss data integrity.",
+      description: "Architecting and delivering mission-critical web platforms, autonomous AI accounting agents, atomic financial ERPs, high-traffic e-commerce flagships, and idempotent data migration pipelines.",
       order: 0
     }
   ],
@@ -84,7 +95,7 @@ export const mockPortfolioData = {
       degree: "Bachelor of Usul Al-Din (Student)",
       institution: "Al-Azhar University",
       year: "In Progress",
-      description: "Developing deep analytical, classical logic, and philosophical reasoning skills while concurrently mastering distributed systems engineering and modern full-stack web architectures.",
+      description: "Developing deep analytical, classical logic, and philosophical reasoning skills while concurrently mastering distributed systems engineering, AI agent orchestration, and modern full-stack web architectures.",
       imageUrl: "/edu-azhar.png",
       order: 0
     }

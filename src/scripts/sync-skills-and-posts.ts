@@ -1,44 +1,52 @@
 import prisma from '../lib/prisma';
 
 const skillsData = [
+  // AI & Agentic Systems (Top Category)
+  { name: 'Google Gemini API (@google/genai & 2.0 Flash)', category: 'AI & Agentic Systems', order: 0 },
+  { name: 'Multi-Provider AI Orchestration (Gemini, OpenAI, Groq)', category: 'AI & Agentic Systems', order: 1 },
+  { name: 'Autonomous Financial Audit Agents (Anomaly & VAT Verification)', category: 'AI & Agentic Systems', order: 2 },
+  { name: 'WhatsApp AI Automation Gateway (Baileys Engine)', category: 'AI & Agentic Systems', order: 3 },
+  { name: 'Deterministic JSON Schema Structured Output & Zod Guardrails', category: 'AI & Agentic Systems', order: 4 },
+  { name: 'Conversational Arabic & Dialect NLP Preprocessing Pipeline', category: 'AI & Agentic Systems', order: 5 },
+  { name: 'Vector Embeddings & Semantic Search Pipelines', category: 'AI & Agentic Systems', order: 6 },
+  { name: 'LLM Tool Execution & Function Calling Orchestrator', category: 'AI & Agentic Systems', order: 7 },
+
   // Backend & Architecture
-  { name: 'Node.js (v20+)', category: 'Backend', order: 0 },
-  { name: 'NestJS 11 (4-Tier Architecture)', category: 'Backend', order: 1 },
-  { name: 'Express.js 5.0', category: 'Backend', order: 2 },
-  { name: 'TypeScript 5.5+', category: 'Backend', order: 3 },
-  { name: 'RESTful APIs & Swagger OpenAPI', category: 'Backend', order: 4 },
-  { name: 'WebSocket & Socket.IO (Real-Time)', category: 'Backend', order: 5 },
-  { name: 'BullMQ & Redis (Job Queues & Caching)', category: 'Backend', order: 6 },
-  { name: 'Transactional Outbox & Domain Events', category: 'Backend', order: 7 },
-  { name: 'RBAC & Security Hardening (JWT/Helmet)', category: 'Backend', order: 8 },
+  { name: 'Node.js (v20+)', category: 'Backend', order: 8 },
+  { name: 'NestJS 11 (4-Tier Architecture)', category: 'Backend', order: 9 },
+  { name: 'Express.js 5.0', category: 'Backend', order: 10 },
+  { name: 'TypeScript 5.5+', category: 'Backend', order: 11 },
+  { name: 'RESTful APIs & Swagger OpenAPI', category: 'Backend', order: 12 },
+  { name: 'WebSocket & Socket.IO (Real-Time)', category: 'Backend', order: 13 },
+  { name: 'BullMQ & Redis (Job Queues & Caching)', category: 'Backend', order: 14 },
+  { name: 'Transactional Outbox & Domain Events', category: 'Backend', order: 15 },
+  { name: 'RBAC & Security Hardening (JWT/Helmet)', category: 'Backend', order: 16 },
 
   // Databases & Storage
-  { name: 'PostgreSQL 16', category: 'Storage / DB', order: 9 },
-  { name: 'MongoDB & Mongoose', category: 'Storage / DB', order: 10 },
-  { name: 'Prisma ORM (v5/v6)', category: 'Storage / DB', order: 11 },
-  { name: 'Supabase (Postgres, RLS & Realtime)', category: 'Storage / DB', order: 12 },
-  { name: 'Atomic Append-Only Ledger Design', category: 'Storage / DB', order: 13 },
-  { name: 'Idempotent ETL & Migration Pipelines', category: 'Storage / DB', order: 14 },
-  { name: 'Hierarchical Materialized Path Trees', category: 'Storage / DB', order: 15 },
+  { name: 'PostgreSQL 16', category: 'Storage / DB', order: 17 },
+  { name: 'MongoDB & Mongoose', category: 'Storage / DB', order: 18 },
+  { name: 'Prisma ORM (v5/v6)', category: 'Storage / DB', order: 19 },
+  { name: 'Supabase (Postgres, RLS & Realtime)', category: 'Storage / DB', order: 20 },
+  { name: 'Atomic Append-Only Ledger Design', category: 'Storage / DB', order: 21 },
+  { name: 'Idempotent ETL & Migration Pipelines', category: 'Storage / DB', order: 22 },
+  { name: 'Hierarchical Materialized Path Trees', category: 'Storage / DB', order: 23 },
 
   // Frontend & UI Engineering
-  { name: 'Next.js 16 (App Router & RSC)', category: 'Frontend', order: 16 },
-  { name: 'React 19 & React 18.3', category: 'Frontend', order: 17 },
-  { name: 'Remix & React Router v7 (SSR Loaders)', category: 'Frontend', order: 18 },
-  { name: 'Vite & Turbopack', category: 'Frontend', order: 19 },
-  { name: 'Tailwind CSS v4 & Custom Design Systems', category: 'Frontend', order: 20 },
-  { name: 'Radix UI Primitives', category: 'Frontend', order: 21 },
-  { name: 'Framer Motion (60fps Scroll Physics)', category: 'Frontend', order: 22 },
-  { name: 'Bilingual RTL / LTR Localization Engines', category: 'Frontend', order: 23 },
+  { name: 'Next.js 16 (App Router & RSC)', category: 'Frontend', order: 24 },
+  { name: 'React 19 & React 18.3', category: 'Frontend', order: 25 },
+  { name: 'Remix & React Router v7 (SSR Loaders)', category: 'Frontend', order: 26 },
+  { name: 'Vite & Turbopack', category: 'Frontend', order: 27 },
+  { name: 'Tailwind CSS v4 & Custom Design Systems', category: 'Frontend', order: 28 },
+  { name: 'Radix UI Primitives', category: 'Frontend', order: 29 },
+  { name: 'Framer Motion (60fps Scroll Physics)', category: 'Frontend', order: 30 },
+  { name: 'Bilingual RTL / LTR Localization Engines', category: 'Frontend', order: 31 },
 
-  // AI, DevOps & Cloud
-  { name: 'Multi-Provider AI (Gemini, OpenAI, Groq)', category: 'DevOps / Tools', order: 24 },
-  { name: 'WhatsApp Gateway (@whiskeysockets/baileys)', category: 'DevOps / Tools', order: 25 },
-  { name: 'Docker & Docker Compose', category: 'DevOps / Tools', order: 26 },
-  { name: 'Fly.io, Koyeb & Vercel Edge Serverless', category: 'DevOps / Tools', order: 27 },
-  { name: 'Jest & Supertest (Idempotency Test Suites)', category: 'DevOps / Tools', order: 28 },
-  { name: 'Stripe API & Payment Webhooks', category: 'DevOps / Tools', order: 29 },
-  { name: 'Git & GitHub Actions CI/CD', category: 'DevOps / Tools', order: 30 }
+  // DevOps & Cloud Infrastructure
+  { name: 'Docker & Docker Compose', category: 'DevOps / Tools', order: 32 },
+  { name: 'Fly.io, Koyeb & Vercel Edge Serverless', category: 'DevOps / Tools', order: 33 },
+  { name: 'Jest & Supertest (Idempotency Test Suites)', category: 'DevOps / Tools', order: 34 },
+  { name: 'Stripe API & Payment Webhooks', category: 'DevOps / Tools', order: 35 },
+  { name: 'Git & GitHub Actions CI/CD', category: 'DevOps / Tools', order: 36 }
 ];
 
 const blogPostsData = [
@@ -264,9 +272,9 @@ This architecture ensures that even during full external API outages (e.g., What
 ];
 
 async function main() {
-  console.log('--- SYNCING SKILLS AND BLOG POSTS TO DATABASE ---');
+  console.log('--- SYNCING AI SKILLS, POSTS & IDENTITY TO DATABASE ---');
 
-  // 1. Clear and re-populate Skills
+  // 1. Clear and re-populate Skills (with AI & Agentic Systems)
   await prisma.skill.deleteMany();
   console.log('Cleared existing skills.');
 
@@ -275,9 +283,34 @@ async function main() {
       data: skill
     });
   }
-  console.log(`✓ Inserted ${skillsData.length} modern skills into DB.`);
+  console.log(`✓ Inserted ${skillsData.length} modern skills (including AI category) into DB.`);
 
-  // 2. Sync Blog Posts (Upsert by slug)
+  // 2. Update Hero & About Records with AI Highlights
+  const hero = await prisma.hero.findFirst();
+  if (hero) {
+    await prisma.hero.update({
+      where: { id: hero.id },
+      data: {
+        subtitle: "Full-Stack & Autonomous AI Systems Engineer",
+        description: "Full-Stack & AI Systems Software Engineer building mission-critical web applications. Specializing in autonomous multi-provider AI agents (Gemini/OpenAI), high-performance NestJS/Node.js backends, distributed queues, and pixel-perfect Next.js architectures."
+      }
+    });
+    console.log('✓ Updated Hero record with AI subtitle & description.');
+  }
+
+  const about = await prisma.about.findFirst();
+  if (about) {
+    await prisma.about.update({
+      where: { id: about.id },
+      data: {
+        role: "Senior Full-Stack & AI Systems Architect",
+        bio: "Senior Software Engineer specializing in Distributed Backend Systems, Database Optimization, and Autonomous AI Agent Pipelines. Expert in building multi-provider AI orchestration layers (Google Gemini 2.0, OpenAI, Groq), WhatsApp automated accounting gateways, immutable atomic ledgers in NestJS/PostgreSQL, and high-conversion Next.js / Remix frontends. Engineered for zero-data-loss resilience, rigorous auditability, and sub-second execution under enterprise load."
+      }
+    });
+    console.log('✓ Updated About record with AI role & bio.');
+  }
+
+  // 3. Sync Blog Posts (Upsert by slug)
   for (const post of blogPostsData) {
     const existing = await prisma.blogPost.findFirst({
       where: { slug: post.slug }
