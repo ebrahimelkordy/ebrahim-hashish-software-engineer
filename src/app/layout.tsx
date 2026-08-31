@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
+import { NeuralMeshCanvas } from "@/components/animations/NeuralMeshCanvas";
+import { CommandPalette } from "@/components/CommandPalette";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-body" });
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-headline" });
@@ -20,8 +22,16 @@ export default function RootLayout({
       <head>
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
       </head>
-      <body className={`${inter.variable} ${spaceGrotesk.variable} font-body antialiased min-h-screen flex flex-col selection:bg-primary-container selection:text-white`}>
-        {children}
+      <body className={`${inter.variable} ${spaceGrotesk.variable} font-body antialiased min-h-screen flex flex-col selection:bg-primary-container selection:text-white relative bg-[#0e0e0e]`}>
+        {/* Global Interactive Neural Mesh Background */}
+        <NeuralMeshCanvas />
+
+        {/* Global Raycast/Linear Command Palette Modal (Cmd+K) */}
+        <CommandPalette />
+
+        <div className="relative z-10 flex flex-col min-h-screen">
+          {children}
+        </div>
       </body>
     </html>
   );
