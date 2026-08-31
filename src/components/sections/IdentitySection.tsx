@@ -54,9 +54,9 @@ export const IdentitySection = ({ data, isEditable = false, onUpdate }: { data: 
   return (
     <section className="relative w-full flex flex-col lg:flex-row items-center gap-8 lg:gap-12 py-2 lg:py-10">
       
-      {/* PORTRAIT BLOCK - FULL WIDTH MOBILE, FIXED WIDTH DESKTOP */}
+      {/* PORTRAIT BLOCK - PROPORTIONAL ACROSS ALL SCREEN SIZES */}
       {(aboutData.imageUrl || isEditable) && (
-        <div className="w-full lg:w-[460px] max-w-2xl relative group flex-shrink-0 px-4 lg:px-0">
+        <div className="w-full max-w-[280px] sm:max-w-[340px] md:max-w-[380px] lg:max-w-[420px] xl:max-w-[460px] mx-auto lg:mx-0 relative group flex-shrink-0">
           {/* Cyberpunk Ambient Glow Behind */}
           <div className="absolute -inset-2 bg-gradient-to-tr from-[#00f4fe]/25 via-transparent to-[#d90429]/25 blur-2xl opacity-60 group-hover:opacity-100 transition-opacity duration-700 -z-10"></div>
           
