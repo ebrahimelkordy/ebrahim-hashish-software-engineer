@@ -11,21 +11,33 @@ interface TerminalImageProps {
   priority?: boolean;
 }
 
+// Automatically optimize Cloudinary URLs with auto format, auto quality and smart sizing
+function getOptimizedImageUrl(src: string): string {
+  if (!src) return "";
+  if (src.includes("res.cloudinary.com") && src.includes("/image/upload/")) {
+    if (!src.includes("/f_auto,q_auto/")) {
+      return src.replace("/image/upload/", "/image/upload/f_auto,q_auto,w_1200/");
+    }
+  }
+  return src;
+}
+
 export const TerminalImage = ({ src, alt, className = "", containerClassName = "", priority = false }: TerminalImageProps) => {
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
   const [isTimedOut, setIsTimedOut] = useState(false);
 
+  const optimizedSrc = getOptimizedImageUrl(src);
+
   useEffect(() => {
-    // Safety Timeout: 7 seconds
-    // If the image hasn't loaded by then, we assume connection failure
+    // Safety Timeout: 6 seconds
     const timer = setTimeout(() => {
       if (isLoading) {
         setIsTimedOut(true);
         setIsLoading(false);
         setHasError(true);
       }
-    }, 7000);
+    }, 6000);
 
     return () => clearTimeout(timer);
   }, [isLoading]);
@@ -37,7 +49,6 @@ export const TerminalImage = ({ src, alt, className = "", containerClassName = "
     setIsTimedOut(false);
   }, [src]);
 
-  // Robust validation to prevent Next.js Image from crashing on invalid inputs like ";"
   const isValidUrl = src && (src.startsWith('/') || src.startsWith('http') || src.startsWith('blob:'));
 
   if (!isValidUrl || hasError) {
@@ -70,24 +81,24 @@ export const TerminalImage = ({ src, alt, className = "", containerClassName = "
             <span className="material-symbols-outlined animate-spin text-[#d90429] mb-2 block mx-auto">sync</span>
             <span className="text-[10px] uppercase tracking-widest block">&gt; FETCHING_ASSET</span>
           </div>
-          <div className="w-full max-w-[200px] h-2 bg-[#1c1b1b] border border-[#5d3f3d]/30 overflow-hidden relative">
-            <div className="absolute top-0 left-0 h-full w-1/2 bg-[#00f4fe] animate-[pulse_1s_ease-in-out_infinite]"></div>
+          <div className="w-full max-w-[200px] h-1.5 bg-[#1c1b1b] border border-[#5d3f3d]/30 overflow-hidden relative">
+            <div className="absolute top-0 left-0 h-full w-1/2 bg-[#00f4fe] animate-[pulse_0.8s_ease-in-out_infinite]"></div>
           </div>
         </div>
       )}
 
       <Image
-        src={src}
+        src={optimizedSrc}
         alt={alt}
         fill
-        className={`${className} ${isLoading ? 'opacity-0' : 'opacity-100'} transition-opacity duration-1000`}
+        className={`${className} ${isLoading ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300`}
         onLoad={() => setIsLoading(false)}
         onError={() => {
           setIsLoading(false);
           setHasError(true);
         }}
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        unoptimized={src.startsWith('http')}
+        unoptimized={true}
         priority={priority}
       />
     </div>

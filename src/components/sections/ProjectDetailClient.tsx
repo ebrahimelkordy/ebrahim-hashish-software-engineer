@@ -194,31 +194,46 @@ export function ProjectDetailClient({ project: initialProject, isEditable, cvUrl
         </header>
 
         {/* Action Buttons */}
-        <div className="flex flex-wrap gap-4 mb-16 relative z-10">
-          <div className="flex items-center gap-2">
-            <a href={project.liveUrl || "#"} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-3 px-6 py-3 bg-[#d90429] text-white font-label text-sm uppercase tracking-widest font-bold hover:shadow-[0_0_20px_rgba(217,4,41,0.4)] transition-all active:scale-95">
-              <span className="material-symbols-outlined text-sm">rocket_launch</span>
-              LIVE_DEMO
-              <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">open_in_new</span>
-            </a>
-            {isEditable && (
-              <div className="bg-[#1c1b1b] p-2 border border-[#5d3f3d]/30 text-xs">
-                 <EditableText value={project.liveUrl} placeholder="Enter Live URL" onChange={(v) => handleLocalUpdate('liveUrl', v)} isEditable={isEditable} />
-              </div>
-            )}
-          </div>
+        <div className="flex flex-wrap gap-4 mb-16 relative z-10 items-center">
+          {(project.liveUrl || isEditable) && (
+            <div className="flex items-center gap-2">
+              {project.liveUrl ? (
+                <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-3 px-6 py-3 bg-[#d90429] text-white font-label text-sm uppercase tracking-widest font-bold hover:shadow-[0_0_20px_rgba(217,4,41,0.4)] transition-all active:scale-95">
+                  <span className="material-symbols-outlined text-sm">rocket_launch</span>
+                  LIVE_DEMO
+                  <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">open_in_new</span>
+                </a>
+              ) : null}
+              {isEditable && (
+                <div className="bg-[#1c1b1b] p-2 border border-[#5d3f3d]/30 text-xs">
+                   <EditableText value={project.liveUrl || ""} placeholder="Enter Live URL" onChange={(v) => handleLocalUpdate('liveUrl', v)} isEditable={isEditable} />
+                </div>
+              )}
+            </div>
+          )}
           
-          <div className="flex items-center gap-2">
-            <a href={project.repoUrl || "#"} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-3 px-6 py-3 border border-[#5d3f3d]/30 text-[#e7bcba] font-label text-sm uppercase tracking-widest hover:border-[#e7bcba] transition-all active:scale-95">
-              <span className="material-symbols-outlined text-sm group-hover:scale-110 transition-transform">code</span>
-              SOURCE_REPOSITORY
-            </a>
-            {isEditable && (
-              <div className="bg-[#1c1b1b] p-2 border border-[#5d3f3d]/30 text-xs text-[#00f4fe]">
-                 <EditableText value={project.repoUrl} placeholder="Enter Repo URL" onChange={(v) => handleLocalUpdate('repoUrl', v)} isEditable={isEditable} />
-              </div>
-            )}
-          </div>
+          {(project.repoUrl || isEditable) && (
+            <div className="flex items-center gap-2">
+              {project.repoUrl ? (
+                <a href={project.repoUrl} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-3 px-6 py-3 border border-[#5d3f3d]/30 text-[#e7bcba] font-label text-sm uppercase tracking-widest hover:border-[#e7bcba] transition-all active:scale-95">
+                  <span className="material-symbols-outlined text-sm group-hover:scale-110 transition-transform">code</span>
+                  SOURCE_REPOSITORY
+                </a>
+              ) : null}
+              {isEditable && (
+                <div className="bg-[#1c1b1b] p-2 border border-[#5d3f3d]/30 text-xs text-[#00f4fe]">
+                   <EditableText value={project.repoUrl || ""} placeholder="Enter Repo URL" onChange={(v) => handleLocalUpdate('repoUrl', v)} isEditable={isEditable} />
+                </div>
+              )}
+            </div>
+          )}
+
+          {!project.liveUrl && !project.repoUrl && !isEditable && (
+            <div className="flex items-center gap-3 px-5 py-3 border border-[#00f4fe]/30 bg-[#00f4fe]/5 text-[#00f4fe] font-label text-xs uppercase tracking-widest">
+              <span className="material-symbols-outlined text-sm animate-pulse">lock</span>
+              <span>ENTERPRISE_INTERNAL_SYSTEM // PROPRIETARY_FINTECH_CORE</span>
+            </div>
+          )}
         </div>
 
         {/* Summary Section */}
