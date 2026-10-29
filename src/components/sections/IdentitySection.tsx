@@ -127,23 +127,32 @@ export const IdentitySection = ({ data, isEditable = false, onUpdate }: { data: 
         </div>
         
         {!isEditable ? (
-          <div className="flex flex-wrap justify-center lg:justify-start gap-4 mt-6">
+          <div className="flex flex-wrap justify-center lg:justify-start gap-4 mt-6 items-center">
+            <a 
+              href="https://wa.me/201060899732"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-8 py-4 bg-[#00f4fe]/10 border border-[#00f4fe]/40 text-[#00f4fe] font-label text-[10px] uppercase tracking-[0.2em] font-bold hover:bg-[#00f4fe] hover:text-black hover:shadow-[0_0_20px_rgba(0,244,254,0.4)] transition-all flex items-center gap-2"
+            >
+              <span className="material-symbols-outlined text-sm">chat</span>
+              COMMUNICATE_WHATSAPP
+            </a>
             {aboutData.cvUrl && (
               <a 
                 href={aboutData.cvUrl} 
                 download 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-8 py-4 border border-[#00f4fe]/30 text-[#00f4fe] font-label text-[10px] uppercase tracking-[0.2em] font-bold hover:bg-[#00f4fe]/10 hover:shadow-[0_0_20px_rgba(0,244,254,0.3)] transition-all flex items-center gap-2"
+                className="px-5 py-4 border border-white/10 text-white/40 hover:text-white hover:border-white/30 font-label text-[10px] uppercase tracking-[0.2em] transition-all flex items-center gap-1.5 opacity-70 hover:opacity-100"
               >
-                <span className="material-symbols-outlined text-sm">download</span>
-                DOWNLOAD_CV_REPORT
+                <span className="material-symbols-outlined text-xs">download</span>
+                EXPORT_CV
               </a>
             )}
             <a href="/projects" className="px-8 py-4 bg-[#d90429] text-white font-label text-[10px] uppercase tracking-[0.2em] font-bold hover:shadow-[0_0_20px_rgba(217,4,41,0.4)] transition-all">
               EXECUTE_WORK_MODULE
             </a>
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="px-8 py-4 border border-white/10 text-white font-label text-[10px] uppercase tracking-[0.2em] font-bold hover:bg-white/5 transition-all">
+            <a href="https://github.com/ebrahimelkordy" target="_blank" rel="noopener noreferrer" className="px-8 py-4 border border-white/10 text-white font-label text-[10px] uppercase tracking-[0.2em] font-bold hover:bg-white/5 transition-all">
               SOURCE_STREAMS
             </a>
           </div>

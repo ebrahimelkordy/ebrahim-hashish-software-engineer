@@ -32,16 +32,30 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           EBRAHIM<span className="text-[#d90429]">.</span>HASHISH
         </Link>
         <div className="flex items-center gap-6">
+          {/* WhatsApp Direct Contact Button */}
+          <a 
+            href="https://wa.me/201060899732" 
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-label text-[10px] tracking-[0.15em] text-[#00f4fe] bg-[#00f4fe]/5 hover:bg-[#00f4fe]/15 px-3 py-1.5 border border-[#00f4fe]/30 hover:border-[#00f4fe] hover:shadow-[0_0_15px_rgba(0,244,254,0.25)] transition-all flex items-center gap-1.5"
+            title="Direct WhatsApp Communication (+20 106 089 9732)"
+          >
+            <span className="material-symbols-outlined text-xs">chat</span>
+            <span>[WHATSAPP]</span>
+          </a>
+
+          {/* Discreet CV Link */}
           {cvUrl && (
             <a 
               href={cvUrl} 
               download
               target="_blank"
               rel="noopener noreferrer"
-              className="font-label text-[10px] tracking-[0.2em] text-[#00F5FF] hover:bg-[#00F5FF]/10 px-3 py-1.5 border border-[#00F5FF]/20 transition-all flex items-center gap-2"
+              className="hidden sm:flex font-mono text-[9px] tracking-wider text-white/40 hover:text-[#e5e2e1] px-2 py-1.5 border border-white/5 hover:border-white/20 transition-all items-center gap-1 opacity-60 hover:opacity-100"
+              title="Download Technical CV"
             >
                <span className="material-symbols-outlined text-xs">download</span>
-               [EXPORT_CV]
+               <span>CV</span>
             </a>
           )}
           <Link href="/#posts" className="font-label text-xs uppercase tracking-[0.2em] text-[#e7bcba] hover:text-[#00f4fe] transition-colors flex items-center gap-2">

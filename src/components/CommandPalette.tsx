@@ -205,9 +205,9 @@ export const CommandPalette = () => {
       title: "Direct WhatsApp Message",
       subtitle: "Instant priority engineering consultation",
       icon: "chat",
-      badge: "+20 102 604 0854",
+      badge: "+20 106 089 9732",
       action: () => {
-        window.open("https://wa.me/201026040854", "_blank");
+        window.open("https://wa.me/201060899732", "_blank");
         setIsOpen(false);
       },
       keywords: "whatsapp chat call message phone direct",

@@ -166,6 +166,6 @@ export const mockPortfolioData = {
     email: "ebrahimelkordy@gmail.com",
     github: "https://github.com/ebrahimelkordy",
     linkedin: "https://www.linkedin.com/in/ebrahim-elkordy",
-    whatsapp: "+201026040854"
+    whatsapp: "+201060899732"
   }
 };

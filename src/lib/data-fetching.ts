@@ -17,7 +17,7 @@ export type GroupedSkills = {
 export async function getPortfolioData() {
   try {
     // Attempt to fetch from DB
-    const [hero, about, dbSkills, experiences, studies, posts, dbProjects, certificates] = await Promise.all([
+    const [hero, about, dbSkills, experiences, studies, posts, dbProjects, certificates, contact] = await Promise.all([
       prisma.hero.findFirst(),
       prisma.about.findFirst(),
       prisma.skill.findMany({ orderBy: { order: 'asc' } }),
@@ -25,7 +25,8 @@ export async function getPortfolioData() {
       prisma.study.findMany({ orderBy: { order: 'asc' } }),
       prisma.blogPost.findMany({ orderBy: [{ isPinned: 'desc' }, { order: 'asc' }] }),
       prisma.project.findMany({ orderBy: [{ isPinned: 'desc' }, { order: 'asc' }] }),
-      prisma.certificate.findMany({ orderBy: { order: 'asc' } })
+      prisma.certificate.findMany({ orderBy: { order: 'asc' } }),
+      prisma.contact.findFirst()
     ]);
 
     // Group skills locally if they exist in DB
@@ -60,7 +61,12 @@ export async function getPortfolioData() {
         slug: p.slug || p.id,
       })) : mockPortfolioData.posts,
       projects: projects.length > 0 ? projects : mockProjects,
-      contact: mockPortfolioData.contact,
+      contact: contact ? {
+        email: contact.email || mockPortfolioData.contact.email,
+        github: contact.github || mockPortfolioData.contact.github,
+        linkedin: contact.linkedin || mockPortfolioData.contact.linkedin,
+        whatsapp: contact.whatsapp || mockPortfolioData.contact.whatsapp,
+      } : mockPortfolioData.contact,
       isUsingMock: !hero && dbSkills.length === 0,
     };
   } catch (error) {

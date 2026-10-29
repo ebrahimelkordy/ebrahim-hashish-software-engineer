@@ -199,8 +199,8 @@ export const projects: ProjectData[] = [
     screenshots: [
       { src: "https://res.cloudinary.com/drcfpswre/image/upload/v1776613722/Screenshot_2025-12-28_162845_fpjzvo.png", caption: "Storefront Interface" }
     ],
-    liveUrl: "https://zaad-zeta.vercel.app/",
-    repoUrl: "https://github.com/ebrahimelkordy/Zaad-store/",
+    liveUrl: "",
+    repoUrl: "",
     status: "DEPLOYED",
     year: "2026",
     isPinned: false,
@@ -226,7 +226,7 @@ export const projects: ProjectData[] = [
     screenshots: [
       { src: "https://res.cloudinary.com/drcfpswre/image/upload/v1776536356/course_catalog_desktop_220db_wodmca.png", caption: "LMS Student Portal" }
     ],
-    liveUrl: "https://nibras-lms.com",
+    liveUrl: "",
     repoUrl: "",
     status: "DEPLOYED",
     year: "2026",
