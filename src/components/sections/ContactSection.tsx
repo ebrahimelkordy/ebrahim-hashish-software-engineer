@@ -53,7 +53,7 @@ export const ContactSection = ({ contact, isEditable = false, onUpdate }: { cont
         </div>
         
         <p className="font-body text-[#e7bcba] text-sm leading-relaxed max-w-md mx-auto md:mx-0 opacity-80">
-           Ready to forge a new digital reality? Transmit your coordinates and project parameters. Secure connection guaranteed.
+           Available for worldwide contracts, remote full-stack engineering, and AI systems architecture. Transmit your project requirements below or connect directly on WhatsApp for immediate priority consultation.
         </p>
 
         {/* SOCIAL LINKS */}

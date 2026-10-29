@@ -100,18 +100,21 @@ export const HeroSection = ({ data, isEditable = false, onUpdate }: { data: any,
         </div>
 
         {/* Meta Stats: Horizontal Bar */}
-        <div className="flex flex-wrap justify-center lg:justify-start gap-6 sm:gap-8 pt-4 font-label text-[10px] sm:text-[11px] text-[#e7bcba] uppercase tracking-[0.2em] opacity-60">
+        <div className="flex flex-wrap justify-center lg:justify-start gap-6 sm:gap-8 pt-4 font-label text-[10px] sm:text-[11px] text-[#e7bcba] uppercase tracking-[0.2em] opacity-75">
           <div className="flex flex-col gap-0.5">
-            <span className="text-[#00f4fe]">SPECIALTY</span>
-            <span className="font-mono">FULL-STACK // AI_SYSTEMS</span>
+            <span className="text-[#00f4fe] flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              AVAILABILITY
+            </span>
+            <span className="font-mono text-emerald-400">GLOBAL_CONTRACTS // REMOTE</span>
           </div>
           <div className="flex flex-col gap-0.5">
-            <span className="text-[#00f4fe]">AI_ENGINE</span>
-            <span className="font-mono text-emerald-400">GEMINI_2.0 // MULTI_AGENT</span>
+            <span className="text-[#00f4fe]">CORE_STACK</span>
+            <span className="font-mono">NEXT.JS // NESTJS // AI_AGENTS</span>
           </div>
           <div className="flex flex-col gap-0.5">
-            <span className="text-[#00f4fe]">LOCATION</span>
-            <span className="font-mono">CAIRO_EGY (UTC+3)</span>
+            <span className="text-[#00f4fe]">TIMEZONE_OVERLAP</span>
+            <span className="font-mono">UTC+3 (US / EU / GCC ALIGNED)</span>
           </div>
         </div>
       </div>
