@@ -46,11 +46,22 @@ export const ProjectsGridSection = ({
         const minHeight = idx === 0 ? "min-h-[320px] md:min-h-[450px]" : "min-h-[260px] md:min-h-[350px]";
 
         return (
-          <SpotlightCard spotlightColor={idx % 2 === 0 ? "rgba(0, 244, 254, 0.1)" : "rgba(217, 4, 41, 0.1)"} key={project.id} className={`${spanClass} ${minHeight} glass-panel border border-white/5 relative group overflow-hidden transition-all duration-300 p-0 flex flex-col justify-end w-full group/card`}>
+          <SpotlightCard 
+            spotlightColor={idx % 2 === 0 ? "rgba(0, 244, 254, 0.1)" : "rgba(217, 4, 41, 0.1)"} 
+            key={project.id} 
+            className={`${spanClass} ${minHeight} glass-panel border border-white/5 relative group overflow-hidden transition-all duration-300 p-0 flex flex-col justify-end w-full group/card ${!isEditable ? 'cursor-pointer' : ''}`}
+          >
+            {!isEditable && (
+              <Link 
+                href={`/projects/${project.slug}`}
+                className="absolute inset-0 z-25 cursor-pointer"
+                aria-label={`Open ${project.title}`}
+              />
+            )}
             
-            <div className="absolute inset-0 z-0 overflow-hidden">
+            <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
               {/* TERMINAL LAYERS FOR PROJECTS */}
-              <div className="absolute inset-0 scanline-overlay pointer-events-none z-20 opacity-30 group-hover/card:opacity-50 transition-opacity"></div>
+              <div className="absolute inset-0 scanline-overlay pointer-events-none z-20 opacity-25 group-hover/card:opacity-40 transition-opacity"></div>
               
               <EditableImage 
                 src={project.screenshots?.[0]?.src || ""}
@@ -58,10 +69,10 @@ export const ProjectsGridSection = ({
                 onChange={(src) => handleImageChange(project, src)}
                 isEditable={isEditable}
                 containerClassName="absolute inset-0 w-full h-full z-0"
-                className="object-cover opacity-50 mix-blend-luminosity group-hover/card:scale-105 group-hover/card:mix-blend-normal group-hover/card:opacity-80 transition-all duration-1000 ease-out z-10"
+                className="object-cover opacity-60 group-hover/card:scale-[1.03] group-hover/card:opacity-85 transition-all duration-700 ease-out filter contrast-[1.05] brightness-[0.9] z-10"
               />
               
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0e0e0e] via-[#0e0e0e]/70 to-transparent z-[15]"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0e0e0e] via-[#0e0e0e]/60 to-[#0e0e0e]/15 z-[15] pointer-events-none"></div>
 
               {/* HUD OVERLAY */}
               <div className="absolute top-4 right-4 z-30 font-label text-[8px] text-[#00f4fe] tracking-widest bg-black/40 px-2 py-1 border border-white/5 opacity-0 group-hover/card:opacity-100 transition-opacity truncate max-w-[60%]">
@@ -69,7 +80,7 @@ export const ProjectsGridSection = ({
               </div>
             </div>
             
-            <div className="relative z-30 p-5 lg:p-8 flex flex-col gap-3 lg:gap-4 mt-auto">
+            <div className="relative z-30 p-5 lg:p-8 flex flex-col gap-3 lg:gap-4 mt-auto pointer-events-none">
               <div className="flex justify-between items-start">
                 <span className="text-[#00f4fe] font-label text-[10px] lg:text-xs uppercase tracking-[0.1em] border-l-2 border-[#00f4fe] pl-2 truncate max-w-[80%]">
                    <EditableText value={project.codeName} onChange={()=>{}} isEditable={isEditable} />
@@ -78,24 +89,24 @@ export const ProjectsGridSection = ({
                   <Pin className="w-4 h-4 text-[#00f4fe] animate-pulse" />
                 )}
               </div>
-              <h2 className="font-headline text-xl lg:text-3xl text-[#e5e2e1] tracking-tighter uppercase mb-1">
+              <h2 className="font-headline text-xl lg:text-3xl text-[#e5e2e1] tracking-tighter uppercase mb-1 group-hover/card:text-white transition-colors">
                  <EditableText value={project.title} onChange={()=>{}} isEditable={isEditable} />
               </h2>
-              <p className="text-[#e7bcba] font-body text-xs lg:text-sm max-w-lg leading-relaxed border-l border-white/10 pl-4 mb-2 lg:mb-4 line-clamp-2 opacity-70">
+              <p className="text-[#e7bcba] font-body text-xs lg:text-sm max-w-lg leading-relaxed border-l border-white/10 pl-4 mb-2 lg:mb-4 line-clamp-2 opacity-75">
                  <EditableText value={project.summary} onChange={()=>{}} isEditable={isEditable} multiline />
               </p>
               <div className="flex flex-wrap gap-4 mt-auto border-t border-white/5 pt-4 items-center">
-                <Link href={`/projects/${project.slug}`} className="group/btn flex items-center gap-2 px-5 py-2.5 bg-[#d90429] text-white font-label text-[10px] uppercase tracking-widest font-bold hover:shadow-[0_0_20px_rgba(217,4,41,0.5)] transition-all active:scale-95">
+                <span className="group/btn flex items-center gap-2 px-5 py-2.5 bg-[#d90429] text-white font-label text-[10px] uppercase tracking-widest font-bold group-hover/card:shadow-[0_0_20px_rgba(217,4,41,0.5)] transition-all">
                   <Terminal className="w-3.5 h-3.5" />
                   <span>OPEN_PROJECT</span>
-                  <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
-                </Link>
+                  <ArrowRight className="w-3.5 h-3.5 group-hover/card:translate-x-1 transition-transform" />
+                </span>
               </div>
             </div>
 
             {/* Admin Controls - Floating at top */}
             {isEditable && (
-              <div className="absolute top-2 left-2 right-2 flex justify-between z-50">
+              <div className="absolute top-2 left-2 right-2 flex justify-between z-50 pointer-events-auto">
                   <div className="flex gap-1">
                     <button onClick={() => onTogglePin?.(project.id, !project.isPinned)} className={`p-1.5 border text-[8px] uppercase tracking-widest ${project.isPinned ? 'bg-[#00f4fe] text-black border-[#00f4fe]' : 'bg-black/80 text-white/50 border-white/10'}`}>
                       {project.isPinned ? 'PINNED' : 'PIN'}

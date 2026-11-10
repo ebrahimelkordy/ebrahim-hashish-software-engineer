@@ -303,8 +303,8 @@ async function main() {
     await prisma.about.update({
       where: { id: about.id },
       data: {
-        role: "Senior Full-Stack & AI Systems Architect",
-        bio: "Senior Software Engineer specializing in Distributed Backend Systems, Database Optimization, and Autonomous AI Agent Pipelines. Expert in building multi-provider AI orchestration layers (Google Gemini 2.0, OpenAI, Groq), WhatsApp automated accounting gateways, immutable atomic ledgers in NestJS/PostgreSQL, and high-conversion Next.js / Remix frontends. Engineered for zero-data-loss resilience, rigorous auditability, and sub-second execution under enterprise load."
+        role: "Full-Stack Software Engineer",
+        bio: "Full-Stack Software Engineer specializing in Distributed Backend Systems, Database Optimization, and Autonomous AI Agent Pipelines. Expert in building multi-provider AI orchestration layers (Google Gemini 2.0, OpenAI, Groq), WhatsApp automated accounting gateways, immutable atomic ledgers in NestJS/PostgreSQL, and high-conversion Next.js / Remix frontends. Engineered for zero-data-loss resilience, rigorous auditability, and sub-second execution under enterprise load."
       }
     });
     console.log('✓ Updated About record with AI role & bio.');

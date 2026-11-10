@@ -13,7 +13,7 @@ export const mockPortfolioData = {
     firstName: "EBRAHIM",
     lastName: "HASHISH",
     bio: "Full-Stack Software Engineer specializing in Distributed Backend Systems, Database Optimization, and Autonomous AI Agent Pipelines. Expert in building multi-provider AI orchestration layers (Google Gemini 2.0, OpenAI, Groq), WhatsApp automated accounting gateways, immutable atomic ledgers in NestJS/PostgreSQL, and high-conversion Next.js / Remix frontends. Engineered for zero-data-loss resilience, rigorous auditability, and sub-second execution under enterprise load.",
-    role: "Full-Stack & AI Systems Architect",
+    role: "Full-Stack Software Engineer",
     imageUrl: "https://res.cloudinary.com/drcfpswre/image/upload/v1788211139/zz6ychzibw7jrihuuwdw.jpg",
     cvUrl: "/cv.pdf"
   },

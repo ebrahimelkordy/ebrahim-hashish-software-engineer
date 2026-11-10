@@ -13,13 +13,13 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://ebrahimelkordy.verc
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Ebrahim Hashish | Senior Full-Stack Engineer & AI Systems Architect",
+    default: "Ebrahim Hashish | Full-Stack Software Engineer & AI Systems Architect",
     template: "%s | Ebrahim Hashish",
   },
-  description: "Senior Full-Stack Software Engineer & AI Systems Architect available for international contract & remote engineering. Specializing in high-performance Next.js 16, NestJS 11, PostgreSQL, and autonomous AI agents for startups & enterprise.",
+  description: "Full-Stack Software Engineer & AI Systems Architect available for international contract & remote engineering. Specializing in high-performance Next.js 16, NestJS 11, PostgreSQL, and autonomous AI agents for startups & enterprise.",
   keywords: [
     "Hire Full Stack Developer",
-    "Senior Software Engineer",
+    "Software Engineer",
     "Next.js Developer for hire",
     "NestJS Backend Architect",
     "AI Agent Engineer",
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     alternateLocale: "ar_EG",
     url: siteUrl,
-    title: "Ebrahim Hashish | Senior Full-Stack Engineer & AI Systems Architect",
+    title: "Ebrahim Hashish | Full-Stack Software Engineer & AI Systems Architect",
     description: "Building mission-critical web applications, autonomous AI agents, and high-performance backend systems for international clients and enterprises worldwide.",
     siteName: "Ebrahim Hashish Engineering Core",
     images: [
@@ -59,13 +59,13 @@ export const metadata: Metadata = {
         url: "https://res.cloudinary.com/drcfpswre/image/upload/v1788211139/zz6ychzibw7jrihuuwdw.jpg",
         width: 1200,
         height: 630,
-        alt: "Ebrahim Hashish — Senior Full-Stack Software Engineer",
+        alt: "Ebrahim Hashish — Full-Stack Software Engineer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ebrahim Hashish | Senior Full-Stack Engineer & AI Systems Architect",
+    title: "Ebrahim Hashish | Full-Stack Software Engineer & AI Systems Architect",
     description: "Available for worldwide remote contracts. Next.js, NestJS, PostgreSQL & AI Agent Pipelines.",
     images: ["https://res.cloudinary.com/drcfpswre/image/upload/v1788211139/zz6ychzibw7jrihuuwdw.jpg"],
   },
@@ -90,8 +90,8 @@ const jsonLdData = {
       "@id": `${siteUrl}/#person`,
       "name": "Ebrahim Hashish",
       "alternateName": ["إبراهيم حشيش", "Abo Hashish"],
-      "jobTitle": "Senior Full-Stack Software Engineer & AI Systems Architect",
-      "description": "Senior Software Engineer specializing in Next.js, NestJS, PostgreSQL, Distributed Systems, and Autonomous AI Agent Pipelines.",
+      "jobTitle": "Full-Stack Software Engineer & AI Systems Architect",
+      "description": "Full-Stack Software Engineer specializing in Next.js, NestJS, PostgreSQL, Distributed Systems, and Autonomous AI Agent Pipelines.",
       "url": siteUrl,
       "image": "https://res.cloudinary.com/drcfpswre/image/upload/v1788211139/zz6ychzibw7jrihuuwdw.jpg",
       "sameAs": [

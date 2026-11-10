@@ -59,29 +59,45 @@ export const ProjectsPreview = ({ projects, isEditable = false }: { projects: an
               <SpotlightCard 
                 key={project.id || idx}
                 spotlightColor={spotlightColor} 
-                className={`${spanClass} h-[450px] glass-panel border ${borderClass} p-8 flex flex-col justify-end relative group transition-colors duration-500`}
+                className={`${spanClass} h-[450px] glass-panel border ${borderClass} p-8 flex flex-col justify-end relative group transition-colors duration-500 overflow-hidden ${!isEditable ? 'cursor-pointer' : ''}`}
               >
+                {!isEditable && (
+                  <Link 
+                    href={`/projects/${project.slug}`} 
+                    className="absolute inset-0 z-25 cursor-pointer" 
+                    aria-label={`View ${project.title}`} 
+                  />
+                )}
+
                 <EditableImage 
                   src={project.screenshots?.[0]?.src || ""}
                   alt={project.title}
                   onChange={(src) => handleImageChange(project, src)}
                   isEditable={isEditable}
                   containerClassName="absolute inset-0 w-full h-full z-0"
-                  className="object-cover opacity-30 mix-blend-overlay group-hover:opacity-50 transition-opacity duration-700"
+                  className="object-cover opacity-55 group-hover:opacity-80 group-hover:scale-[1.03] transition-all duration-700 ease-out filter contrast-[1.05] brightness-[0.9]"
                   priority={true}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0e0e0e] via-[#0e0e0e]/90 to-transparent z-10"></div>
                 
-                <div className="relative z-20 space-y-4 max-w-3xl">
+                {/* Tech scanline texture to keep terminal theme */}
+                <div className="absolute inset-0 scanline-overlay pointer-events-none z-[8] opacity-25"></div>
+
+                {/* Cinematic gradient: clear at top/mid, protected at bottom for text readability */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0e0e0e] via-[#0e0e0e]/60 to-[#0e0e0e]/15 z-10 pointer-events-none"></div>
+                
+                <div className="relative z-20 space-y-4 max-w-3xl pointer-events-none">
                   <div className="flex items-center gap-3 mb-2">
                     <div className="text-[#00f4fe] bg-[#00f4fe]/10 p-2 border border-[#00f4fe]/20">
                       {idx === 0 ? <Rocket className="w-5 h-5" /> : <Wrench className="w-5 h-5" />}
                     </div>
                     <span className="font-body text-xs text-[#00f4fe] uppercase tracking-widest truncate">{project.tagline}</span>
                   </div>
-                  <h3 className="font-headline text-2xl md:text-4xl font-bold text-[#e5e2e1] tracking-tighter uppercase">{project.title}</h3>
+                  <h3 className="font-headline text-2xl md:text-4xl font-bold text-[#e5e2e1] tracking-tighter uppercase group-hover:text-white transition-colors">{project.title}</h3>
                   <p className="text-[#e7bcba] text-sm line-clamp-2">{project.summary}</p>
-                  <Link href={`/projects/${project.slug}`} className="inline-block mt-4 font-label text-[10px] text-[#00f4fe] border-b border-[#00f4fe] hover:text-white hover:border-white transition-all uppercase tracking-[0.2em]">View Details</Link>
+                  <div className="inline-flex items-center gap-2 mt-4 font-label text-[10px] text-[#00f4fe] border-b border-[#00f4fe] group-hover:text-white group-hover:border-white transition-all uppercase tracking-[0.2em]">
+                    <span>View Details</span>
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  </div>
                 </div>
               </SpotlightCard>
             );
@@ -92,20 +108,33 @@ export const ProjectsPreview = ({ projects, isEditable = false }: { projects: an
             <SpotlightCard 
               key={project.id || idx}
               spotlightColor={spotlightColor} 
-              className={`${spanClass} glass-panel border ${borderClass} p-8 flex flex-col justify-between relative group transition-colors duration-500 h-[450px]`}
+              className={`${spanClass} glass-panel border ${borderClass} p-8 flex flex-col justify-between relative group transition-colors duration-500 h-[450px] overflow-hidden ${!isEditable ? 'cursor-pointer' : ''}`}
             >
+              {!isEditable && (
+                <Link 
+                  href={`/projects/${project.slug}`} 
+                  className="absolute inset-0 z-25 cursor-pointer" 
+                  aria-label={`View ${project.title}`} 
+                />
+              )}
+
               <EditableImage 
                 src={project.screenshots?.[0]?.src || ""}
                 alt={project.title}
                 onChange={(src) => handleImageChange(project, src)}
                 isEditable={isEditable}
                 containerClassName="absolute inset-0 w-full h-full z-0"
-                className="object-cover opacity-20 mix-blend-multiply group-hover:opacity-40 transition-opacity duration-700"
+                className="object-cover opacity-50 group-hover:opacity-75 group-hover:scale-[1.03] transition-all duration-700 ease-out filter contrast-[1.05] brightness-[0.9]"
                 priority={true}
               />
-              <div className="absolute inset-0 bg-gradient-to-b from-[#0e0e0e]/20 to-[#0e0e0e]/90 z-10"></div>
               
-              <div className="relative z-20 flex justify-between items-start mb-12">
+              {/* Tech scanline texture to keep terminal theme */}
+              <div className="absolute inset-0 scanline-overlay pointer-events-none z-[8] opacity-25"></div>
+
+              {/* Cinematic gradient: clear at top/mid, protected at bottom for text readability */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0e0e0e] via-[#0e0e0e]/60 to-[#0e0e0e]/15 z-10 pointer-events-none"></div>
+              
+              <div className="relative z-20 flex justify-between items-start mb-12 pointer-events-none">
                 <div className="text-[#d90429]">
                   {idx === 1 ? <ShoppingBag className="w-7 h-7" /> : <Landmark className="w-7 h-7" />}
                 </div>
@@ -116,12 +145,13 @@ export const ProjectsPreview = ({ projects, isEditable = false }: { projects: an
                 )}
               </div>
 
-              <div className="relative z-20">
-                <h3 className="font-headline text-xl font-bold text-[#e5e2e1] tracking-tight mb-2 truncate uppercase">{project.title}</h3>
+              <div className="relative z-20 pointer-events-none">
+                <h3 className="font-headline text-xl font-bold text-[#e5e2e1] tracking-tight mb-2 truncate uppercase group-hover:text-white transition-colors">{project.title}</h3>
                 <p className="font-body text-xs text-[#e7bcba] opacity-80 leading-relaxed mb-6 line-clamp-3">{project.summary}</p>
-                <Link href={`/projects/${project.slug}`} className="font-label text-xs uppercase tracking-widest text-[#00f4fe] hover:text-white flex items-center gap-2 group/btn">
-                  EXPLORE <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-all" />
-                </Link>
+                <div className="font-label text-xs uppercase tracking-widest text-[#00f4fe] group-hover:text-white flex items-center gap-2 group/btn">
+                  <span>EXPLORE</span>
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                </div>
               </div>
             </SpotlightCard>
           );
