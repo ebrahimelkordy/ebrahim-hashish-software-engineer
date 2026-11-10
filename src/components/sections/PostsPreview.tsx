@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { SpotlightCard } from "../animations/SpotlightCard";
 import { ScrambleText } from "../animations/ScrambleText";
+import { ArrowRight, Pin, ChevronRight } from "lucide-react";
 
 export const PostsPreview = ({ posts }: { posts: any[] }) => {
   // Take up to 2 posts for the home page preview
@@ -18,7 +19,7 @@ export const PostsPreview = ({ posts }: { posts: any[] }) => {
           </h2>
         </div>
         <Link href="/posts" className="font-label text-sm uppercase tracking-widest text-[#e7bcba] hover:text-[#d90429] transition-colors flex items-center gap-2 group">
-          READ ALL <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+          READ ALL <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
         </Link>
       </div>
 
@@ -33,7 +34,7 @@ export const PostsPreview = ({ posts }: { posts: any[] }) => {
                  <p className="font-label text-[10px] text-[#e7bcba] uppercase tracking-[0.2em] opacity-50">{post.readTime}</p>
                </div>
                {post.isPinned && (
-                  <span className="material-symbols-outlined text-[#d90429] text-sm animate-pulse">push_pin</span>
+                  <Pin className="w-4 h-4 text-[#d90429] animate-pulse" />
                )}
             </div>
 
@@ -54,7 +55,7 @@ export const PostsPreview = ({ posts }: { posts: any[] }) => {
             </div>
 
             <Link href={`/posts/${post.slug || post.id}`} className="inline-flex items-center gap-2 font-label text-[10px] text-[#d90429] hover:text-[#00f4fe] uppercase tracking-[0.3em] font-bold group/link transition-colors">
-              ACCESS_FILE <span className="material-symbols-outlined text-xs group-hover/link:translate-x-2 transition-transform">chevron_right</span>
+              ACCESS_FILE <ChevronRight className="w-3.5 h-3.5 group-hover/link:translate-x-1.5 transition-transform" />
             </Link>
           </SpotlightCard>
         ))}

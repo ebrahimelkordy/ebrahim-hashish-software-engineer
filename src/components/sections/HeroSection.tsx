@@ -5,6 +5,7 @@ import { EditableText } from "../EditableText";
 import { EditableImage } from "../EditableImage";
 import { useState, useEffect } from "react";
 import { ScrambleText } from "../animations/ScrambleText";
+import { Fingerprint } from "lucide-react";
 
 export const HeroSection = ({ data, isEditable = false, onUpdate }: { data: any, isEditable?: boolean, onUpdate?: (data: any) => void }) => {
   const [heroData, setHeroData] = useState(data);
@@ -157,7 +158,7 @@ export const HeroSection = ({ data, isEditable = false, onUpdate }: { data: any,
             </div>
 
             <div className="absolute bottom-3 sm:bottom-4 right-3 sm:right-4 z-[62] flex items-center gap-1 sm:gap-1.5 bg-black/70 px-2 sm:px-2.5 py-0.5 sm:py-1 border border-[#d90429]/40 backdrop-blur-sm shadow-md">
-              <span className="material-symbols-outlined text-[#d90429] text-xs sm:text-sm animate-pulse">fingerprint</span>
+              <Fingerprint className="w-3.5 h-3.5 text-[#d90429] animate-pulse" />
               <span className="font-mono text-[7px] sm:text-[8px] text-[#d90429] uppercase tracking-widest font-bold">VERIFIED</span>
             </div>
 

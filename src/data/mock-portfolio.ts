@@ -12,8 +12,8 @@ export const mockPortfolioData = {
   about: {
     firstName: "EBRAHIM",
     lastName: "HASHISH",
-    bio: "Senior Software Engineer specializing in Distributed Backend Systems, Database Optimization, and Autonomous AI Agent Pipelines. Expert in building multi-provider AI orchestration layers (Google Gemini 2.0, OpenAI, Groq), WhatsApp automated accounting gateways, immutable atomic ledgers in NestJS/PostgreSQL, and high-conversion Next.js / Remix frontends. Engineered for zero-data-loss resilience, rigorous auditability, and sub-second execution under enterprise load.",
-    role: "Senior Full-Stack & AI Systems Architect",
+    bio: "Full-Stack Software Engineer specializing in Distributed Backend Systems, Database Optimization, and Autonomous AI Agent Pipelines. Expert in building multi-provider AI orchestration layers (Google Gemini 2.0, OpenAI, Groq), WhatsApp automated accounting gateways, immutable atomic ledgers in NestJS/PostgreSQL, and high-conversion Next.js / Remix frontends. Engineered for zero-data-loss resilience, rigorous auditability, and sub-second execution under enterprise load.",
+    role: "Full-Stack & AI Systems Architect",
     imageUrl: "https://res.cloudinary.com/drcfpswre/image/upload/v1788211139/zz6ychzibw7jrihuuwdw.jpg",
     cvUrl: "/cv.pdf"
   },
@@ -67,7 +67,9 @@ export const mockPortfolioData = {
         { id: 'f5', name: 'Tailwind CSS v4 & Custom Design Systems' },
         { id: 'f6', name: 'Radix UI Primitives' },
         { id: 'f7', name: 'Framer Motion (60fps Scroll Physics)' },
-        { id: 'f8', name: 'Bilingual RTL / LTR Localization Engines' }
+        { id: 'f8', name: 'Bilingual RTL / LTR Localization Engines' },
+        { id: 'f9', name: 'Three.js & WebGL 2.0 (Custom GLSL Shaders)' },
+        { id: 'f10', name: 'Procedural 3D Spatial Systems & Raymarching' }
       ]
     },
     { 
@@ -83,7 +85,7 @@ export const mockPortfolioData = {
   ] as unknown as GroupedSkills,
   experiences: [
     {
-      title: "Senior Full-Stack Engineer & AI Systems Architect",
+      title: "Full-Stack Engineer & AI Systems Architect",
       company: "Enterprise Projects & High-Ticket Ventures",
       period: "2024 - PRESENT",
       description: "Architecting and delivering mission-critical web platforms, autonomous AI accounting agents, atomic financial ERPs, high-traffic e-commerce flagships, and idempotent data migration pipelines.",

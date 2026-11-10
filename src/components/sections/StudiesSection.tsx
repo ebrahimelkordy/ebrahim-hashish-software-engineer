@@ -1,6 +1,7 @@
 "use client";
 
 import { EditableText } from "../EditableText";
+import { GraduationCap, Plus, Trash2 } from "lucide-react";
 
 export const StudiesSection = ({ studies, isEditable = false, onAdd, onDelete, onUpdate }: { 
   studies: any[], 
@@ -13,7 +14,7 @@ export const StudiesSection = ({ studies, isEditable = false, onAdd, onDelete, o
     <section className="relative z-10 w-full flex flex-col gap-8">
       <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-[#353534] pb-6 gap-4">
         <div className="flex items-center gap-4">
-          <span className="material-symbols-outlined text-[#00f4fe] text-3xl">school</span>
+          <GraduationCap className="w-8 h-8 text-[#00f4fe]" />
           <h2 className="font-headline text-3xl md:text-3xl font-bold tracking-tight text-[#e5e2e1] uppercase">DATA_SOURCES [STUDIES]</h2>
         </div>
         
@@ -22,7 +23,7 @@ export const StudiesSection = ({ studies, isEditable = false, onAdd, onDelete, o
             onClick={onAdd}
             className="px-4 py-2 bg-[#00f4fe] text-black font-label text-[10px] uppercase tracking-widest hover:bg-[#00d0d8] transition-colors flex items-center gap-2"
           >
-            <span className="material-symbols-outlined text-sm">add</span> ADD_NEW_STUDY
+            <Plus className="w-3.5 h-3.5" /> ADD_NEW_STUDY
           </button>
         )}
       </div>
@@ -46,7 +47,7 @@ export const StudiesSection = ({ studies, isEditable = false, onAdd, onDelete, o
                    onClick={() => onDelete?.(study.id)}
                    className="text-[#d90429] opacity-0 group-hover:opacity-100 transition-opacity hover:scale-125"
                  >
-                   <span className="material-symbols-outlined text-sm">delete</span>
+                   <Trash2 className="w-3.5 h-3.5" />
                  </button>
                )}
              </div>

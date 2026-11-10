@@ -2,6 +2,62 @@
 
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
+import { 
+  Terminal, 
+  Search, 
+  SearchX, 
+  Rocket, 
+  ShoppingBag, 
+  Landmark, 
+  Wrench, 
+  ShoppingCart, 
+  GraduationCap, 
+  Download, 
+  Mail, 
+  Cpu, 
+  MessageSquare, 
+  Home, 
+  Database, 
+  FileText,
+  Copy,
+  Code,
+  Share2,
+  FolderOpen,
+  Fingerprint,
+  Send,
+  Activity,
+  CheckCircle
+} from "lucide-react";
+
+const renderCmdIcon = (iconName: string, className = "") => {
+  switch (iconName) {
+    case "rocket_launch": return <Rocket className={className} />;
+    case "shopping_bag": return <ShoppingBag className={className} />;
+    case "account_balance": return <Landmark className={className} />;
+    case "precision_manufacturing": return <Wrench className={className} />;
+    case "shopping_cart": return <ShoppingCart className={className} />;
+    case "school": return <GraduationCap className={className} />;
+    case "download": return <Download className={className} />;
+    case "mail": return <Mail className={className} />;
+    case "memory":
+    case "person": return <Cpu className={className} />;
+    case "chat": return <MessageSquare className={className} />;
+    case "home": return <Home className={className} />;
+    case "database": return <Database className={className} />;
+    case "article": return <FileText className={className} />;
+    case "copy_all": return <Copy className={className} />;
+    case "search": return <Search className={className} />;
+    case "code": return <Code className={className} />;
+    case "share": return <Share2 className={className} />;
+    case "folder_open": return <FolderOpen className={className} />;
+    case "fingerprint": return <Fingerprint className={className} />;
+    case "send": return <Send className={className} />;
+    case "wifi_tethering": return <Activity className={className} />;
+    case "verified":
+    case "check_circle": return <CheckCircle className={className} />;
+    default: return <Terminal className={className} />;
+  }
+};
 
 interface CommandItem {
   id: string;
@@ -65,6 +121,19 @@ export const CommandPalette = () => {
 
   const commands: CommandItem[] = [
     // Featured Projects
+    {
+      id: "p-aldebaran",
+      category: "PROJECTS",
+      title: "ALDEBARAN — Spatial Computing Studio",
+      subtitle: "Relativistic GLSL Optics, Custom Shaders & 3D WebGL",
+      icon: "rocket_launch",
+      badge: "THREE.JS // GLSL // REACT 18",
+      action: () => {
+        router.push("/projects/aldebaran-spatial-computing-studio");
+        setIsOpen(false);
+      },
+      keywords: "aldebaran threejs webgl shaders spatial 3d physics space astronomical black hole nebula orion",
+    },
     {
       id: "p-manie",
       category: "PROJECTS",
@@ -333,7 +402,7 @@ export const CommandPalette = () => {
   if (!isOpen) {
     return toastMessage ? (
       <div className="fixed bottom-6 right-6 z-[200] font-mono text-xs text-[#00f4fe] bg-black/90 border border-[#00f4fe]/50 px-4 py-3 shadow-[0_0_25px_rgba(0,244,254,0.3)] backdrop-blur-xl animate-in slide-in-from-bottom-5 duration-300 flex items-center gap-3">
-        <span className="material-symbols-outlined text-sm text-[#00f4fe] animate-pulse">check_circle</span>
+        <CheckCircle className="w-4 h-4 text-[#00f4fe] animate-pulse shrink-0" />
         <span>{toastMessage}</span>
       </div>
     ) : null;
@@ -344,7 +413,7 @@ export const CommandPalette = () => {
       {/* Toast Feedback */}
       {toastMessage && (
         <div className="fixed top-6 right-6 z-[300] font-mono text-xs text-[#00f4fe] bg-black/90 border border-[#00f4fe]/50 px-4 py-3 shadow-[0_0_25px_rgba(0,244,254,0.3)] backdrop-blur-xl animate-in slide-in-from-top-5 duration-300 flex items-center gap-3">
-          <span className="material-symbols-outlined text-sm text-[#00f4fe]">check_circle</span>
+          <CheckCircle className="w-4 h-4 text-[#00f4fe] shrink-0" />
           <span>{toastMessage}</span>
         </div>
       )}
@@ -359,7 +428,7 @@ export const CommandPalette = () => {
       <div className="fixed top-[15%] md:top-[20%] left-1/2 -translate-x-1/2 w-[92%] max-w-2xl bg-[#0e0e0e]/95 border border-[#00f4fe]/30 shadow-[0_0_50px_rgba(0,244,254,0.2)] z-[160] overflow-hidden flex flex-col max-h-[70vh] animate-in zoom-in-95 duration-200 neon-border-tl">
         {/* Top Header & Search Input */}
         <div className="flex items-center gap-3 px-5 py-4 border-b border-white/10 bg-black/40">
-          <span className="material-symbols-outlined text-[#00f4fe] text-xl animate-pulse">terminal</span>
+          <Terminal className="w-5 h-5 text-[#00f4fe] animate-pulse shrink-0" />
           <input
             ref={inputRef}
             type="text"
@@ -381,7 +450,7 @@ export const CommandPalette = () => {
         <div className="overflow-y-auto p-2 divide-y divide-white/5 space-y-1">
           {filteredCommands.length === 0 ? (
             <div className="p-8 text-center space-y-2 font-mono">
-              <span className="material-symbols-outlined text-[#d90429] text-3xl">search_off</span>
+              <SearchX className="w-8 h-8 text-[#d90429] mx-auto opacity-80" />
               <p className="text-xs text-white/50 uppercase tracking-widest">NO_MATCHING_COMMANDS_FOUND</p>
               <p className="text-[10px] text-white/30">Try searching for &quot;cv&quot;, &quot;sanad&quot;, &quot;email&quot;, or &quot;projects&quot;</p>
             </div>
@@ -400,12 +469,13 @@ export const CommandPalette = () => {
                   }`}
                 >
                   <div className="flex items-center gap-3.5 min-w-0">
-                    <span
-                      className={`material-symbols-outlined text-lg transition-colors ${
-                        isSelected ? "text-[#00f4fe]" : "text-[#d90429] opacity-70 group-hover:opacity-100"
-                      }`}
-                    >
-                      {cmd.icon}
+                    <span className="shrink-0 flex items-center justify-center">
+                      {renderCmdIcon(
+                        cmd.icon,
+                        `w-4 h-4 transition-colors ${
+                          isSelected ? "text-[#00f4fe]" : "text-[#d90429] opacity-70 group-hover:opacity-100"
+                        }`
+                      )}
                     </span>
                     <div className="min-w-0">
                       <div className="flex items-center gap-2">

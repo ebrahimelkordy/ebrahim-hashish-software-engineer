@@ -6,6 +6,7 @@ import { EditableImage } from "../EditableImage";
 import { updateProject } from "@/lib/actions";
 import { SpotlightCard } from "../animations/SpotlightCard";
 import { ScrambleText } from "../animations/ScrambleText";
+import { ArrowRight, Rocket, Wrench, ShoppingBag, Landmark } from "lucide-react";
 
 export const ProjectsPreview = ({ projects, isEditable = false }: { projects: any[], isEditable?: boolean }) => {
   // Take up to 4 projects for the brick pattern preview (Big-Small, Small-Big)
@@ -39,7 +40,7 @@ export const ProjectsPreview = ({ projects, isEditable = false }: { projects: an
           </h2>
         </div>
         <Link href="/projects" className="font-label text-sm uppercase tracking-widest text-[#e7bcba] hover:text-[#00f4fe] transition-colors flex items-center gap-2 group">
-          VIEW ALL <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+          VIEW ALL <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
         </Link>
       </div>
 
@@ -73,9 +74,9 @@ export const ProjectsPreview = ({ projects, isEditable = false }: { projects: an
                 
                 <div className="relative z-20 space-y-4 max-w-3xl">
                   <div className="flex items-center gap-3 mb-2">
-                    <span className="material-symbols-outlined text-[#00f4fe] bg-[#00f4fe]/10 p-2 border border-[#00f4fe]/20">
-                      {idx === 0 ? "rocket_launch" : "precision_manufacturing"}
-                    </span>
+                    <div className="text-[#00f4fe] bg-[#00f4fe]/10 p-2 border border-[#00f4fe]/20">
+                      {idx === 0 ? <Rocket className="w-5 h-5" /> : <Wrench className="w-5 h-5" />}
+                    </div>
                     <span className="font-body text-xs text-[#00f4fe] uppercase tracking-widest truncate">{project.tagline}</span>
                   </div>
                   <h3 className="font-headline text-2xl md:text-4xl font-bold text-[#e5e2e1] tracking-tighter uppercase">{project.title}</h3>
@@ -105,9 +106,9 @@ export const ProjectsPreview = ({ projects, isEditable = false }: { projects: an
               <div className="absolute inset-0 bg-gradient-to-b from-[#0e0e0e]/20 to-[#0e0e0e]/90 z-10"></div>
               
               <div className="relative z-20 flex justify-between items-start mb-12">
-                <span className="material-symbols-outlined text-[#d90429] text-3xl">
-                  {idx === 1 ? "shopping_bag" : "account_balance"}
-                </span>
+                <div className="text-[#d90429]">
+                  {idx === 1 ? <ShoppingBag className="w-7 h-7" /> : <Landmark className="w-7 h-7" />}
+                </div>
                 {project.codeName && (
                   <span className="font-mono text-[9px] text-[#00f4fe] bg-black/40 px-2 py-0.5 border border-white/5 uppercase tracking-widest">
                     {project.codeName}
@@ -119,7 +120,7 @@ export const ProjectsPreview = ({ projects, isEditable = false }: { projects: an
                 <h3 className="font-headline text-xl font-bold text-[#e5e2e1] tracking-tight mb-2 truncate uppercase">{project.title}</h3>
                 <p className="font-body text-xs text-[#e7bcba] opacity-80 leading-relaxed mb-6 line-clamp-3">{project.summary}</p>
                 <Link href={`/projects/${project.slug}`} className="font-label text-xs uppercase tracking-widest text-[#00f4fe] hover:text-white flex items-center gap-2 group/btn">
-                  EXPLORE <span className="material-symbols-outlined text-xs group-hover/btn:translate-x-1 transition-all">arrow_forward</span>
+                  EXPLORE <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-all" />
                 </Link>
               </div>
             </SpotlightCard>

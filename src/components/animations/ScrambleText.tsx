@@ -22,12 +22,7 @@ export const ScrambleText = ({
   
   useEffect(() => {
     if (!isInView) {
-      // Scramble completely while waiting
-      const initialScramble = text
-        .split("")
-        .map((char) => (char === " " ? " " : CHARACTERS[Math.floor(Math.random() * CHARACTERS.length)]))
-        .join("");
-      setDisplayText(initialScramble);
+      setDisplayText(text);
       return;
     }
 

@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { EditableText } from "../EditableText";
 import { EditableImage } from "../EditableImage";
+import { MessageSquare, Download, RefreshCw, Upload, Link2, ExternalLink } from "lucide-react";
 
 export const IdentitySection = ({ data, isEditable = false, onUpdate }: { data: any, isEditable?: boolean, onUpdate?: (data: any) => void }) => {
   const [aboutData, setAboutData] = useState(data);
@@ -134,7 +135,7 @@ export const IdentitySection = ({ data, isEditable = false, onUpdate }: { data: 
               rel="noopener noreferrer"
               className="px-8 py-4 bg-[#00f4fe]/10 border border-[#00f4fe]/40 text-[#00f4fe] font-label text-[10px] uppercase tracking-[0.2em] font-bold hover:bg-[#00f4fe] hover:text-black hover:shadow-[0_0_20px_rgba(0,244,254,0.4)] transition-all flex items-center gap-2"
             >
-              <span className="material-symbols-outlined text-sm">chat</span>
+              <MessageSquare className="w-4 h-4" />
               COMMUNICATE_WHATSAPP
             </a>
             {aboutData.cvUrl && (
@@ -145,7 +146,7 @@ export const IdentitySection = ({ data, isEditable = false, onUpdate }: { data: 
                 rel="noopener noreferrer"
                 className="px-5 py-4 border border-white/10 text-white/40 hover:text-white hover:border-white/30 font-label text-[10px] uppercase tracking-[0.2em] transition-all flex items-center gap-1.5 opacity-70 hover:opacity-100"
               >
-                <span className="material-symbols-outlined text-xs">download</span>
+                <Download className="w-3.5 h-3.5" />
                 EXPORT_CV
               </a>
             )}
@@ -176,12 +177,12 @@ export const IdentitySection = ({ data, isEditable = false, onUpdate }: { data: 
             >
               {isUploading ? (
                 <>
-                  <span className="material-symbols-outlined text-sm animate-spin">sync</span>
+                  <RefreshCw className="w-4 h-4 animate-spin" />
                   UPLOADING_CV...
                 </>
               ) : (
                 <>
-                  <span className="material-symbols-outlined text-sm">upload_file</span>
+                  <Upload className="w-4 h-4" />
                   [CLICK TO UPLOAD CV.PDF]
                 </>
               )}
@@ -193,7 +194,7 @@ export const IdentitySection = ({ data, isEditable = false, onUpdate }: { data: 
                 OR PASTE URL MANUALLY
               </label>
               <div className="flex items-center gap-2 text-sm text-[#e7bcba]">
-                <span className="material-symbols-outlined text-[12px] text-white/30">link</span>
+                <Link2 className="w-3.5 h-3.5 text-white/30" />
                 <EditableText
                   value={aboutData.cvUrl}
                   onChange={(v) => handleChange('cvUrl', v)}
@@ -211,7 +212,7 @@ export const IdentitySection = ({ data, isEditable = false, onUpdate }: { data: 
                 rel="noopener noreferrer"
                 className="text-[9px] font-label text-[#00f4fe]/50 hover:text-[#00f4fe] flex items-center gap-1 transition-all"
               >
-                <span className="material-symbols-outlined text-[10px]">open_in_new</span>
+                <ExternalLink className="w-3 h-3" />
                 TEST_CURRENT_LINK
               </a>
             )}

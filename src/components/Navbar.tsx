@@ -2,6 +2,16 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { 
+  Terminal, 
+  Search, 
+  Download, 
+  Sliders, 
+  Home, 
+  Cpu, 
+  Database, 
+  FileText 
+} from "lucide-react";
 
 export const Navbar = ({ cvUrl = "" }: { cvUrl?: string }) => {
   const pathname = usePathname();
@@ -15,10 +25,10 @@ export const Navbar = ({ cvUrl = "" }: { cvUrl?: string }) => {
   };
 
   const navItems = [
-    { label: "HOME", path: "/", icon: "home" },
-    { label: "IDENTITY", path: "/profile", icon: "memory" },
-    { label: "WORK", path: "/projects", icon: "database" },
-    { label: "POSTS", path: "/posts", icon: "article" },
+    { label: "HOME", path: "/", icon: Home },
+    { label: "IDENTITY", path: "/profile", icon: Cpu },
+    { label: "WORK", path: "/projects", icon: Database },
+    { label: "POSTS", path: "/posts", icon: FileText },
   ];
 
   const triggerCommandPalette = () => {
@@ -33,7 +43,7 @@ export const Navbar = ({ cvUrl = "" }: { cvUrl?: string }) => {
           
           {/* Logo / Brand */}
           <Link href="/" className="flex items-center gap-2.5 sm:gap-3.5 group cursor-pointer">
-            <span className="material-symbols-outlined text-[#00f4fe] text-xl sm:text-2xl font-black group-hover:rotate-12 transition-transform">terminal</span>
+            <Terminal className="w-5 h-5 sm:w-6 sm:h-6 text-[#00f4fe] group-hover:rotate-12 transition-transform" />
             <div className="flex flex-col">
               <span className="font-headline uppercase tracking-[0.15em] sm:tracking-[0.2em] text-xs sm:text-sm text-[#e5e2e1] font-bold group-hover:text-[#00f4fe] transition-colors">ABOHASHISH_SYS</span>
               <span className="hidden sm:block font-mono text-[8px] text-[#00f4fe]/60 tracking-widest">ENGINEERING_CORE // v2.0</span>
@@ -57,7 +67,7 @@ export const Navbar = ({ cvUrl = "" }: { cvUrl?: string }) => {
               className="font-mono text-[10px] sm:text-[11px] text-[#e5e2e1]/80 bg-black/50 hover:bg-[#00f4fe]/10 hover:text-[#00f4fe] border border-white/10 hover:border-[#00f4fe]/40 px-2.5 sm:px-3 py-1.5 transition-all flex items-center gap-2 cursor-pointer shadow-sm group"
               title="Open Command Palette (Cmd+K)"
             >
-              <span className="material-symbols-outlined text-xs sm:text-sm text-[#00f4fe] group-hover:rotate-45 transition-transform">search</span>
+              <Search className="w-3.5 h-3.5 text-[#00f4fe] group-hover:rotate-45 transition-transform" />
               <span className="hidden sm:inline font-mono text-[9px] sm:text-[10px] tracking-wider uppercase opacity-80">COMMANDS</span>
               <kbd className="bg-white/10 px-1 sm:px-1.5 py-0.5 text-[8px] sm:text-[9px] border border-white/10 text-[#00f4fe] font-mono tracking-widest">
                 ⌘K
@@ -88,14 +98,14 @@ export const Navbar = ({ cvUrl = "" }: { cvUrl?: string }) => {
                 className="hidden md:flex font-mono text-[9px] tracking-wider text-white/40 hover:text-[#e5e2e1] hover:border-white/20 px-2 py-1.5 border border-white/5 bg-white/[0.02] transition-all items-center gap-1 opacity-60 hover:opacity-100"
                 title="Download Technical CV / Resume"
               >
-                 <span className="material-symbols-outlined text-[12px]">download</span>
+                 <Download className="w-3 h-3" />
                  <span>CV</span>
               </a>
             )}
 
             {/* Admin Settings Link */}
-            <Link href="/admin" className="text-white/30 hover:text-[#00f4fe] transition-all hover:rotate-90 p-1">
-              <span className="material-symbols-outlined text-lg sm:text-xl">settings_input_component</span>
+            <Link href="/admin" className="text-white/30 hover:text-[#00f4fe] transition-all hover:rotate-90 p-1" title="Admin Settings">
+              <Sliders className="w-4 h-4 sm:w-5 sm:h-5" />
             </Link>
           </div>
         </div>
@@ -106,6 +116,7 @@ export const Navbar = ({ cvUrl = "" }: { cvUrl?: string }) => {
         <nav className="flex justify-between items-center px-3 py-1.5 bg-[#0e0e0e]/95 backdrop-blur-2xl border border-white/15 rounded-[24px] shadow-[0_12px_35px_rgba(0,0,0,0.85)]">
           {navItems.map((item) => {
             const isActive = pathname === item.path;
+            const IconComponent = item.icon;
             return (
               <Link 
                 key={item.path} 
@@ -116,9 +127,7 @@ export const Navbar = ({ cvUrl = "" }: { cvUrl?: string }) => {
                   : "text-white/40 hover:text-white/70 active:scale-95"
                 }`}
               >
-                <span className={`material-symbols-outlined text-[19px] ${isActive ? "fill-current" : ""}`}>
-                  {item.icon}
-                </span>
+                <IconComponent className="w-4 h-4" />
                 <span className={`font-headline uppercase tracking-[0.1em] text-[7.5px] font-bold ${isActive ? "opacity-100" : "opacity-70"}`}>
                   {item.label}
                 </span>
@@ -132,7 +141,7 @@ export const Navbar = ({ cvUrl = "" }: { cvUrl?: string }) => {
             className="flex flex-col items-center justify-center gap-0.5 px-3 py-1 rounded-[16px] text-[#00f4fe] bg-[#00f4fe]/10 border border-[#00f4fe]/30 active:scale-95 transition-all shadow-[0_0_8px_rgba(0,244,254,0.15)] cursor-pointer"
             title="Search & Commands"
           >
-            <span className="material-symbols-outlined text-[19px]">terminal</span>
+            <Terminal className="w-4 h-4" />
             <span className="font-mono text-[7.5px] font-bold uppercase tracking-widest">⌘K</span>
           </button>
         </nav>

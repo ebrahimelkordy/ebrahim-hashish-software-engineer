@@ -5,6 +5,7 @@ import { EditableText } from "../EditableText";
 import { EditableImage } from "../EditableImage";
 import { updateProject } from "@/lib/actions";
 import { SpotlightCard } from "../animations/SpotlightCard";
+import { Pin, Terminal, ArrowRight, Pencil, Trash2 } from "lucide-react";
 
 export const ProjectsGridSection = ({ 
   projects, 
@@ -74,7 +75,7 @@ export const ProjectsGridSection = ({
                    <EditableText value={project.codeName} onChange={()=>{}} isEditable={isEditable} />
                 </span>
                 {project.isPinned && !isEditable && (
-                  <span className="material-symbols-outlined text-[#00f4fe] text-sm animate-pulse">push_pin</span>
+                  <Pin className="w-4 h-4 text-[#00f4fe] animate-pulse" />
                 )}
               </div>
               <h2 className="font-headline text-xl lg:text-3xl text-[#e5e2e1] tracking-tighter uppercase mb-1">
@@ -85,9 +86,9 @@ export const ProjectsGridSection = ({
               </p>
               <div className="flex flex-wrap gap-4 mt-auto border-t border-white/5 pt-4 items-center">
                 <Link href={`/projects/${project.slug}`} className="group/btn flex items-center gap-2 px-5 py-2.5 bg-[#d90429] text-white font-label text-[10px] uppercase tracking-widest font-bold hover:shadow-[0_0_20px_rgba(217,4,41,0.5)] transition-all active:scale-95">
-                  <span className="material-symbols-outlined text-xs">terminal</span>
+                  <Terminal className="w-3.5 h-3.5" />
                   <span>OPEN_PROJECT</span>
-                  <span className="material-symbols-outlined text-xs group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+                  <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
                 </Link>
               </div>
             </div>
@@ -104,12 +105,12 @@ export const ProjectsGridSection = ({
                       href={`/projects/${project.slug}?edit=true`}
                       className="p-1.5 bg-[#00f4fe]/10 border border-[#00f4fe]/30 text-[#00f4fe] hover:bg-[#00f4fe] hover:text-black transition-all flex items-center gap-1 text-[8px] font-bold uppercase tracking-widest"
                     >
-                      <span className="material-symbols-outlined text-[10px]">edit</span>
+                      <Pencil className="w-3 h-3" />
                       EDIT_DETAILS
                     </Link>
                   </div>
                   <button onClick={() => onDelete?.(project.id)} className="p-1.5 bg-black/80 border border-white/10 text-[#d90429] hover:bg-[#d90429] hover:text-white transition-all">
-                    <span className="material-symbols-outlined text-xs">delete</span>
+                    <Trash2 className="w-3.5 h-3.5" />
                   </button>
               </div>
             )}

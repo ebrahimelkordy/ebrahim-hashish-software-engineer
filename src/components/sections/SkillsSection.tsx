@@ -1,6 +1,7 @@
 "use client";
 
 import { GroupedSkills } from "@/lib/data-fetching";
+import { Cpu, Sliders, Braces, X } from "lucide-react";
 
 export const SkillsSection = ({ skills, isEditable = false, onAdd, onDelete }: { 
   skills: GroupedSkills, 
@@ -23,7 +24,7 @@ export const SkillsSection = ({ skills, isEditable = false, onAdd, onDelete }: {
     <section className="relative z-10 w-full mt-12 lg:mt-32 flex flex-col gap-8 lg:gap-12">
       {/* HEADER: Fluid & Adaptive */}
       <div className="flex items-center gap-4">
-        <span className="material-symbols-outlined text-[#00f4fe] text-2xl lg:text-3xl">memory</span>
+        <Cpu className="w-7 h-7 text-[#00f4fe]" />
         <h2 className="font-headline text-2xl lg:text-4xl font-bold tracking-tight text-white uppercase">SKILL_MATRIX</h2>
         <div className="h-[1px] flex-grow bg-white/5 ml-2 lg:ml-4 relative">
              <div className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 bg-[#00f4fe]/10 border-r border-[#00f4fe] border-b border-[#00f4fe] hidden sm:block"></div>
@@ -42,8 +43,8 @@ export const SkillsSection = ({ skills, isEditable = false, onAdd, onDelete }: {
             
             <div className="flex items-center justify-between mb-8">
               <h3 className="font-label text-[10px] lg:text-xs uppercase tracking-[0.2em] text-white font-bold">{category.category}</h3>
-              <span className={`material-symbols-outlined text-sm lg:text-base ${catIdx % 2 === 0 ? 'text-[#d90429]' : 'text-[#00f4fe]'} opacity-40 group-hover:opacity-100 transition-opacity`}>
-                {catIdx % 2 === 0 ? 'settings_input_component' : 'data_object'}
+              <span className={`${catIdx % 2 === 0 ? 'text-[#d90429]' : 'text-[#00f4fe]'} opacity-40 group-hover:opacity-100 transition-opacity`}>
+                {catIdx % 2 === 0 ? <Sliders className="w-4 h-4" /> : <Braces className="w-4 h-4" />}
               </span>
             </div>
 
@@ -68,7 +69,7 @@ export const SkillsSection = ({ skills, isEditable = false, onAdd, onDelete }: {
                       onClick={() => onDelete?.(skill.id)}
                       className="absolute -top-1 -right-1 opacity-0 group-hover/skill:opacity-100 text-[#d90429] p-1"
                     >
-                      <span className="material-symbols-outlined text-[10px]">close</span>
+                      <X className="w-3 h-3" />
                     </button>
                   )}
                 </div>

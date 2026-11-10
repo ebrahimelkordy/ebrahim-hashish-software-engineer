@@ -4,6 +4,7 @@ import { EditableText } from "../EditableText";
 import { EditableImage } from "../EditableImage";
 import Link from "next/link";
 import { SpotlightCard } from "../animations/SpotlightCard";
+import { Pin, Trash2, ArrowRight } from "lucide-react";
 
 export const PostsSection = ({ 
   posts, 
@@ -35,7 +36,7 @@ export const PostsSection = ({
                    onClick={() => onTogglePin?.(post.id, !post.isPinned)}
                    className={`p-1 border flex items-center gap-1 text-[9px] uppercase tracking-widest ${post.isPinned ? 'bg-[#00f4fe] text-black border-[#00f4fe]' : 'text-[#e7bcba] border-[#5d3f3d]/30 hover:border-[#00f4fe]'}`}
                  >
-                   <span className="material-symbols-outlined text-xs">push_pin</span>
+                   <Pin className="w-3.5 h-3.5" />
                    {post.isPinned ? 'PINNED' : 'PIN'}
                  </button>
                  <input 
@@ -49,7 +50,7 @@ export const PostsSection = ({
                  onClick={() => onDelete?.(post.id)}
                  className="p-1 border border-[#d90429]/30 text-[#d90429] hover:bg-[#d90429] hover:text-white transition-all"
                >
-                 <span className="material-symbols-outlined text-xs">delete</span>
+                 <Trash2 className="w-3.5 h-3.5" />
                </button>
             </div>
           )}
@@ -126,7 +127,7 @@ export const PostsSection = ({
 
           {!isEditable && (
              <Link href={`/posts/${post.slug}`} className="flex items-center gap-2 text-[#d90429] font-label text-xs uppercase tracking-[0.2em] hover:text-[#00f4fe] transition-colors">
-               READ_FILE <span className="material-symbols-outlined text-sm group-hover:translate-x-2 transition-transform">arrow_forward</span>
+               READ_FILE <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
              </Link>
           )}
         </SpotlightCard>

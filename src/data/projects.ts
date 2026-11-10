@@ -19,6 +19,50 @@ export interface ProjectData {
 
 export const projects: ProjectData[] = [
   {
+    id: "proj-aldebaran",
+    slug: "aldebaran-spatial-computing-studio",
+    codeName: "PROJ_ALDEBARAN",
+    title: "ALDEBARAN — Spatial Computing Studio & 3D WebGL Portfolio",
+    tagline: "Astronomical-Scale 3D WebGL Spatial Portfolio, Relativistic Physics & Custom GLSL Optics",
+    summary: "State-of-the-art interactive 3D spatial computing environment engineered with React 18, TypeScript, Three.js, and custom GLSL shaders. Features relativistic gravitational lensing, volumetric O-III celestial nebulae, dual-tier orbital case study architecture, and 60fps DOM-WebGL matrix synchronization with 0.00 MB external 3D models.",
+    description: [
+      "Engineered an astronomical-scale 3D WebGL spatial computing environment in React 18 and TypeScript with Three.js, achieving locked 60fps performance without external 3D model files (0.00 MB .GLB downloads) via pure procedural BufferGeometry and mathematical raymarching.",
+      "Constructed a Relativistic Gravitational Lensing Engine using custom GLSL shaders that simulates light bending around a Kerr black hole with dynamic normal curvature displacement, chromatic aberration, and damped spring recoil physics upon signal transmission.",
+      "Architected a Dual-Tier Engineering Showcase: Tier A featuring procedural Kepler planetary orbits with 3D lunar sky-pocket docking and luxury glass dossiers; Tier B featuring an interactive outer Kuiper asteroid belt with technical engineering telemetry.",
+      "Authored custom volumetric GLSL shaders for deep space ionized emission nebulae (O-III cyan and celestial ultraviolet) with 5-octave fractional Brownian motion, adaptive GPU tier scaling, and zero-latency DOM-to-WebGL projection synchronization."
+    ],
+    techStack: [
+      { category: "Graphics & Optics", items: ["WebGL 2.0", "Three.js r169", "Custom GLSL Shaders", "Raymarched Noise (FBM)", "Relativistic Gravitational Lensing", "UnrealBloom Post-Processing"] },
+      { category: "Frontend Architecture", items: ["React 18.3", "TypeScript 5.5", "Vite 7", "TailwindCSS", "Zustand State Store", "Lucide React"] },
+      { category: "Mathematical & Procedural", items: ["Kepler Orbital Mechanics", "Procedural BufferGeometry", "Perlin / Simplex Convection", "Spring Physics Recoil", "Matrix Projection Raycasting"] },
+      { category: "Performance & Optimization", items: ["0.00 MB External .GLB Payload", "Dynamic GPU Tier Detection", "Off-Screen Mesh Culling", "Zero-Allocation Render Loops", "60 FPS Locked Execution"] },
+      { category: "Deployment & Infrastructure", items: ["GitHub Actions CI/CD Pipeline", "GitHub Pages Edge Hosting", "Vite Static Site Delivery", "Web Audio API Synthetic Drone"] }
+    ],
+    features: [
+      "Pure Procedural WebGL Engine (0.00 MB .GLB Load — Pure Code & Math)",
+      "Relativistic Gravitational Lensing & Dynamic Optical Distortion Shaders",
+      "Astronomical Ionized Emission Nebula (O-III Cyan / Amethyst GLSL Raymarching)",
+      "Dual-Tier Portfolio Architecture (Planetary Flagship Moon Dossiers + Kuiper Belt Catalog)",
+      "Real-Time 60fps DOM-to-WebGL Coordinate Synchronization & Projection",
+      "Cinematic Calibration Singularity Bootloader with Real Asset Readiness Probing",
+      "Adaptive Hardware Concurrency & GPU Performance Tiering (Mobile & Desktop Fluent)",
+      "Procedural Armillary Astrolabe with Dynamic Angle Precession & Gimbal Mechanics"
+    ],
+    screenshots: [
+      { src: "/projects/aldebaran-01-hero-origin.png", caption: "Sector 00: The Origin — Kerr Singularity & Gravitational Accretion Disc" },
+      { src: "/projects/aldebaran-02-orbital-case-study.png", caption: "Sector 01: Orbital Systems — 3D Moon Sky Pocket & Luxury Case Study Dossier" },
+      { src: "/projects/aldebaran-03-asteroid-catalog.png", caption: "Sector 01: Kuiper Belt Archive — Procedural Asteroid Engineering Catalog" },
+      { src: "/projects/aldebaran-04-the-forge-nebula.png", caption: "Sector 02: The Forge — Electric Cyan Celestial Nebula & 3D Astrolabe Telemetry" },
+      { src: "/projects/aldebaran-05-relativistic-shockwave.png", caption: "Sector 03: Quantum Uplink — Relativistic Gravitational Lensing Shockwave" }
+    ],
+    liveUrl: "https://ebrahimelkordy.github.io/aldebaran/",
+    repoUrl: "https://github.com/ebrahimelkordy/aldebaran",
+    status: "DEPLOYED",
+    year: "2026",
+    isPinned: true,
+    order: 0
+  },
+  {
     id: "proj-manie",
     slug: "maison-manie-luxury-menswear",
     codeName: "PROJ_MANIE",
@@ -55,7 +99,7 @@ export const projects: ProjectData[] = [
     status: "DEPLOYED",
     year: "2026",
     isPinned: true,
-    order: 0
+    order: 1
   },
   {
     id: "proj-mashtool",
@@ -96,7 +140,7 @@ export const projects: ProjectData[] = [
     status: "DEPLOYED",
     year: "2026",
     isPinned: true,
-    order: 1
+    order: 2
   },
   {
     id: "proj-sanad",
@@ -137,7 +181,7 @@ export const projects: ProjectData[] = [
     status: "ENTERPRISE",
     year: "2026",
     isPinned: true,
-    order: 2
+    order: 3
   },
   {
     id: "proj-kordy",
@@ -177,7 +221,7 @@ export const projects: ProjectData[] = [
     status: "DEPLOYED",
     year: "2026",
     isPinned: true,
-    order: 3
+    order: 4
   },
   {
     id: "proj-zaad",
@@ -204,7 +248,7 @@ export const projects: ProjectData[] = [
     status: "DEPLOYED",
     year: "2026",
     isPinned: false,
-    order: 4
+    order: 5
   },
   {
     id: "proj-nibras",
@@ -231,7 +275,7 @@ export const projects: ProjectData[] = [
     status: "DEPLOYED",
     year: "2026",
     isPinned: false,
-    order: 5
+    order: 6
   },
   {
     id: "proj-soccer",
@@ -258,7 +302,7 @@ export const projects: ProjectData[] = [
     status: "COMPLETED",
     year: "2026",
     isPinned: false,
-    order: 6
+    order: 7
   },
   {
     id: "proj-almutasim",
@@ -285,6 +329,6 @@ export const projects: ProjectData[] = [
     status: "DEVELOPMENT",
     year: "2025",
     isPinned: false,
-    order: 7
+    order: 8
   }
 ];

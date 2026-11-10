@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { ImageOff } from "lucide-react";
 
 interface TerminalImageProps {
   src: string;
@@ -11,60 +12,46 @@ interface TerminalImageProps {
   priority?: boolean;
 }
 
-// Automatically optimize Cloudinary URLs with auto format, auto quality and smart sizing
-function getOptimizedImageUrl(src: string): string {
+// Automatically optimize Cloudinary URLs with modern format, good quality and tailored width
+function getOptimizedImageUrl(src: string, priority = false): string {
   if (!src) return "";
   if (src.includes("res.cloudinary.com") && src.includes("/image/upload/")) {
-    if (!src.includes("/f_auto,q_auto/")) {
-      return src.replace("/image/upload/", "/image/upload/f_auto,q_auto,w_1200/");
+    const width = priority ? 1000 : 800;
+    // Strip any old static transformations if present
+    const cleanUrl = src.replace(/\/image\/upload\/f_auto,q_auto,w_\d+\//, "/image/upload/");
+    if (!cleanUrl.includes("/f_auto,q_auto")) {
+      return cleanUrl.replace("/image/upload/", `/image/upload/f_auto,q_auto:good,w_${width}/`);
     }
+    return cleanUrl;
   }
   return src;
 }
 
-export const TerminalImage = ({ src, alt, className = "", containerClassName = "", priority = false }: TerminalImageProps) => {
-  const [isLoading, setIsLoading] = useState(true);
+export const TerminalImage = ({ 
+  src, 
+  alt, 
+  className = "", 
+  containerClassName = "", 
+  priority = false 
+}: TerminalImageProps) => {
   const [hasError, setHasError] = useState(false);
-  const [isTimedOut, setIsTimedOut] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
 
-  const optimizedSrc = getOptimizedImageUrl(src);
-
-  useEffect(() => {
-    // Safety Timeout: 6 seconds
-    const timer = setTimeout(() => {
-      if (isLoading) {
-        setIsTimedOut(true);
-        setIsLoading(false);
-        setHasError(true);
-      }
-    }, 6000);
-
-    return () => clearTimeout(timer);
-  }, [isLoading]);
-
-  // Reset states if src changes
-  useEffect(() => {
-    setIsLoading(true);
-    setHasError(false);
-    setIsTimedOut(false);
-  }, [src]);
-
-  const isValidUrl = src && (src.startsWith('/') || src.startsWith('http') || src.startsWith('blob:'));
+  const optimizedSrc = getOptimizedImageUrl(src, priority);
+  const isValidUrl = Boolean(src && (src.startsWith('/') || src.startsWith('http') || src.startsWith('blob:')));
 
   if (!isValidUrl || hasError) {
     return (
-      <div className={`relative ${containerClassName} bg-[#1c1b1b] border border-dashed border-[#5d3f3d] flex items-center justify-center min-h-[150px] overflow-hidden`}>
+      <div className={`relative ${containerClassName} bg-[#141414] border border-dashed border-[#5d3f3d]/60 flex items-center justify-center min-h-[160px] overflow-hidden`}>
         <div className="absolute inset-0 scanline-overlay pointer-events-none opacity-20"></div>
-        <div className="flex flex-col items-center gap-3 text-center p-4">
-          <span className="material-symbols-outlined text-3xl text-[#d90429] animate-pulse">
-            {isTimedOut ? 'shutter_speed' : 'broken_image'}
-          </span>
-          <div className="space-y-1">
+        <div className="flex flex-col items-center gap-2 text-center p-4 z-10">
+          <ImageOff className="w-8 h-8 text-[#d90429] opacity-80" />
+          <div className="space-y-0.5">
              <span className="text-[10px] uppercase tracking-[0.2em] font-mono text-[#d90429] block font-bold">
-               {!isValidUrl ? 'INVALID_PATH_STREAM' : isTimedOut ? 'CONNECTION_TIMEOUT' : 'ASSET_CORRUPT'}
+               ASSET_OFFLINE
              </span>
-             <span className="text-[8px] uppercase tracking-widest font-mono text-[#e7bcba] block opacity-60">
-               {!isValidUrl ? 'SOURCE_PATH_MALFORMED' : isTimedOut ? 'LATENCY_EXCEEDED_THRESHOLD' : 'SOURCE_UNREACHABLE'}
+             <span className="text-[8px] uppercase tracking-widest font-mono text-[#e7bcba] block opacity-50">
+               STREAM_UNAVAILABLE
              </span>
           </div>
         </div>
@@ -73,32 +60,20 @@ export const TerminalImage = ({ src, alt, className = "", containerClassName = "
   }
 
   return (
-    <div className={`relative ${containerClassName}`}>
-      {/* Skeleton / Loading State */}
-      {isLoading && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#0e0e0e] border border-[#d90429]/20 z-10 font-mono text-[#00f4fe] p-4 text-center">
-          <div className="mb-2">
-            <span className="material-symbols-outlined animate-spin text-[#d90429] mb-2 block mx-auto">sync</span>
-            <span className="text-[10px] uppercase tracking-widest block">&gt; FETCHING_ASSET</span>
-          </div>
-          <div className="w-full max-w-[200px] h-1.5 bg-[#1c1b1b] border border-[#5d3f3d]/30 overflow-hidden relative">
-            <div className="absolute top-0 left-0 h-full w-1/2 bg-[#00f4fe] animate-[pulse_0.8s_ease-in-out_infinite]"></div>
-          </div>
-        </div>
+    <div className={`relative overflow-hidden bg-[#121212] ${containerClassName}`}>
+      {/* Lightweight Ambient Pulse placeholder underneath (Zero CPU overhead, non-blocking) */}
+      {!isLoaded && (
+        <div className="absolute inset-0 bg-[#161616] animate-pulse z-0 pointer-events-none" />
       )}
 
       <Image
         src={optimizedSrc}
         alt={alt}
         fill
-        className={`${className} ${isLoading ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300`}
-        onLoad={() => setIsLoading(false)}
-        onError={() => {
-          setIsLoading(false);
-          setHasError(true);
-        }}
+        className={`${className} transition-opacity duration-500 ease-out ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+        onLoad={() => setIsLoaded(true)}
+        onError={() => setHasError(true)}
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        unoptimized={true}
         priority={priority}
       />
     </div>

@@ -76,6 +76,7 @@ export const EditableImage = ({
         alt={alt} 
         className={className} 
         containerClassName={containerClassName} 
+        priority={priority}
       />
     );
   }
