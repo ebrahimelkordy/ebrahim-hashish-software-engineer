@@ -270,7 +270,10 @@ export const projects: ProjectData[] = [
     ],
     features: ["Multi-tenancy Support", "Real-time Notifications", "Heavy File Upload Handling", "Detailed Analytics Dashboard"],
     screenshots: [
-      { src: "https://res.cloudinary.com/drcfpswre/image/upload/v1776536356/course_catalog_desktop_220db_wodmca.png", caption: "LMS Student Portal" }
+      { src: "/projects/nibras-01-hero-platform.png", caption: "Nibras LMS — Flagship Dark-Mode SaaS Learning Platform Hero & Metrics" },
+      { src: "/projects/nibras-02-course-catalog.png", caption: "Multi-Tenant Course Catalog — Institutional Filtering, Search & EGP Pricing" },
+      { src: "/projects/nibras-03-course-curriculum.png", caption: "Course Detail & Curriculum Preview — Lesson Modules, Enrollment & Certification" },
+      { src: "/projects/nibras-04-enterprise-tenants.png", caption: "Nibras for Business — Multi-Tenant School & Training Center Onboarding Portal" }
     ],
     liveUrl: "",
     repoUrl: "",
