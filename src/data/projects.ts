@@ -173,8 +173,10 @@ export const projects: ProjectData[] = [
       "Transactional Outbox Pattern for Zero-Loss Domain Event Messaging"
     ],
     screenshots: [
-      { src: "https://res.cloudinary.com/drcfpswre/image/upload/v1788206790/wvo3rkedoywjgxbspm9u.jpg", caption: "SANAD Financial ERP — Autonomous Audit Command Center" },
-      { src: "https://res.cloudinary.com/drcfpswre/image/upload/v1788206799/alcqsfyuxajcwjnf6pa3.jpg", caption: "AI Transaction Verification Stream & JSON Schema Validator" }
+      { src: "/projects/sanad-01-finance-ledger.png", caption: "SANAD Immutable Ledger — Real-Time Account Summary, Receivables & Overdue Tracking" },
+      { src: "/projects/sanad-02-ai-chat.png", caption: "Colloquial Arabic AI Parser & 2-Step MULTI_ACTION Settlement Confirmation" },
+      { src: "/projects/sanad-03-inventory-fifo.png", caption: "FIFO Inventory Matrix — Unit Cost, Selling Price, Margin & Low-Stock Telemetry" },
+      { src: "/projects/sanad-04-tenants-whatsapp.png", caption: "Multi-Tenant Configuration & Role-Separated WhatsApp Gateway (PUBLIC_SALES vs. AUTHORIZED_FINANCE)" }
     ],
     liveUrl: "",
     repoUrl: "",
